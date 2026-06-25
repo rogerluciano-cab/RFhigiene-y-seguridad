@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio Técnico Freytes</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
 <body class="bg-[#0b1120] text-white font-sans">
 
@@ -16,14 +19,14 @@
         </div>
         <div class="flex gap-6 text-sm opacity-80">
             <a href="#">Inicio</a>
-            <a href="#">Servicios</a>
+            <a href="#servicios">Servicios</a>
             <a href="#">Estadísticas</a>
             <a href="#">Auto-Diagnóstico</a>
-            <a href="#">Contacto</a>
+            <a href="#contacto">Contacto</a>
         </div>
         <div class="flex gap-4">
             <button class="text-sm border border-gray-600 px-4 py-2 rounded">Acceso Roger</button>
-            <button class="bg-blue-500 px-4 py-2 rounded font-bold text-sm">SOLICITAR VISITA</button>
+            <a href="#contacto" class="bg-blue-500 px-4 py-2 rounded font-bold text-sm">SOLICITAR VISITA</a>
         </div>
     </nav>
 
@@ -41,12 +44,12 @@
                 Protegemos el capital de tu empresa. Optimizamos la productividad mediante orden técnico (5S), gestionamos habilitaciones de campos e industrias y evitamos multas de la ART.
             </p>
             <div class="flex gap-4">
-                <button class="bg-blue-500 px-6 py-4 rounded font-bold">HACER DIAGNÓSTICO TÉCNICO GRATIS</button>
-                <button class="border border-gray-600 px-6 py-4 rounded font-bold">VER SERVICIOS TÉCNICOS</button>
+                <a href="#contacto" class="bg-blue-500 px-6 py-4 rounded font-bold">HACER DIAGNÓSTICO TÉCNICO GRATIS</a>
+                <a href="#servicios" class="border border-gray-600 px-6 py-4 rounded font-bold">VER SERVICIOS TÉCNICOS</a>
             </div>
         </div>
 
-        <div class="grid gap-4">
+        <div id="servicios" class="grid gap-4">
             <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4">
                 <div>🏭</div>
                 <div>
@@ -70,6 +73,12 @@
             </div>
         </div>
     </header>
+
+    <!-- CONTACTO (SECCIÓN PARA QUE FUNCIONEN LOS BOTONES) -->
+    <div id="contacto" class="px-10 py-16">
+        <h2 class="text-3xl font-bold mb-6">Contacto</h2>
+        <p class="text-gray-400">Aquí irán tus datos de contacto y el formulario.</p>
+    </div>
 
 </body>
 </html>
