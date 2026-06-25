@@ -5,24 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio Técnico Freytes</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Agregamos Chart.js para renderizar los gráficos de impacto -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-[#0b1120] text-white font-sans">
 
-    <!-- NAVBAR -->
+    <!-- NAVBAR (Menú Limpio y Directo) -->
     <nav class="flex items-center justify-between px-10 py-6">
         <div class="flex items-center gap-2">
             <div class="bg-blue-600 px-3 py-1 font-bold rounded">RF</div>
             <span class="font-bold text-lg">ESTUDIO TÉCNICO FREYTES</span>
         </div>
         <div class="flex gap-6 text-sm opacity-80">
-            <a href="#">Inicio</a>
-            <a href="#servicios-detallados" class="hover:text-blue-400 transition-colors">Servicios</a>
-            <a href="#">Estadísticas</a>
-            <a href="#">Auto-Diagnóstico</a>
+            <a href="#" class="hover:text-blue-400 transition-colors">Inicio</a>
+            <a href="#estadisticas" class="hover:text-blue-400 transition-colors">Estadísticas</a>
             <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
         </div>
         <div class="flex gap-4 items-center">
-            <!-- BOTÓN CON CANDADO PARA ACCESO PRIVADO -->
             <button onclick="abrirModalAcceso()" class="text-sm border border-gray-600 px-4 py-2 rounded flex items-center gap-2 hover:bg-gray-800 transition-colors">
                 <span>🔒</span> Acceso Roger
             </button>
@@ -152,8 +151,42 @@
         </div>
     </div>
 
+    <!-- NUEVA SECCIÓN DE ESTADÍSTICAS E IMPACTO REAL -->
+    <section id="estadisticas" class="px-10 py-20 bg-[#0f172a] border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 px-3 py-1 rounded">Métricas e Impacto</span>
+                <h2 class="text-3xl font-bold mt-3 text-white">¿Por qué invertir en Higiene y Seguridad?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm mt-2">Comparativa técnica del impacto operativo, legal y económico en empresas antes y después de contar con un servicio especializado.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-[#1e293b] p-8 rounded-2xl border border-gray-700">
+                <!-- Información Vendedora -->
+                <div class="space-y-6">
+                    <div class="border-l-4 border-red-500 pl-4">
+                        <h4 class="font-bold text-white text-base">Riesgos Sin Gestión Técnica</h4>
+                        <p class="text-gray-400 text-xs mt-1">Probabilidad crítica de actas de infracción de la SRT, suspensiones por falta de Legajo Técnico (Dec. 911/96) y multas severas de la ART.</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-bold text-white text-base">Beneficios con Asesoría Profesional</h4>
+                        <p class="text-gray-400 text-xs mt-1">Cumplimiento total de auditorías, reducción drástica de la siniestralidad y optimización de espacios mediante metodologías ágiles de orden y limpieza (5S).</p>
+                    </div>
+                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-700 text-center">
+                        <span class="text-xs text-gray-400 uppercase font-bold block">Meta del Estudio Técnico</span>
+                        <span class="text-2xl font-black text-blue-400 block mt-1">0% CLAUSURAS</span>
+                    </div>
+                </div>
+                
+                <!-- Gráfico de Canvas -->
+                <div class="w-full bg-[#0b1120] p-4 rounded-xl border border-gray-700 h-[320px]">
+                    <canvas id="graficoImpactoPublico"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SERVICIOS TÉCNICOS DETALLADOS -->
-    <section id="servicios-detallados" class="px-10 py-20 bg-[#0f172a] border-t border-gray-800">
+    <section id="servicios-detallados" class="px-10 py-20 bg-[#0b1120] border-t border-gray-800">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold mb-4">Servicios de Consultoría y Asesoría Técnico-Legal</h2>
@@ -243,6 +276,48 @@
 
     <!-- LOGICA SCRIPT INTERACTIVA -->
     <script>
+        // Lógica para renderizar las estadísticas públicas corporativas
+        const ctxPublico = document.getElementById('graficoImpactoPublico').getContext('2d');
+        new Chart(ctxPublico, {
+            type: 'bar',
+            data: {
+                labels: ['Riesgo de Multas', 'Índice de Siniestros', 'Orden y Eficiencia (5S)'],
+                datasets: [{
+                    label: 'Sin Gestión Técnica',
+                    data: [85, 70, 25],
+                    backgroundColor: '#ef4444', // Rojo Alerta
+                    borderRadius: 6
+                }, {
+                    label: 'Con Estudio Freytes',
+                    data: [5, 10, 95],
+                    backgroundColor: '#3b82f6', // Azul Institucional
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        grid: { color: '#334155' },
+                        ticks: { color: '#94a3b8', font: { size: 10 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#ffffff', font: { size: 11, weight: 'bold' } }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#ffffff', font: { size: 11 } }
+                    }
+                }
+            }
+        });
+
         // Funciones del Diagnóstico Técnico
         function abrirModal() { document.getElementById('modalDiagnostico').classList.remove('hidden'); }
         function cerrarModal() {
@@ -303,11 +378,10 @@
             if (claveIngresada === "Caye2026") {
                 errorDiv.classList.add('hidden');
                 cerrarModalAcceso();
-                // Redirección adaptada en minúsculas para máxima compatibilidad con GitHub
                 window.location.href = "flyer.html#estrategia";
             } else {
                 errorDiv.classList.remove('hidden');
-                document.getElementById('claveAcceso').value = ""; // Limpia el campo si errás
+                document.getElementById('claveAcceso').value = "";
             }
         }
     </script>
