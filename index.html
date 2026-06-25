@@ -1,75 +1,103 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Técnico Freytes | Higiene, Seguridad y Asesoría Integral</title>
+    <title>Estudio Técnico Freytes</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { font-family: sans-serif; }
-    </style>
 </head>
-<body class="bg-slate-950 text-white">
+<body class="bg-[#0b1120] text-white font-sans">
 
-    <!-- HERO SECTION -->
-    <section class="py-20 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="mb-6 inline-block bg-sky-900/30 border border-sky-700 text-sky-400 px-4 py-1 rounded-full text-sm font-semibold">
+    <!-- NAVBAR -->
+    <nav class="flex items-center justify-between px-10 py-6">
+        <div class="flex items-center gap-2">
+            <div class="bg-blue-600 px-3 py-1 font-bold rounded">RF</div>
+            <span class="font-bold text-lg">ESTUDIO TÉCNICO FREYTES</span>
+        </div>
+        <div class="flex gap-6 text-sm opacity-80">
+            <a href="#">Inicio</a>
+            <a href="#servicios" class="hover:text-blue-400 transition-colors">Servicios</a>
+            <a href="#">Estadísticas</a>
+            <a href="#">Auto-Diagnóstico</a>
+            <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
+        </div>
+        <div class="flex gap-4">
+            <button class="text-sm border border-gray-600 px-4 py-2 rounded">Acceso Roger</button>
+            <a href="#contacto" class="bg-blue-500 px-4 py-2 rounded font-bold text-sm hover:bg-blue-600 transition-colors">SOLICITAR VISITA</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="px-10 py-16 grid grid-cols-2 gap-12 items-center">
+        <div>
+            <div class="text-blue-400 text-sm font-semibold mb-4 border border-blue-900 inline-block px-3 py-1 rounded">
                 ⚡ SOLUCIONES DE INGENIERÍA EN CÓRDOBA
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                Seguridad Industrial,<br><span class="text-sky-400">Sistemas 5S y Agro.</span>
+            <!-- TÍTULO MODIFICADO -->
+            <h1 class="text-5xl font-extrabold leading-tight mb-6">
+                Asesoría integral en Higiene y seguridad a industrias, <br>
+                <span class="text-blue-400">Obras y Agro.</span>
             </h1>
-            <p class="text-gray-400 mb-8 text-lg max-w-2xl">
-                Protegemos el capital de tu empresa. Optimizamos la productividad mediante orden técnico (5S), gestionamos habilitaciones de campos e industrias y evitamos multas de la ART.
+            <!-- DESCRIPCIÓN CON NORMAS ISO Y 5S -->
+            <p class="text-gray-400 text-base mb-8 max-w-lg leading-relaxed">
+                Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para evitar multas de la ART.
             </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="#contacto" class="bg-sky-500 hover:bg-sky-600 px-8 py-4 rounded-lg font-bold transition">HACER DIAGNÓSTICO TÉCNICO GRATIS</a>
-                <a href="#servicios" class="border border-slate-700 hover:border-slate-500 px-8 py-4 rounded-lg font-bold transition">VER SERVICIOS TÉCNICOS</a>
+            <div class="flex gap-4">
+                <a href="#contacto" class="bg-blue-500 px-6 py-4 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center">HACER DIAGNÓSTICO TÉCNICO GRATIS</a>
+                <a href="#servicios" class="border border-gray-600 px-6 py-4 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center">VER SERVICIOS TÉCNICOS</a>
             </div>
         </div>
-    </section>
 
-    <!-- SERVICIOS -->
-    <section id="servicios" class="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-        <div class="space-y-6">
-            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-                <h4 class="text-xl font-semibold mb-2">Higiene Industrial</h4>
-                <p class="text-gray-400">Estudios ergonómicos, mediciones SRT y auditorías de ART completas.</p>
-            </div>
-            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-                <h4 class="text-xl font-semibold mb-2">Riesgo Agrícola</h4>
-                <p class="text-gray-400">Seguridad en acopios, silos, maquinarias e inflamables.</p>
-            </div>
-        </div>
-        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-            <h4 class="text-xl font-semibold mb-2">Metodología 5S / Lean</h4>
-            <p class="text-gray-400">Optimización de espacios de trabajo, reducción de tiempos muertos y aumento de productividad.</p>
-        </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="py-16 bg-slate-900/50">
-        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
-            <div>
-                <h2 class="text-3xl font-bold mb-6">Coordinemos una visita de asesoramiento</h2>
-                <p class="text-gray-400 mb-8">Escribinos hoy para solicitar un diagnóstico de estado sin cargo para tu local, campo o taller industrial. Te responderemos en menos de 2 horas hábiles.</p>
-                <div class="space-y-4 text-gray-300">
-                    <p>Teléfono: 03572-15594767</p>
-                    <p>Email: rogerluciano.rfa@gmail.com</p>
-                    <p class="font-bold text-sky-400">Zona de atención: Santa Rosa de Calamuchita, Córdoba, Argentina</p>
+        <!-- TARJETAS LADO DERECHO (SE MANTIENEN IGUAL) -->
+        <div id="servicios" class="grid gap-4">
+            <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4">
+                <span class="text-2xl">🏭</span>
+                <div>
+                    <h3 class="font-bold text-lg">Higiene Industrial</h3>
+                    <p class="text-gray-400 text-sm">Estudios ergonómicos, mediciones SRT y auditorías de ART completas.</p>
                 </div>
             </div>
-            <div class="bg-slate-950 p-8 rounded-xl border border-slate-800">
-                <form class="space-y-4">
-                    <input type="text" placeholder="Ej: Carlos de Planta Láctea" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white">
-                    <input type="text" placeholder="Ej: 357215XXXXXX" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white">
-                    <input type="text" placeholder="Ej: Santa Rosa de Calamuchita / Campo" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white">
-                    <textarea placeholder="Contanos qué necesitás resolver" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white h-32"></textarea>
-                    <button type="button" class="w-full bg-sky-500 hover:bg-sky-600 p-4 rounded-lg font-bold transition">ENVIAR CONSULTA A WHATSAPP DE ROGER</button>
-                </form>
+            <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4">
+                <span class="text-2xl">🚜</span>
+                <div>
+                    <h3 class="font-bold text-lg">Riesgo Agrícola</h3>
+                    <p class="text-gray-400 text-sm">Seguridad en acopios, silos, maquinarias e inflamables.</p>
+                </div>
+            </div>
+            <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4">
+                <span class="text-2xl">💎</span>
+                <div>
+                    <h3 class="font-bold text-lg">Metodología 5S / Lean</h3>
+                    <p class="text-gray-400 text-sm">Optimización de espacios de trabajo, reducción de tiempos muertos y aumento de productividad.</p>
+                </div>
             </div>
         </div>
-    </section>
+    </header>
+
+    <!-- SECCIÓN CONTACTO -->
+    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-10 py-12 mt-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-6">Contacto Profesional</h2>
+            <p class="text-gray-400 mb-8 text-sm">Comunicate directamente para coordinar una visita técnica o solicitar presupuesto.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="https://wa.me/5493512345678" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-all block">
+                    <span class="block text-xl mb-1">💬</span>
+                    <span class="block font-semibold text-sm text-green-400">WhatsApp</span>
+                    <span class="text-xs text-gray-400">Enviar mensaje directo</span>
+                </a>
+                <a href="mailto:rogerlucianofreytes@gmail.com" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-all block">
+                    <span class="block text-xl mb-1">✉️</span>
+                    <span class="block font-semibold text-sm text-blue-400">Correo Electrónico</span>
+                    <span class="text-xs text-gray-400">rogerlucianofreytes@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/roger-freytes" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-600 transition-all block">
+                    <span class="block text-xl mb-1">🔗</span>
+                    <span class="block font-semibold text-sm text-blue-500">LinkedIn</span>
+                    <span class="text-xs text-gray-400">Perfil Profesional</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
