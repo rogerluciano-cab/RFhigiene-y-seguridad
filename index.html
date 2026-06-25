@@ -8,6 +8,7 @@
 </head>
 <body class="bg-[#0b1120] text-white font-sans">
 
+    <!-- NAVBAR -->
     <nav class="flex items-center justify-between px-10 py-6">
         <div class="flex items-center gap-2">
             <div class="bg-blue-600 px-3 py-1 font-bold rounded">RF</div>
@@ -21,6 +22,7 @@
             <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
         </div>
         <div class="flex gap-4 items-center">
+            <!-- BOTÓN CON CANDADO PARA ACCESO PRIVADO -->
             <button onclick="abrirModalAcceso()" class="text-sm border border-gray-600 px-4 py-2 rounded flex items-center gap-2 hover:bg-gray-800 transition-colors">
                 <span>🔒</span> Acceso Roger
             </button>
@@ -28,6 +30,7 @@
         </div>
     </nav>
 
+    <!-- CUADRO EMERGENTE: LOGIN PRIVADO DE ROGER -->
     <div id="modalAcceso" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
         <div class="bg-[#1e293b] border border-gray-700 w-full max-w-sm rounded-2xl p-6 shadow-2xl relative">
             <button onclick="cerrarModalAcceso()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
@@ -54,6 +57,7 @@
         </div>
     </div>
 
+    <!-- HERO -->
     <header class="px-10 py-16 grid grid-cols-2 gap-12 items-center">
         <div>
             <div class="text-blue-400 text-sm font-semibold mb-4 border border-blue-900 inline-block px-3 py-1 rounded">
@@ -74,6 +78,7 @@
             </div>
         </div>
 
+        <!-- TARJETAS LADO DERECHO -->
         <div id="servicios" class="grid gap-4">
             <a href="industrias.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
                 <span class="text-2xl">🏭</span>
@@ -104,6 +109,7 @@
         </div>
     </header>
 
+    <!-- CUADRO INTERACTIVO DE DIAGNÓSTICO -->
     <div id="modalDiagnostico" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
         <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
             <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
@@ -146,6 +152,7 @@
         </div>
     </div>
 
+    <!-- SERVICIOS TÉCNICOS DETALLADOS -->
     <section id="servicios-detallados" class="px-10 py-20 bg-[#0f172a] border-t border-gray-800">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
@@ -209,6 +216,7 @@
         </div>
     </section>
 
+    <!-- SECCIÓN CONTACTO -->
     <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-10 py-12">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-2xl font-bold mb-6">Contacto Profesional</h2>
@@ -233,6 +241,7 @@
         </div>
     </footer>
 
+    <!-- LOGICA SCRIPT INTERACTIVA -->
     <script>
         // Funciones del Diagnóstico Técnico
         function abrirModal() { document.getElementById('modalDiagnostico').classList.remove('hidden'); }
@@ -278,7 +287,7 @@
             }
         }
 
-        // NUEVAS FUNCIONES: CONTROL DE ACCESO PRIVADO DE ROGER
+        // CONTROL DE ACCESO PRIVADO DE ROGER
         function abrirModalAcceso() {
             document.getElementById('modalAcceso').classList.remove('hidden');
             document.getElementById('claveAcceso').value = "";
@@ -288,17 +297,19 @@
             document.getElementById('modalAcceso').classList.add('hidden');
         }
         function verificarClave() {
-    const claveIngresada = document.getElementById('claveAcceso').value;
-    const errorDiv = document.getElementById('errorClave');
-    
-    if (claveIngresada === "Caye2026") {
-        errorDiv.classList.add('hidden');
-        cerrarModalAcceso();
-        
-        // Convertimos a minúsculas para evitar cualquier error de tipeo en GitHub
-        window.location.href = "flyer.html#estrategia";
-    } else {
-        errorDiv.classList.remove('hidden');
-        document.getElementById('claveAcceso').value = ""; // Limpia el intento fallido
-    }
-}
+            const claveIngresada = document.getElementById('claveAcceso').value;
+            const errorDiv = document.getElementById('errorClave');
+            
+            if (claveIngresada === "Caye2026") {
+                errorDiv.classList.add('hidden');
+                cerrarModalAcceso();
+                // Redirección adaptada en minúsculas para máxima compatibilidad con GitHub
+                window.location.href = "flyer.html#estrategia";
+            } else {
+                errorDiv.classList.remove('hidden');
+                document.getElementById('claveAcceso').value = ""; // Limpia el campo si errás
+            }
+        }
+    </script>
+</body>
+</html>
