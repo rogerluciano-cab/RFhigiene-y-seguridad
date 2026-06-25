@@ -5,68 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estudio Técnico Freytes | Higiene, Seguridad y Asesoría Integral</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: sans-serif; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-slate-950 text-white">
 
-    <section class="py-20 bg-slate-900 text-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Servicios Industriales, Asesoría Integral en Obras y Agro.</h1>
-            <p class="text-gray-300 mb-8 text-lg max-w-2xl">
-                Implementamos soluciones de ingeniería bajo estándares internacionales y normas ISO. Optimizamos tu productividad con sistemas de orden y limpieza (5S) y garantizamos el cumplimiento normativo para que tu empresa trabaje tranquila.
+    <!-- HERO SECTION -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-6 inline-block bg-sky-900/30 border border-sky-700 text-sky-400 px-4 py-1 rounded-full text-sm font-semibold">
+                ⚡ SOLUCIONES DE INGENIERÍA EN CÓRDOBA
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Servicios Industriales, <br><span class="text-sky-400">Asesoría Integral en Obras y Agro.</span>
+            </h1>
+            <p class="text-gray-400 mb-8 text-lg max-w-2xl">
+                Protegemos el capital de tu empresa. Optimizamos la productividad mediante asesoría técnica integral bajo estándares internacionales (Normas ISO), gestión de obras y agro, evitando multas.
             </p>
             <div class="flex flex-wrap gap-4">
-                <a href="#contacto" class="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-lg font-bold">Hacer Diagnóstico Técnico</a>
-                <a href="#videollamada" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold">Coordinar Videollamada</a>
+                <a href="#contacto" class="bg-sky-500 hover:bg-sky-600 px-8 py-4 rounded-lg font-bold transition">Hacer Diagnóstico Técnico Gratis</a>
+                <a href="#servicios" class="border border-slate-700 hover:border-slate-500 px-8 py-4 rounded-lg font-bold transition">Ver Servicios Técnicos</a>
             </div>
         </div>
     </section>
 
-    <section id="videollamada" class="py-16 bg-blue-600 text-white">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-4">¿Necesitas Asesoría desde cualquier lugar?</h2>
-            <p class="text-blue-100 mb-8 text-lg">Coordinamos una videollamada para analizar tu caso de forma personalizada, sin importar dónde te encuentres. Alcance nacional.</p>
-            
+    <!-- VIDEOCALL SECTION -->
+    <section id="videollamada" class="py-12 bg-slate-900 border-y border-slate-800">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">¿Necesitás asesoría técnica desde cualquier lugar?</h2>
+            <p class="text-gray-400 mb-6">Coordinamos una videollamada para analizar tu caso de forma personalizada. Alcance a todo el país.</p>
             <a href="https://wa.me/549357215594767?text=Hola,%20me%20gustaría%20coordinar%20una%20videollamada%20para%20una%20asesoría" 
-               class="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg shadow-lg hover:bg-gray-100 transition-colors">
+               class="inline-block bg-white text-slate-900 px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition">
                 Agendar Videollamada ahora
             </a>
-            
-            <div class="mt-8 flex justify-center gap-6 text-sm text-blue-200 flex-wrap">
-                <span class="flex items-center">✓ 100% Online</span>
-                <span class="flex items-center">✓ Diagnóstico rápido</span>
-                <span class="flex items-center">✓ Normas ISO</span>
-            </div>
         </div>
     </section>
 
-    <section class="py-16 px-6 max-w-6xl mx-auto">
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-16 px-6 max-w-6xl mx-auto">
         <h3 class="text-2xl font-bold mb-8">Nuestros Servicios</h3>
         <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 relative">
-                <span class="absolute top-4 right-4 bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-semibold">Virtual</span>
-                <h4 class="text-xl font-semibold mb-2">Gestión Integral ISO</h4>
-                <p class="text-gray-600">Asesoramiento bajo estándares internacionales para tu industria.</p>
+            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <h4 class="text-xl font-semibold mb-2">Higiene Industrial</h4>
+                <p class="text-gray-400">Estudios ergonómicos, mediciones SRT y auditorías de ART completas.</p>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 relative">
-                <span class="absolute top-4 right-4 bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full font-semibold">Presencial</span>
-                <h4 class="text-xl font-semibold mb-2">Seguridad en Obras</h4>
-                <p class="text-gray-600">Plan de emergencia, evacuación y control de riesgos en obra.</p>
+            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <h4 class="text-xl font-semibold mb-2">Riesgo Agrícola</h4>
+                <p class="text-gray-400">Seguridad en acopios, silos, maquinarias e inflamables.</p>
             </div>
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 relative">
-                <span class="absolute top-4 right-4 bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-semibold">Virtual</span>
-                <h4 class="text-xl font-semibold mb-2">Sistemas 5S</h4>
-                <p class="text-gray-600">Metodología de orden y limpieza para aumentar la productividad.</p>
+            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                <h4 class="text-xl font-semibold mb-2">Metodología 5S / Lean</h4>
+                <p class="text-gray-400">Optimización de espacios de trabajo, reducción de tiempos muertos y aumento de productividad.</p>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="py-16 bg-gray-900 text-white">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-8">Contacto Directo</h2>
-            <div class="text-gray-400 space-y-4">
-                <p>Teléfono: 03572-15594767</p>
-                <p>Email: rogerluciano.rfa@gmail.com</p>
-                <p class="font-bold text-white">Zona de atención: Toda la Provincia de Córdoba y Asesoría Virtual a todo el país.</p>
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-16 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">Coordinemos una visita de asesoramiento</h2>
+                <p class="text-gray-400 mb-8">Escribinos hoy para solicitar un diagnóstico de estado sin cargo para tu local, campo o taller industrial.</p>
+                <div class="space-y-4 text-gray-300">
+                    <p>Teléfono: 03572-15594767</p>
+                    <p>Email: rogerluciano.rfa@gmail.com</p>
+                    <p class="font-bold text-sky-400">Zona de atención: Toda la Provincia de Córdoba y Asesoría Virtual a todo el país.</p>
+                </div>
+            </div>
+            <div class="bg-slate-950 p-8 rounded-xl border border-slate-800">
+                <!-- Formulario -->
+                <form class="space-y-4">
+                    <input type="text" placeholder="Tu Nombre / Empresa" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white">
+                    <input type="text" placeholder="Tu Celular" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white">
+                    <textarea placeholder="Consulta o trámite técnico" class="w-full bg-slate-900 border border-slate-700 p-3 rounded-lg text-white h-32"></textarea>
+                    <button type="button" class="w-full bg-sky-500 hover:bg-sky-600 p-4 rounded-lg font-bold transition">Enviar Consulta a WhatsApp de Roger</button>
+                </form>
             </div>
         </div>
     </section>
