@@ -16,11 +16,14 @@
         </div>
         <div class="flex gap-6 text-sm opacity-80">
             <a href="#">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#servicios" class="hover:text-blue-400 transition-colors">Servicios</a>
+            <a href="#">Estadísticas</a>
+            <a href="#">Auto-Diagnóstico</a>
+            <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
         </div>
         <div class="flex gap-4">
-            <a href="#contacto" class="bg-blue-500 px-4 py-2 rounded font-bold text-sm">SOLICITAR VISITA</a>
+            <button class="text-sm border border-gray-600 px-4 py-2 rounded">Acceso Roger</button>
+            <a href="#contacto" class="bg-blue-500 px-4 py-2 rounded font-bold text-sm hover:bg-blue-600 transition-colors">SOLICITAR VISITA</a>
         </div>
     </nav>
 
@@ -30,36 +33,39 @@
             <div class="text-blue-400 text-sm font-semibold mb-4 border border-blue-900 inline-block px-3 py-1 rounded">
                 ⚡ SOLUCIONES DE INGENIERÍA EN CÓRDOBA
             </div>
-            <h1 class="text-6xl font-extrabold leading-tight mb-6">
-                Seguridad Industrial, <br>
-                <span class="text-blue-400">Sistemas 5S y Agro.</span>
+            <!-- NUEVO TÍTULO -->
+            <h1 class="text-5xl font-extrabold leading-tight mb-6">
+                Servicios Industriales, <br>
+                <span class="text-blue-400">Asesoría Integral en Obras y Agro.</span>
             </h1>
-            <p class="text-gray-400 text-lg mb-8 max-w-lg">
-                Protegemos el capital de tu empresa. Optimizamos la productividad mediante orden técnico (5S), gestionamos habilitaciones de campos e industrias y evitamos multas de la ART.
+            <!-- NUEVA DESCRIPCIÓN CON NORMAS ISO Y 5S -->
+            <p class="text-gray-400 text-base mb-8 max-w-lg leading-relaxed">
+                Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para evitar multas de la ART.
             </p>
             <div class="flex gap-4">
-                <a href="#contacto" class="bg-blue-500 px-6 py-4 rounded font-bold">HACER DIAGNÓSTICO TÉCNICO GRATIS</a>
-                <a href="#servicios" class="border border-gray-600 px-6 py-4 rounded font-bold">VER SERVICIOS TÉCNICOS</a>
+                <a href="#contacto" class="bg-blue-500 px-6 py-4 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center">HACER DIAGNÓSTICO TÉCNICO GRATIS</a>
+                <a href="#servicios" class="border border-gray-600 px-6 py-4 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center">VER SERVICIOS TÉCNICOS</a>
             </div>
         </div>
 
+        <!-- TARJETAS LADO DERECHO (SE MANTIENEN IGUAL) -->
         <div id="servicios" class="grid gap-4">
             <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4">
-                <div>🏭</div>
+                <span class="text-2xl">🏭</span>
                 <div>
                     <h3 class="font-bold text-lg">Higiene Industrial</h3>
                     <p class="text-gray-400 text-sm">Estudios ergonómicos, mediciones SRT y auditorías de ART completas.</p>
                 </div>
             </div>
             <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4">
-                <div>🚜</div>
+                <span class="text-2xl">🚜</span>
                 <div>
                     <h3 class="font-bold text-lg">Riesgo Agrícola</h3>
                     <p class="text-gray-400 text-sm">Seguridad en acopios, silos, maquinarias e inflamables.</p>
                 </div>
             </div>
             <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4">
-                <div>💎</div>
+                <span class="text-2xl">💎</span>
                 <div>
                     <h3 class="font-bold text-lg">Metodología 5S / Lean</h3>
                     <p class="text-gray-400 text-sm">Optimización de espacios de trabajo, reducción de tiempos muertos y aumento de productividad.</p>
@@ -69,33 +75,29 @@
     </header>
 
     <!-- SECCIÓN CONTACTO -->
-    <section id="contacto" class="px-10 py-16 bg-[#0f172a]">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold mb-8">Contacto Directo</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <p class="text-gray-400">Coordinemos una visita de asesoramiento para tu empresa o campo. Respondemos consultas técnicas en menos de 2 horas hábiles.</p>
-                    <div class="space-y-4">
-                        <p class="flex items-center gap-3 text-lg font-semibold">
-                            <span>📲</span> WhatsApp: 03572-15594767
-                        </p>
-                        <p class="flex items-center gap-3 text-lg font-semibold">
-                            <span>✉️</span> Email: rogerluciano.rfa@gmail.com
-                        </p>
-                        <p class="flex items-center gap-3 text-lg font-semibold">
-                            <span>💼</span> LinkedIn: Roger Luciano Freytes
-                        </p>
-                    </div>
-                </div>
-                <div class="bg-[#1e293b] p-8 rounded-xl border border-gray-700">
-                    <p class="mb-4 font-bold">¿Querés enviarme un mensaje directo?</p>
-                    <a href="https://wa.me/5493572594767" target="_blank" class="block w-full bg-green-600 text-center py-3 rounded font-bold hover:bg-green-700 transition">
-                        ENVIAR MENSAJE A WHATSAPP
-                    </a>
-                </div>
+    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-10 py-12 mt-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-6">Contacto Profesional</h2>
+            <p class="text-gray-400 mb-8 text-sm">Comunicate directamente para coordinar una visita técnica o solicitar presupuesto.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="https://wa.me/5493512345678" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-all block">
+                    <span class="block text-xl mb-1">💬</span>
+                    <span class="block font-semibold text-sm text-green-400">WhatsApp</span>
+                    <span class="text-xs text-gray-400">Enviar mensaje directo</span>
+                </a>
+                <a href="mailto:rogerlucianofreytes@gmail.com" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-all block">
+                    <span class="block text-xl mb-1">✉️</span>
+                    <span class="block font-semibold text-sm text-blue-400">Correo Electrónico</span>
+                    <span class="text-xs text-gray-400">rogerlucianofreytes@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/roger-freytes" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-600 transition-all block">
+                    <span class="block text-xl mb-1">🔗</span>
+                    <span class="block font-semibold text-sm text-blue-500">LinkedIn</span>
+                    <span class="text-xs text-gray-400">Perfil Profesional</span>
+                </a>
             </div>
         </div>
-    </section>
+    </footer>
 
 </body>
 </html>
