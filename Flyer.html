@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roger Freytes - Panel Interactivo de Servicios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chosen Palette: Horizonte Profesional (Celeste Institucional y Gris Técnico) -->
+    <!-- Application Structure Plan: Estructura temática diseñada para transformar el perfil de servicios en una experiencia interactiva. Se divide en: 1. Dashboard de Impacto Técnico (Visualización de valor), 2. Explorador de Servicios (Estructura de la oferta), y 3. Estudio de Flyer (Funcionalidad de edición para HISTORIA 01.png). Este flujo guía al usuario desde la estrategia hasta la ejecución del marketing. -->
+    <!-- Visualization & Content Choices: 
+        1. Gráfico de Cumplimiento (Chart.js) -> Meta: Mostrar impacto -> Barra comparativa -> Justificación de servicio. 
+        2. Tarjetas de Servicio -> Meta: Organizar información -> Flexbox interactivo -> Claridad conceptual. 
+        3. Editor Canvas -> Meta: Funcionalidad -> Procesamiento de imagen y texto -> Solución al problema de Canva. 
+        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 600px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            height: 300px; 
+            max-height: 400px; 
+        }
+        .flyer-preview-container {
+            max-width: 400px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navegación -->
+    <nav class="bg-slate-900 text-white py-4 px-6 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-sky-500 w-8 h-8 rounded flex items-center justify-center font-bold text-slate-900">RF</div>
+                <span class="font-bold tracking-tight">ESTUDIO TÉCNICO FREYTES</span>
+            </div>
+            <div class="hidden md:flex gap-6 text-sm font-medium">
+                <a href="#estrategia" class="hover:text-sky-400 transition">Estrategia</a>
+                <a href="#servicios" class="hover:text-sky-400 transition">Servicios</a>
+                <a href="#editor" class="bg-sky-500 px-3 py-1 rounded text-slate-900 hover:bg-sky-400 transition">Diseñador de Flyer</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto p-6 space-y-12">
+        
+        <!-- Sección 1: Dashboard de Impacto -->
+        <section id="estrategia" class="space-y-6">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-extrabold text-slate-900 mb-2">Impacto de la Gestión Técnica</h2>
+                <p class="text-slate-600 mb-8">Esta sección analiza cómo tu intervención técnica transforma el riesgo legal y operativo de un comercio en seguridad y cumplimiento normativo.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-lg border-l-4 border-sky-500">
+                            <h3 class="font-bold text-slate-900">Reducción de Riesgo de Clausura</h3>
+                            <p class="text-sm text-slate-600">Al regularizar planes de evacuación y carga de fuego, la probabilidad de sanciones municipales cae drásticamente.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg border-l-4 border-slate-400">
+                            <h3 class="font-bold text-slate-900">Valor de Marca</h3>
+                            <p class="text-sm text-slate-600">Un negocio habilitado es un negocio que puede escalar y contratar con mejores proveedores.</p>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="impactChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Catálogo Interactivo de Servicios -->
+        <section id="servicios" class="space-y-6">
+            <h2 class="text-2xl font-extrabold text-slate-900 text-center">Propuesta de Valor Técnica</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Servicio 1 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-sky-400 transition-all cursor-pointer group">
+                    <div class="text-3xl mb-4">📋</div>
+                    <h3 class="font-bold text-lg text-slate-900 group-hover:text-sky-600">Planes de Emergencia</h3>
+                    <p class="text-sm text-slate-600 mt-2">Documentación obligatoria detallando roles y vías de escape ante siniestros.</p>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-sky-400 transition-all cursor-pointer group">
+                    <div class="text-3xl mb-4">🔥</div>
+                    <h3 class="font-bold text-lg text-slate-900 group-hover:text-sky-600">Carga de Fuego</h3>
+                    <p class="text-sm text-slate-600 mt-2">Cálculo técnico para determinar la resistencia de materiales y dotación de extintores.</p>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 hover:border-sky-400 transition-all cursor-pointer group">
+                    <div class="text-3xl mb-4">🏛️</div>
+                    <h3 class="font-bold text-lg text-slate-900 group-hover:text-sky-600">Habilitaciones</h3>
+                    <p class="text-sm text-slate-600 mt-2">Gestión integral ante municipios para la apertura o renovación de locales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: Estudio de Flyer (EL EDITOR) -->
+        <section id="editor" class="bg-slate-900 rounded-3xl p-8 text-white shadow-2xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-3xl font-extrabold text-sky-400">Estudio de Flyer Automático</h2>
+                        <p class="text-slate-400 mt-2">Generá tu activo de marketing sobre la imagen <strong>HISTORIA 01.png</strong>.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs font-bold text-slate-500 uppercase">1. Carga tu base</label>
+                            <input type="file" id="fileUpload" accept="image/*" class="text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-500 file:text-slate-900 hover:file:bg-sky-400 cursor-pointer">
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs font-bold text-slate-500 uppercase">2. Título (Celeste)</label>
+                            <input type="text" id="inputTitle" value="¿NECESITÁS TU HABILITACIÓN?" class="bg-slate-800 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-sky-500 outline-none">
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label class="text-xs font-bold text-slate-500 uppercase">3. Posición del Texto (Subir/Bajar)</label>
+                            <input type="range" id="yPos" min="200" max="800" value="350" class="w-full accent-sky-500">
+                        </div>
+
+                        <button id="downloadBtn" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-extrabold py-4 rounded-xl transition-all shadow-lg active:scale-95">
+                            DESCARGAR FLYER TERMINADO
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center gap-4">
+                    <span class="text-xs font-bold text-slate-500 uppercase">Vista Previa Real</span>
+                    <div class="flyer-preview-container">
+                        <canvas id="flyerCanvas" width="1080" height="1920" class="w-full bg-white"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-100 border-t border-slate-200 py-12 mt-12">
+        <div class="max-w-6xl mx-auto px-6 text-center text-slate-500 text-sm">
+            <p>© 2024 Roger Freytes - Consultoría Técnica en Higiene y Seguridad Laboral</p>
+            <p class="mt-2 italic">Soluciones reales para problemas técnicos cotidianos.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica del Gráfico de Impacto
+        const ctxChart = document.getElementById('impactChart').getContext('2d');
+        new Chart(ctxChart, {
+            type: 'bar',
+            data: {
+                labels: ['Multas/Clausura', 'Seguridad Civil', 'Eficiencia'],
+                datasets: [{
+                    label: 'Sin Gestión Técnica',
+                    data: [90, 20, 30],
+                    backgroundColor: '#cbd5e1'
+                }, {
+                    label: 'Con Roger Freytes',
+                    data: [5, 95, 85],
+                    backgroundColor: '#0ea5e9'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { y: { beginAtZero: true, max: 100 } },
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+
+        // Lógica del Editor de Flyer
+        const canvas = document.getElementById('flyerCanvas');
+        const ctx = canvas.getContext('2d');
+        const fileInput = document.getElementById('fileUpload');
+        const inputTitle = document.getElementById('inputTitle');
+        const yPosSlider = document.getElementById('yPos');
+        const downloadBtn = document.getElementById('downloadBtn');
+
+        let baseImg = new Image();
+        let imgLoaded = false;
+
+        // Dibujo Inicial
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            if (imgLoaded) {
+                ctx.drawImage(baseImg, 0, 0, canvas.width, canvas.height);
+            } else {
+                ctx.fillStyle = '#f1f5f9';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#94a3b8';
+                ctx.font = '40px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('Carga HISTORIA 01.png', canvas.width/2, canvas.height/2);
+            }
+
+            // Aplicar textos
+            const y = parseInt(yPosSlider.value);
+            
+            // Título
+            ctx.fillStyle = '#0ea5e9'; // Celeste Roger
+            ctx.font = 'bold 50px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(inputTitle.value.toUpperCase(), canvas.width/2, y);
+
+            // Cuerpo de texto (Ejemplo fijo)
+            ctx.fillStyle = '#334155';
+            ctx.font = '36px Inter, sans-serif';
+            ctx.fillText('Evitá multas y clausuras.', canvas.width/2, y + 80);
+            ctx.font = '30px Inter, sans-serif';
+            ctx.fillText('📋 Plan de Emergencia', canvas.width/2, y + 160);
+            ctx.fillText('📋 Carga de Fuego', canvas.width/2, y + 210);
+            ctx.fillText('📋 Habilitación Municipal', canvas.width/2, y + 260);
+
+            // Botón CTA simulado
+            const btnW = 600;
+            const btnH = 100;
+            const btnX = (canvas.width - btnW) / 2;
+            const btnY = 1350;
+            ctx.fillStyle = '#0ea5e9';
+            ctx.roundRect(btnX, btnY, btnW, btnH, 20);
+            ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 32px Inter, sans-serif';
+            ctx.fillText('CONSULTAME SIN COMPROMISO', canvas.width/2, btnY + 60);
+        }
+
+        // Eventos
+        fileInput.addEventListener('change', (e) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                baseImg.onload = () => {
+                    imgLoaded = true;
+                    draw();
+                };
+                baseImg.src = event.target.result;
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        });
+
+        [inputTitle, yPosSlider].forEach(el => el.addEventListener('input', draw));
+
+        downloadBtn.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = 'Flyer_Roger_Freytes.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        });
+
+        draw();
+
+        // Polyfill para roundRect en navegadores viejos
+        if (!CanvasRenderingContext2D.prototype.roundRect) {
+            CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+                if (w < 2 * r) r = w / 2;
+                if (h < 2 * r) r = h / 2;
+                this.beginPath();
+                this.moveTo(x + r, y);
+                this.arcTo(x + w, y, x + w, y + h, r);
+                this.arcTo(x + w, y + h, x, y + h, r);
+                this.arcTo(x, y + h, x, y, r);
+                this.arcTo(x, y, x + w, y, r);
+                this.closePath();
+                return this;
+            };
+        }
+    </script>
+</body>
+</html>
