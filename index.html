@@ -20,11 +20,39 @@
             <a href="#">Auto-Diagnóstico</a>
             <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
         </div>
-        <div class="flex gap-4">
-            <button class="text-sm border border-gray-600 px-4 py-2 rounded">Acceso Roger</button>
+        <div class="flex gap-4 items-center">
+            <button onclick="abrirModalAcceso()" class="text-sm border border-gray-600 px-4 py-2 rounded flex items-center gap-2 hover:bg-gray-800 transition-colors">
+                <span>🔒</span> Acceso Roger
+            </button>
             <a href="#contacto" class="bg-blue-500 px-4 py-2 rounded font-bold text-sm hover:bg-blue-600 transition-colors">SOLICITAR VISITA</a>
         </div>
     </nav>
+
+    <div id="modalAcceso" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-sm rounded-2xl p-6 shadow-2xl relative">
+            <button onclick="cerrarModalAcceso()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
+            
+            <div class="text-center mb-4">
+                <span class="text-4xl block mb-2">🔒</span>
+                <h3 class="text-lg font-bold text-blue-400">Panel Técnico Privado</h3>
+                <p class="text-gray-400 text-xs">Ingresá tu clave para gestionar plantillas.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <input type="password" id="claveAcceso" placeholder="Ingresá la contraseña" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-center text-white focus:outline-none focus:border-blue-500">
+                </div>
+                
+                <button onclick="verificarClave()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors">
+                    INGRESAR
+                </button>
+                
+                <div id="errorClave" class="hidden text-xs text-red-400 text-center font-semibold mt-2">
+                    ⚠️ Contraseña incorrecta. Intentá de nuevo.
+                </div>
+            </div>
+        </div>
+    </div>
 
     <header class="px-10 py-16 grid grid-cols-2 gap-12 items-center">
         <div>
@@ -206,9 +234,8 @@
     </footer>
 
     <script>
-        function abrirModal() {
-            document.getElementById('modalDiagnostico').classList.remove('hidden');
-        }
+        // Funciones del Diagnóstico Técnico
+        function abrirModal() { document.getElementById('modalDiagnostico').classList.remove('hidden'); }
         function cerrarModal() {
             document.getElementById('modalDiagnostico').classList.add('hidden');
             document.getElementById('resultadoRiesgo').classList.add('hidden');
@@ -217,50 +244,60 @@
             const actividad = document.getElementById('actividad').value;
             const metros = parseInt(document.getElementById('metros').value) || 0;
             const personal = parseInt(document.getElementById('personal').value) || 0;
-            
             const divResultado = document.getElementById('resultadoRiesgo');
             const txtValor = document.getElementById('valorRiesgo');
             const txtDesc = document.getElementById('descRiesgo');
             
             divResultado.classList.remove('hidden');
-            
             let nivel = "BAJO";
             
-            // Reglas de Ponderación Dinámica
-            if (actividad === 'obra') {
-                nivel = "ALTO"; // Construcción civil siempre es crítico por normativa
-            } else if (actividad === 'industria' || actividad === 'agro') {
-                // Si es industria o campo grande en personal o metros, sube a ALTO
-                if (personal > 20 || metros > 1000) {
-                    nivel = "ALTO";
-                } else {
-                    nivel = "MEDIO"; // Pymes industriales o explotaciones agropecuarias chicas
-                }
+            if (actividad === 'obra') { nivel = "ALTO"; } 
+            else if (actividad === 'industria' || actividad === 'agro') {
+                if (personal > 20 || metros > 1000) { nivel = "ALTO"; } 
+                else { nivel = "MEDIO"; }
             } else if (actividad === 'comercio') {
-                // Comercio solo sube a MEDIO si maneja mucho volumen de gente o espacio comercial grande
-                if (personal > 30 || metros > 800) {
-                    nivel = "MEDIO";
-                } else {
-                    nivel = "BAJO";
-                }
+                if (personal > 30 || metros > 800) { nivel = "MEDIO"; } 
+                else { nivel = "BAJO"; }
             }
             
-            // Renderizado en pantalla según resultado
             if (nivel === "ALTO") {
                 txtValor.innerText = "ALTO RIESGO TÉCNICO 🚨";
                 txtValor.className = "text-xl font-extrabold mb-2 text-red-500";
                 divResultado.className = "mt-4 p-4 rounded-xl text-center border border-red-500/30 bg-red-500/10";
-                txtDesc.innerText = "Requiere la gestión urgente de Programas de Seguridad validados por ART, Legajos Técnicos completos, mediciones físicas obligatorias periódicas y un servicio de Higiene y Seguridad profesional permanente.";
+                txtDesc.innerText = "Requiere la gestión urgente de Programas de Seguridad validados por ART, Legajos Técnicos completos y mediciones físicas obligatorias periódicas.";
             } else if (nivel === "MEDIO") {
                 txtValor.innerText = "RIESGO TÉCNICO MEDIO ⚠️";
                 txtValor.className = "text-xl font-extrabold mb-2 text-amber-500";
                 divResultado.className = "mt-4 p-4 rounded-xl text-center border border-amber-500/30 bg-amber-500/10";
-                txtDesc.innerText = "Establecimiento sujeto a auditorías de ART y controles periódicos de riesgos mecánicos, eléctricos o de incendio. Requiere un cronograma anual de capacitaciones y ordenamiento industrial (5S).";
+                txtDesc.innerText = "Establecimiento sujeto a controles periódicos de riesgos mecánicos, eléctricos o de incendio. Requiere cronograma anual de capacitaciones y ordenamiento (5S).";
             } else {
                 txtValor.innerText = "RIESGO TÉCNICO MODERADO / BAJO ✅";
                 txtValor.className = "text-xl font-extrabold mb-2 text-green-400";
                 divResultado.className = "mt-4 p-4 rounded-xl text-center border border-green-500/30 bg-green-500/10";
-                txtDesc.innerText = "El lugar exige condiciones básicas de seguridad edilicia, mapa de evacuación estructurado, dotación correcta de matafuegos y análisis básico de carga de fuego para mantener el estatus preventivo legal.";
+                txtDesc.innerText = "El lugar exige condiciones básicas de seguridad edilicia, mapa de evacuación, dotación correcta de matafuegos y análisis básico preventivo.";
+            }
+        }
+
+        // NUEVAS FUNCIONES: CONTROL DE ACCESO PRIVADO DE ROGER
+        function abrirModalAcceso() {
+            document.getElementById('modalAcceso').classList.remove('hidden');
+            document.getElementById('claveAcceso').value = "";
+            document.getElementById('errorClave').classList.add('hidden');
+        }
+        function cerrarModalAcceso() {
+            document.getElementById('modalAcceso').classList.add('hidden');
+        }
+        function verificarClave() {
+            const claveIngresada = document.getElementById('claveAcceso').value;
+            const errorDiv = document.getElementById('errorClave');
+            
+            if (claveIngresada === "Caye2026") {
+                errorDiv.classList.add('hidden');
+                cerrarModalAcceso();
+                // Redirección directa a tu archivo local de plantillas
+                window.location.href = "file:///C:/Users/Usuario/Desktop/Flyer.html#estrategia";
+            } else {
+                errorDiv.classList.remove('hidden');
             }
         }
     </script>
