@@ -288,18 +288,17 @@
             document.getElementById('modalAcceso').classList.add('hidden');
         }
         function verificarClave() {
-            const claveIngresada = document.getElementById('claveAcceso').value;
-            const errorDiv = document.getElementById('errorClave');
-            
-            if (claveIngresada === "Caye2026") {
-                errorDiv.classList.add('hidden');
-                cerrarModalAcceso();
-                // Redirección directa a tu archivo local de plantillas
-                window.location.href = "file:///C:/Users/Usuario/Desktop/Flyer.html#estrategia";
-            } else {
-                errorDiv.classList.remove('hidden');
-            }
-        }
-    </script>
-</body>
-</html>
+    const claveIngresada = document.getElementById('claveAcceso').value;
+    const errorDiv = document.getElementById('errorClave');
+    
+    if (claveIngresada === "Caye2026") {
+        errorDiv.classList.add('hidden');
+        cerrarModalAcceso();
+        
+        // Convertimos a minúsculas para evitar cualquier error de tipeo en GitHub
+        window.location.href = "flyer.html#estrategia";
+    } else {
+        errorDiv.classList.remove('hidden');
+        document.getElementById('claveAcceso').value = ""; // Limpia el intento fallido
+    }
+}
