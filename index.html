@@ -1,406 +1,406 @@
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Técnico Freytes</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Agregamos Chart.js para renderizar los gráficos de impacto -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Técnico Freytes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Agregamos Chart.js para renderizar los gráficos de impacto -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-[#0b1120] text-white font-sans">
 
-    <!-- NAVBAR (Menú Limpio y Directo) -->
-    <nav class="flex items-center justify-between px-10 py-6">
-        <div class="flex items-center gap-2">
-            <div class="bg-blue-600 px-3 py-1 font-bold rounded">RF</div>
-            <span class="font-bold text-lg">ESTUDIO TÉCNICO FREYTES</span>
-        </div>
-        <div class="flex gap-6 text-sm opacity-80">
-            <a href="#" class="hover:text-blue-400 transition-colors">Inicio</a>
-            <a href="#estadisticas" class="hover:text-blue-400 transition-colors">Estadísticas</a>
-            <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
-        </div>
-        <div class="flex gap-4 items-center">
-            <button onclick="abrirModalAcceso()" class="text-sm border border-gray-600 px-4 py-2 rounded flex items-center gap-2 hover:bg-gray-800 transition-colors">
-                <span>🔒</span> Acceso Roger
-            </button>
-            <a href="#contacto" class="bg-blue-500 px-4 py-2 rounded font-bold text-sm hover:bg-blue-600 transition-colors">SOLICITAR VISITA</a>
-        </div>
-    </nav>
+    <!-- NAVBAR (Menú Limpio y Directo) -->
+    <nav class="flex items-center justify-between px-10 py-6">
+        <div class="flex items-center gap-2">
+            <div class="bg-blue-600 px-3 py-1 font-bold rounded">RF</div>
+            <span class="font-bold text-lg">ESTUDIO TÉCNICO FREYTES</span>
+        </div>
+        <div class="flex gap-6 text-sm opacity-80">
+            <a href="#" class="hover:text-blue-400 transition-colors">Inicio</a>
+            <a href="#estadisticas" class="hover:text-blue-400 transition-colors">Estadísticas</a>
+            <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
+        </div>
+        <div class="flex gap-4 items-center">
+            <button onclick="abrirModalAcceso()" class="text-sm border border-gray-600 px-4 py-2 rounded flex items-center gap-2 hover:bg-gray-800 transition-colors">
+                <span>🔒</span> Acceso Roger
+            </button>
+            <a href="#contacto" class="bg-blue-500 px-4 py-2 rounded font-bold text-sm hover:bg-blue-600 transition-colors">SOLICITAR VISITA</a>
+        </div>
+    </nav>
 
-    <!-- CUADRO EMERGENTE: LOGIN PRIVADO DE ROGER -->
-    <div id="modalAcceso" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
-        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-sm rounded-2xl p-6 shadow-2xl relative">
-            <button onclick="cerrarModalAcceso()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
-            
-            <div class="text-center mb-4">
-                <span class="text-4xl block mb-2">🔒</span>
-                <h3 class="text-lg font-bold text-blue-400">Panel Técnico Privado</h3>
-                <p class="text-gray-400 text-xs">Ingresá tu clave para gestionar plantillas.</p>
-            </div>
-            
-            <div class="space-y-4">
-                <div>
-                    <input type="password" id="claveAcceso" placeholder="Ingresá la contraseña" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-center text-white focus:outline-none focus:border-blue-500">
-                </div>
-                
-                <button onclick="verificarClave()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors">
-                    INGRESAR
-                </button>
-                
-                <div id="errorClave" class="hidden text-xs text-red-400 text-center font-semibold mt-2">
-                    ⚠️ Contraseña incorrecta. Intentá de nuevo.
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- CUADRO EMERGENTE: LOGIN PRIVADO DE ROGER -->
+    <div id="modalAcceso" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-sm rounded-2xl p-6 shadow-2xl relative">
+            <button onclick="cerrarModalAcceso()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
+            
+            <div class="text-center mb-4">
+                <span class="text-4xl block mb-2">🔒</span>
+                <h3 class="text-lg font-bold text-blue-400">Panel Técnico Privado</h3>
+                <p class="text-gray-400 text-xs">Ingresá tu clave para gestionar plantillas.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <input type="password" id="claveAcceso" placeholder="Ingresá la contraseña" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-center text-white focus:outline-none focus:border-blue-500">
+                </div>
+                
+                <button onclick="verificarClave()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors">
+                    INGRESAR
+                </button>
+                
+                <div id="errorClave" class="hidden text-xs text-red-400 text-center font-semibold mt-2">
+                    ⚠️ Contraseña incorrecta. Intentá de nuevo.
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- HERO -->
-    <header class="px-10 py-16 grid grid-cols-2 gap-12 items-center">
-        <div>
-            <div class="text-blue-400 text-sm font-semibold mb-4 border border-blue-900 inline-block px-3 py-1 rounded">
-                ⚡ SOLUCIONES DE INGENIERÍA EN CÓRDOBA
-            </div>
-            <h1 class="text-5xl font-extrabold leading-tight mb-6">
-                Asesoría integral en higiene y seguridad a industrias, <br>
-                <span class="text-blue-400">Obras y Agro.</span>
-            </h1>
-            <p class="text-gray-400 text-base mb-8 max-w-lg leading-relaxed">
-                Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para evitar multas de la ART.
-            </p>
-            <div class="flex gap-4">
-                <button onclick="abrirModal()" class="bg-blue-500 px-6 py-4 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center">
-                    HACER DIAGNÓSTICO TÉCNICO GRATIS
-                </button>
-                <a href="#servicios-detallados" class="border border-gray-600 px-6 py-4 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center">VER SERVICIOS TÉCNICOS</a>
-            </div>
-        </div>
+    <!-- HERO -->
+    <header class="px-10 py-16 grid grid-cols-2 gap-12 items-center">
+        <div>
+            <div class="text-blue-400 text-sm font-semibold mb-4 border border-blue-900 inline-block px-3 py-1 rounded">
+                ⚡ SOLUCIONES DE INGENIERÍA EN CÓRDOBA
+            </div>
+            <h1 class="text-5xl font-extrabold leading-tight mb-6">
+                Asesoría integral en higiene y seguridad a industrias, <br>
+                <span class="text-blue-400">Obras y Agro.</span>
+            </h1>
+            <p class="text-gray-400 text-base mb-8 max-w-lg leading-relaxed">
+                Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para evitar multas de la ART.
+            </p>
+            <div class="flex gap-4">
+                <button onclick="abrirModal()" class="bg-blue-500 px-6 py-4 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center">
+                    HACER DIAGNÓSTICO TÉCNICO GRATIS
+                </button>
+                <a href="#servicios-detallados" class="border border-gray-600 px-6 py-4 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center">VER SERVICIOS TÉCNICOS</a>
+            </div>
+        </div>
 
-        <!-- TARJETAS LADO DERECHO -->
-        <div id="servicios" class="grid gap-4">
-            <!-- Corregido de "Security" a "Seguridad e Higiene" -->
-            <a href="industrias.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
-                <span class="text-2xl">🏭</span>
-                <div>
-                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene Industrial</h3>
-                    <p class="text-gray-400 text-sm mb-1">Estudios ergonómicos, mediciones SRT y auditorías de ART completas.</p>
-                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
-                </div>
-            </a>
+        <!-- TARJETAS LADO DERECHO -->
+        <div id="servicios" class="grid gap-4">
+            <!-- Corregido de "Security" a "Seguridad e Higiene" -->
+            <a href="industrias.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
+                <span class="text-2xl">🏭</span>
+                <div>
+                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene en Industrias</h3>
+                    <p class="text-gray-400 text-sm mb-1">Estudios ergonómicos, mediciones SRT y auditorías de ART completas.</p>
+                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
+                </div>
+            </a>
 
-            <a href="obras.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
-                <span class="text-2xl">🚧</span>
-                <div>
-                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene en Obras</h3>
-                    <p class="text-gray-400 text-sm mb-1">Planes de seguridad, capacitaciones, legajos técnicos y control de contratistas.</p>
-                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
-                </div>
-            </a>
+            <a href="obras.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
+                <span class="text-2xl">🚧</span>
+                <div>
+                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene en Obras</h3>
+                    <p class="text-gray-400 text-sm mb-1">Planes de seguridad, capacitaciones, legajos técnicos y control de contratistas.</p>
+                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
+                </div>
+            </a>
 
-            <a href="agro.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
-                <span class="text-2xl">🚜</span>
-                <div>
-                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene en Agro</h3>
-                    <p class="text-gray-400 text-sm mb-1">Seguridad en acopios, silos, maquinarias e inflamables.</p>
-                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
-                </div>
-            </a>
-        </div>
-    </header>
+            <a href="agro.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
+                <span class="text-2xl">🚜</span>
+                <div>
+                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene en Agro</h3>
+                    <p class="text-gray-400 text-sm mb-1">Seguridad en acopios, silos, maquinarias e inflamables.</p>
+                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
+                </div>
+            </a>
+        </div>
+    </header>
 
-    <!-- CUADRO INTERACTIVO DE DIAGNÓSTICO -->
-    <div id="modalDiagnostico" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
-        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
-            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
-            
-            <h3 class="text-xl font-bold mb-2 flex items-center gap-2 text-blue-400">📊 Diagnóstico Técnico de Riesgo</h3>
-            <p class="text-gray-400 text-xs mb-6">Evaluación preliminar parametrizada según la normativa argentina.</p>
-            
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-2">Seleccioná tu Actividad:</label>
-                    <select id="actividad" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
-                        <option value="industria">Establecimiento Industrial / Fábrica</option>
-                        <option value="obra">Obra en Construcción / Civil</option>
-                        <option value="agro">Explotación Agrícola / Campo / Silos</option>
-                        <option value="comercio">Comercio / Oficinas / Cafetería</option>
-                    </select>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-2">Superficie (m²):</label>
-                        <input type="number" id="metros" placeholder="Ej: 300" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-2">N° de Trabajadores:</label>
-                        <input type="number" id="personal" placeholder="Ej: 15" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
-                    </div>
-                </div>
-                
-                <button onclick="calcularRiesgo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors mt-2">
-                    CALCULAR NIVEL DE RIESGO
-                </button>
-                
-                <div id="resultadoRiesgo" class="hidden mt-4 p-4 rounded-xl text-center border">
-                    <span class="text-xs uppercase font-bold tracking-wider block text-gray-400 mb-1">Resultado de Evaluación</span>
-                    <div id="valorRiesgo" class="text-2xl font-extrabold mb-2"></div>
-                    <p id="descRiesgo" class="text-xs text-gray-300 leading-relaxed"></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- CUADRO INTERACTIVO DE DIAGNÓSTICO -->
+    <div id="modalDiagnostico" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
+            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
+            
+            <h3 class="text-xl font-bold mb-2 flex items-center gap-2 text-blue-400">📊 Diagnóstico Técnico de Riesgo</h3>
+            <p class="text-gray-400 text-xs mb-6">Evaluación preliminar parametrizada según la normativa argentina.</p>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-2">Seleccioná tu Actividad:</label>
+                    <select id="actividad" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                        <option value="industria">Establecimiento Industrial / Fábrica</option>
+                        <option value="obra">Obra en Construcción / Civil</option>
+                        <option value="agro">Explotación Agrícola / Campo / Silos</option>
+                        <option value="comercio">Comercio / Oficinas / Cafetería</option>
+                    </select>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">Superficie (m²):</label>
+                        <input type="number" id="metros" placeholder="Ej: 300" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-2">N° de Trabajadores:</label>
+                        <input type="number" id="personal" placeholder="Ej: 15" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <button onclick="calcularRiesgo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors mt-2">
+                    CALCULAR NIVEL DE RIESGO
+                </button>
+                
+                <div id="resultadoRiesgo" class="hidden mt-4 p-4 rounded-xl text-center border">
+                    <span class="text-xs uppercase font-bold tracking-wider block text-gray-400 mb-1">Resultado de Evaluación</span>
+                    <div id="valorRiesgo" class="text-2xl font-extrabold mb-2"></div>
+                    <p id="descRiesgo" class="text-xs text-gray-300 leading-relaxed"></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- SECCIÓN DE ESTADÍSTICAS E IMPACTO REAL -->
-    <section id="estadisticas" class="px-10 py-20 bg-[#0f172a] border-t border-gray-800">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 px-3 py-1 rounded">Métricas e Impacto</span>
-                <h2 class="text-3xl font-bold mt-3 text-white">¿Por qué invertir en Higiene y Seguridad?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-sm mt-2">Comparativa técnica del impacto operativo, legal y económico en empresas antes y después de contar con un servicio especializado.</p>
-            </div>
+    <!-- SECCIÓN DE ESTADÍSTICAS E IMPACTO REAL -->
+    <section id="estadisticas" class="px-10 py-20 bg-[#0f172a] border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 px-3 py-1 rounded">Métricas e Impacto</span>
+                <h2 class="text-3xl font-bold mt-3 text-white">¿Por qué invertir en Higiene y Seguridad?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm mt-2">Comparativa técnica del impacto operativo, legal y económico en empresas antes y después de contar con un servicio especializado.</p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-[#1e293b] p-8 rounded-2xl border border-gray-700">
-                <!-- Información Vendedora -->
-                <div class="space-y-6">
-                    <div class="border-l-4 border-red-500 pl-4">
-                        <h4 class="font-bold text-white text-base">Riesgos Sin Gestión Técnico-Legal</h4>
-                        <p class="text-gray-400 text-xs mt-1">Probabilidad crítica de actas de infracción de la SRT, suspensiones por falta de Legajo Técnico (Dec. 911/96) y multas severas de la ART.</p>
-                    </div>
-                    <div class="border-l-4 border-green-500 pl-4">
-                        <h4 class="font-bold text-white text-base">Beneficios con Asesoría Profesional</h4>
-                        <p class="text-gray-400 text-xs mt-1">Cumplimiento total de auditorías, reducción drástica de la siniestralidad y optimización de espacios mediante metodologías de orden y limpieza (5S).</p>
-                    </div>
-                    
-                    <!-- CUADRO DE METAS TRIPLES ADAPTADO PROFESIONAL -->
-                    <div class="bg-[#0b1120] p-5 rounded-xl border border-gray-700 text-left space-y-3">
-                        <span class="text-xs text-gray-400 uppercase font-bold block tracking-wider text-center border-b border-gray-800 pb-2">Objetivos de Gestión Técnica</span>
-                        
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-gray-400">Cumplimiento Legal y ART:</span>
-                            <span class="font-extrabold text-blue-400">0% CLAUSURAS</span>
-                        </div>
-                        
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-gray-400">Siniestralidad Laboral:</span>
-                            <span class="font-extrabold text-red-400">0 ACCIDENTES</span>
-                        </div>
-                        
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-gray-400">Eficiencia Operativa (5S):</span>
-                            <span class="font-extrabold text-green-400">100% DISPONIBILIDAD</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Gráfico de Canvas -->
-                <div class="w-full bg-[#0b1120] p-4 rounded-xl border border-gray-700 h-[320px]">
-                    <canvas id="graficoImpactoPublico"></canvas>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-[#1e293b] p-8 rounded-2xl border border-gray-700">
+                <!-- Información Vendedora -->
+                <div class="space-y-6">
+                    <div class="border-l-4 border-red-500 pl-4">
+                        <h4 class="font-bold text-white text-base">Riesgos Sin Gestión Técnico-Legal</h4>
+                        <p class="text-gray-400 text-xs mt-1">Probabilidad crítica de actas de infracción de la SRT, suspensiones por falta de Legajo Técnico (Dec. 911/96) y multas severas de la ART.</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-bold text-white text-base">Beneficios con Asesoría Profesional</h4>
+                        <p class="text-gray-400 text-xs mt-1">Cumplimiento total de auditorías, reducción drástica de la siniestralidad y optimización de espacios mediante metodologías de orden y limpieza (5S).</p>
+                    </div>
+                    
+                    <!-- CUADRO DE METAS TRIPLES ADAPTADO PROFESIONAL -->
+                    <div class="bg-[#0b1120] p-5 rounded-xl border border-gray-700 text-left space-y-3">
+                        <span class="text-xs text-gray-400 uppercase font-bold block tracking-wider text-center border-b border-gray-800 pb-2">Objetivos de Gestión Técnica</span>
+                        
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-400">Cumplimiento Legal y ART:</span>
+                            <span class="font-extrabold text-blue-400">0% CLAUSURAS</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-400">Siniestralidad Laboral:</span>
+                            <span class="font-extrabold text-red-400">0 ACCIDENTES</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-400">Eficiencia Operativa (5S):</span>
+                            <span class="font-extrabold text-green-400">100% DISPONIBILIDAD</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gráfico de Canvas -->
+                <div class="w-full bg-[#0b1120] p-4 rounded-xl border border-gray-700 h-[320px]">
+                    <canvas id="graficoImpactoPublico"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- SERVICIOS TÉCNICOS DETALLADOS -->
-    <section id="servicios-detallados" class="px-10 py-20 bg-[#0b1120] border-t border-gray-800">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Servicios de Consultoría y Asesoría Técnico-Legal</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-sm">Soluciones profesionales adaptadas para garantizar el cumplimiento estricto ante la SRT y optimizar la productividad laboral.</p>
-            </div>
+    <!-- SERVICIOS TÉCNICOS DETALLADOS -->
+    <section id="servicios-detallados" class="px-10 py-20 bg-[#0b1120] border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Servicios de Consultoría y Asesoría Técnico-Legal</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm">Soluciones profesionales adaptadas para garantizar el cumplimiento estricto ante la SRT y optimizar la productividad laboral.</p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <div>
-                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">📋</div>
-                        <h3 class="font-bold text-base mb-3 text-white">Seguridad en Obras</h3>
-                        <ul class="text-gray-400 text-xs space-y-2 text-left">
-                            <li>• Programas de Seguridad (Dec. 911/96) y Legajos Técnicos.</li>
-                            <li>• Gestión preventiva en trabajos en altura y excavaciones.</li>
-                            <li>• Auditorías de campo y control documental de subcontratistas.</li>
-                            <li>• Capacitaciones al personal operativo en obra.</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">📋</div>
+                        <h3 class="font-bold text-base mb-3 text-white">Seguridad en Obras</h3>
+                        <ul class="text-gray-400 text-xs space-y-2 text-left">
+                            <li>• Programas de Seguridad (Dec. 911/96) y Legajos Técnicos.</li>
+                            <li>• Gestión preventiva en trabajos en altura y excavaciones.</li>
+                            <li>• Auditorías de campo y control documental de subcontratistas.</li>
+                            <li>• Capacitaciones al personal operativo en obra.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <div>
-                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">⚡</div>
-                        <h3 class="font-bold text-base mb-3 text-white">Higiene Industrial</h3>
-                        <ul class="text-gray-400 text-xs space-y-2 text-left">
-                            <li>• Relevamiento general de riesgos (RAGR) y auditorías de ART.</li>
-                            <li>• Protocolos de puesta a tierra y continuidad eléctrica.</li>
-                            <li>• Mediciones físicas reglamentarias (Iluminación, Ruido, Ergonomía).</li>
-                            <li>• Confección de Planes de Evacuación y Emergencias.</li>
-                        </ul>
-                    </div>
-                </div>
+                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">⚡</div>
+                        <h3 class="font-bold text-base mb-3 text-white">Higiene Industrial</h3>
+                        <ul class="text-gray-400 text-xs space-y-2 text-left">
+                            <li>• Relevamiento general de riesgos (RAGR) y auditorías de ART.</li>
+                            <li>• Protocolos de puesta a tierra y continuidad eléctrica.</li>
+                            <li>• Mediciones físicas reglamentarias (Iluminación, Ruido, Ergonomía).</li>
+                            <li>• Confección de Planes de Evacuación y Emergencias.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <div>
-                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">🚜</div>
-                        <h3 class="font-bold text-base mb-3 text-white">Seguridad en Agro</h3>
-                        <ul class="text-gray-400 text-xs space-y-2 text-left">
-                            <li>• Análisis de riesgos en plantas de acopio, celdas y silos.</li>
-                            <li>• Prevención de incendios y almacenamiento de inflamables / agroquímicos.</li>
-                            <li>• Protección en maquinarias agrícolas, toma de fuerza y transmisiones.</li>
-                            <li>• Capacitación sobre riesgos rurales específicos y primeros auxilios.</li>
-                        </ul>
-                    </div>
-                </div>
+                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">🚜</div>
+                        <h3 class="font-bold text-base mb-3 text-white">Seguridad en Agro</h3>
+                        <ul class="text-gray-400 text-xs space-y-2 text-left">
+                            <li>• Análisis de riesgos en plantas de acopio, celdas y silos.</li>
+                            <li>• Prevención de incendios y almacenamiento de inflamables / agroquímicos.</li>
+                            <li>• Protección en maquinarias agrícolas, toma de fuerza y transmisiones.</li>
+                            <li>• Capacitación sobre riesgos rurales específicos y primeros auxilios.</li>
+                        </ul>
+                    </div>
+                </div>
 
-                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
-                    <div>
-                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">📊</div>
-                        <h3 class="font-bold text-base mb-3 text-white">Sistemas de Gestión</h3>
-                        <ul class="text-gray-400 text-xs space-y-2 text-left">
-                            <li>• Implementación del método 5S (Orden, Limpieza y Productividad).</li>
-                            <li>• Asesoramiento técnico alineado a Normas Internacionales ISO.</li>
-                            <li>• Diseño de indicadores técnicos de siniestralidad.</li>
-                            <li>• Optimización de espacios para disminuir tiempos muertos.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">📊</div>
+                        <h3 class="font-bold text-base mb-3 text-white">Sistemas de Gestión</h3>
+                        <ul class="text-gray-400 text-xs space-y-2 text-left">
+                            <li>• Implementación del método 5S (Orden, Limpieza y Productividad).</li>
+                            <li>• Asesoramiento técnico alineado a Normas Internacionales ISO.</li>
+                            <li>• Diseño de indicadores técnicos de siniestralidad.</li>
+                            <li>• Optimización de espacios para disminuir tiempos muertos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- SECCIÓN CONTACTO -->
-    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-10 py-12">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-2xl font-bold mb-6">Contacto Profesional</h2>
-            <p class="text-gray-400 mb-8 text-sm">Comunicate directamente para coordinar una visita técnica o solicitar presupuesto.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a href="https://wa.me/5493512345678" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-all block">
-                    <span class="block text-xl mb-1">💬</span>
-                    <span class="block font-semibold text-sm text-green-400">WhatsApp</span>
-                    <span class="text-xs text-gray-400">Enviar mensaje directo</span>
-                </a>
-                <a href="mailto:rogerlucianofreytes@gmail.com" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-all block">
-                    <span class="block text-xl mb-1">✉️</span>
-                    <span class="block font-semibold text-sm text-blue-400">Correo Electrónico</span>
-                    <span class="text-xs text-gray-400">rogerlucianofreytes@gmail.com</span>
-                </a>
-                <a href="https://linkedin.com/in/roger-freytes" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-600 transition-all block">
-                    <span class="block text-xl mb-1">🔗</span>
-                    <span class="block font-semibold text-sm text-blue-500">LinkedIn</span>
-                    <span class="text-xs text-gray-400">Perfil Profesional</span>
-                </a>
-            </div>
-        </div>
-    </footer>
+    <!-- SECCIÓN CONTACTO -->
+    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-10 py-12">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-2xl font-bold mb-6">Contacto Profesional</h2>
+            <p class="text-gray-400 mb-8 text-sm">Comunicate directamente para coordinar una visita técnica o solicitar presupuesto.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="https://wa.me/5493512345678" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-all block">
+                    <span class="block text-xl mb-1">💬</span>
+                    <span class="block font-semibold text-sm text-green-400">WhatsApp</span>
+                    <span class="text-xs text-gray-400">Enviar mensaje directo</span>
+                </a>
+                <a href="mailto:rogerlucianofreytes@gmail.com" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-all block">
+                    <span class="block text-xl mb-1">✉️</span>
+                    <span class="block font-semibold text-sm text-blue-400">Correo Electrónico</span>
+                    <span class="text-xs text-gray-400">rogerlucianofreytes@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/roger-freytes" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-600 transition-all block">
+                    <span class="block text-xl mb-1">🔗</span>
+                    <span class="block font-semibold text-sm text-blue-500">LinkedIn</span>
+                    <span class="text-xs text-gray-400">Perfil Profesional</span>
+                </a>
+            </div>
+        </div>
+    </footer>
 
-    <!-- LOGICA SCRIPT INTERACTIVA -->
-    <script>
-        // Lógica para renderizar las estadísticas públicas corporativas
-        const ctxPublico = document.getElementById('graficoImpactoPublico').getContext('2d');
-        new Chart(ctxPublico, {
-            type: 'bar',
-            data: {
-                labels: ['Riesgo de Multas', 'Índice de Siniestros', 'Orden y Eficiencia (5S)'],
-                datasets: [{
-                    label: 'Sin Gestión Técnica',
-                    data: [85, 70, 25],
-                    backgroundColor: '#ef4444', // Rojo Alerta
-                    borderRadius: 6
-                }, {
-                    label: 'Con Estudio Freytes',
-                    data: [5, 10, 95],
-                    backgroundColor: '#3b82f6', // Azul Institucional
-                    borderRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { 
-                        beginAtZero: true, 
-                        max: 100,
-                        grid: { color: '#334155' },
-                        ticks: { color: '#94a3b8', font: { size: 10 } }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: '#ffffff', font: { size: 11, weight: 'bold' } }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { color: '#ffffff', font: { size: 11 } }
-                    }
-                }
-            }
-        });
+    <!-- LOGICA SCRIPT INTERACTIVA -->
+    <script>
+        // Lógica para renderizar las estadísticas públicas corporativas
+        const ctxPublico = document.getElementById('graficoImpactoPublico').getContext('2d');
+        new Chart(ctxPublico, {
+            type: 'bar',
+            data: {
+                labels: ['Riesgo de Multas', 'Índice de Siniestros', 'Orden y Eficiencia (5S)'],
+                datasets: [{
+                    label: 'Sin Gestión Técnica',
+                    data: [85, 70, 25],
+                    backgroundColor: '#ef4444', // Rojo Alerta
+                    borderRadius: 6
+                }, {
+                    label: 'Con Estudio Freytes',
+                    data: [5, 10, 95],
+                    backgroundColor: '#3b82f6', // Azul Institucional
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        grid: { color: '#334155' },
+                        ticks: { color: '#94a3b8', font: { size: 10 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#ffffff', font: { size: 11, weight: 'bold' } }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#ffffff', font: { size: 11 } }
+                    }
+                }
+            }
+        });
 
-        // Funciones del Diagnóstico Técnico
-        function abrirModal() { document.getElementById('modalDiagnostico').classList.remove('hidden'); }
-        function cerrarModal() {
-            document.getElementById('modalDiagnostico').classList.add('hidden');
-            document.getElementById('resultadoRiesgo').classList.add('hidden');
-        }
-        function calcularRiesgo() {
-            const actividad = document.getElementById('actividad').value;
-            const metros = parseInt(document.getElementById('metros').value) || 0;
-            const personal = parseInt(document.getElementById('personal').value) || 0;
-            const divResultado = document.getElementById('resultadoRiesgo');
-            const txtValor = document.getElementById('valorRiesgo');
-            const txtDesc = document.getElementById('descRiesgo');
-            
-            divResultado.classList.remove('hidden');
-            let nivel = "BAJO";
-            
-            if (actividad === 'obra') { nivel = "ALTO"; } 
-            else if (actividad === 'industria' || actividad === 'agro') {
-                if (personal > 20 || metros > 1000) { nivel = "ALTO"; } 
-                else { nivel = "MEDIO"; }
-            } else if (actividad === 'comercio') {
-                if (personal > 30 || metros > 800) { nivel = "MEDIO"; } 
-                else { nivel = "BAJO"; }
-            }
-            
-            if (nivel === "ALTO") {
-                txtValor.innerText = "ALTO RIESGO TÉCNICO 🚨";
-                txtValor.className = "text-xl font-extrabold mb-2 text-red-500";
-                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-red-500/30 bg-red-500/10";
-                txtDesc.innerText = "Requiere la gestión urgente de Programas de Seguridad validados por ART, Legajos Técnicos completos y mediciones físicas obligatorias periódicas.";
-            } else if (nivel === "MEDIO") {
-                txtValor.innerText = "RIESGO TÉCNICO MEDIO ⚠️";
-                txtValor.className = "text-xl font-extrabold mb-2 text-amber-500";
-                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-amber-500/30 bg-amber-500/10";
-                txtDesc.innerText = "Establecimiento sujeto a controles periódicos de riesgos mecánicos, eléctricos o de incendio. Requiere cronograma anual de capacitaciones y ordenamiento (5S).";
-            } else {
-                txtValor.innerText = "RIESGO TÉCNICO MODERADO / BAJO ✅";
-                txtValor.className = "text-xl font-extrabold mb-2 text-green-400";
-                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-green-500/30 bg-green-500/10";
-                txtDesc.innerText = "El lugar exige condiciones básicas de seguridad edilicia, mapa de evacuación, dotación correcta de matafuegos y análisis básico preventivo.";
-            }
-        }
+        // Funciones del Diagnóstico Técnico
+        function abrirModal() { document.getElementById('modalDiagnostico').classList.remove('hidden'); }
+        function cerrarModal() {
+            document.getElementById('modalDiagnostico').classList.add('hidden');
+            document.getElementById('resultadoRiesgo').classList.add('hidden');
+        }
+        function calcularRiesgo() {
+            const actividad = document.getElementById('actividad').value;
+            const metros = parseInt(document.getElementById('metros').value) || 0;
+            const personal = parseInt(document.getElementById('personal').value) || 0;
+            const divResultado = document.getElementById('resultadoRiesgo');
+            const txtValor = document.getElementById('valorRiesgo');
+            const txtDesc = document.getElementById('descRiesgo');
+            
+            divResultado.classList.remove('hidden');
+            let nivel = "BAJO";
+            
+            if (actividad === 'obra') { nivel = "ALTO"; } 
+            else if (actividad === 'industria' || actividad === 'agro') {
+                if (personal > 20 || metros > 1000) { nivel = "ALTO"; } 
+                else { nivel = "MEDIO"; }
+            } else if (actividad === 'comercio') {
+                if (personal > 30 || metros > 800) { nivel = "MEDIO"; } 
+                else { nivel = "BAJO"; }
+            }
+            
+            if (nivel === "ALTO") {
+                txtValor.innerText = "ALTO RIESGO TÉCNICO 🚨";
+                txtValor.className = "text-xl font-extrabold mb-2 text-red-500";
+                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-red-500/30 bg-red-500/10";
+                txtDesc.innerText = "Requiere la gestión urgente de Programas de Seguridad validados por ART, Legajos Técnicos completos y mediciones físicas obligatorias periódicas.";
+            } else if (nivel === "MEDIO") {
+                txtValor.innerText = "RIESGO TÉCNICO MEDIO ⚠️";
+                txtValor.className = "text-xl font-extrabold mb-2 text-amber-500";
+                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-amber-500/30 bg-amber-500/10";
+                txtDesc.innerText = "Establecimiento sujeto a controles periódicos de riesgos mecánicos, eléctricos o de incendio. Requiere cronograma anual de capacitaciones y ordenamiento (5S).";
+            } else {
+                txtValor.innerText = "RIESGO TÉCNICO MODERADO / BAJO ✅";
+                txtValor.className = "text-xl font-extrabold mb-2 text-green-400";
+                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-green-500/30 bg-green-500/10";
+                txtDesc.innerText = "El lugar exige condiciones básicas de seguridad edilicia, mapa de evacuación, dotación correcta de matafuegos y análisis básico preventivo.";
+            }
+        }
 
-        // CONTROL DE ACCESO PRIVADO DE ROGER
-        function abrirModalAcceso() {
-            document.getElementById('modalAcceso').classList.remove('hidden');
-            document.getElementById('claveAcceso').value = "";
-            document.getElementById('errorClave').classList.add('hidden');
-        }
-        function cerrarModalAcceso() {
-            document.getElementById('modalAcceso').classList.add('hidden');
-        }
-        function verificarClave() {
-            const claveIngresada = document.getElementById('claveAcceso').value;
-            const errorDiv = document.getElementById('errorClave');
-            
-            if (claveIngresada === "Caye2026") {
-                errorDiv.classList.add('hidden');
-                cerrarModalAcceso();
-                window.location.href = "flyer.html#estrategia";
-            } else {
-                errorDiv.classList.remove('hidden');
-                document.getElementById('claveAcceso').value = "";
-            }
-        }
-    </script>
+        // CONTROL DE ACCESO PRIVADO DE ROGER
+        function abrirModalAcceso() {
+            document.getElementById('modalAcceso').classList.remove('hidden');
+            document.getElementById('claveAcceso').value = "";
+            document.getElementById('errorClave').classList.add('hidden');
+        }
+        function cerrarModalAcceso() {
+            document.getElementById('modalAcceso').classList.add('hidden');
+        }
+        function verificarClave() {
+            const claveIngresada = document.getElementById('claveAcceso').value;
+            const errorDiv = document.getElementById('errorClave');
+            
+            if (claveIngresada === "Caye2026") {
+                errorDiv.classList.add('hidden');
+                cerrarModalAcceso();
+                window.location.href = "flyer.html#estrategia";
+            } else {
+                errorDiv.classList.remove('hidden');
+                document.getElementById('claveAcceso').value = "";
+            }
+        }
+    </script>
 </body>
 </html>
