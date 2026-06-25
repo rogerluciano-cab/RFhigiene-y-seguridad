@@ -16,7 +16,7 @@
         </div>
         <div class="flex gap-6 text-sm opacity-80">
             <a href="#">Inicio</a>
-            <a href="#servicios" class="hover:text-blue-400 transition-colors">Servicios</a>
+            <a href="#servicios-detallados" class="hover:text-blue-400 transition-colors">Servicios</a>
             <a href="#">Estadísticas</a>
             <a href="#">Auto-Diagnóstico</a>
             <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
@@ -38,17 +38,17 @@
                 <span class="text-blue-400">Obras y Agro.</span>
             </h1>
             <p class="text-gray-400 text-base mb-8 max-w-lg leading-relaxed">
-                Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para avoid multas de la ART.
+                Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para evitar multas de la ART.
             </p>
             <div class="flex gap-4">
                 <a href="#contacto" class="bg-blue-500 px-6 py-4 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center">HACER DIAGNÓSTICO TÉCNICO GRATIS</a>
-                <a href="#servicios" class="border border-gray-600 px-6 py-4 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center">VER SERVICIOS TÉCNICOS</a>
+                <!-- ENLACE CONECTADO A LA NUEVA SECCIÓN -->
+                <a href="#servicios-detallados" class="border border-gray-600 px-6 py-4 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center">VER SERVICIOS TÉCNICOS</a>
             </div>
         </div>
 
-        <!-- TARJETAS CON ENLACES A NUEVAS PÁGINAS DE NORMATIVAS -->
+        <!-- TARJETAS LADO DERECHO -->
         <div id="servicios" class="grid gap-4">
-            <!-- ENLACE INDUSTRIAS -->
             <a href="industrias.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
                 <span class="text-2xl">🏭</span>
                 <div>
@@ -58,7 +58,6 @@
                 </div>
             </a>
 
-            <!-- ENLACE OBRAS -->
             <a href="obras.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
                 <span class="text-2xl">🚧</span>
                 <div>
@@ -68,7 +67,6 @@
                 </div>
             </a>
 
-            <!-- ENLACE AGRO -->
             <a href="agro.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
                 <span class="text-2xl">🚜</span>
                 <div>
@@ -80,8 +78,56 @@
         </div>
     </header>
 
+    <!-- NUEVA SECCIÓN: SERVICIOS TÉCNICOS DETALLADOS -->
+    <section id="servicios-detallados" class="px-10 py-16 bg-[#0f172a] border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Servicios de Consultoría y Asesoría Técnica</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm">Soluciones profesionales a medida para garantizar el cumplimiento legal ante la SRT y optimizar las condiciones laborales.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta 1: Construcción -->
+                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700">
+                    <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">📋</div>
+                    <h3 class="font-bold text-lg mb-3">Gestión de Seguridad en Obras</h3>
+                    <ul class="text-gray-400 text-sm space-y-2 text-left">
+                        <li>• Elaboración de Programas de Seguridad y Legajos Técnicos.</li>
+                        <li>• Auditorías de campo y detección de riesgos eléctricos o en altura.</li>
+                        <li>• Control y seguimiento documental de contratistas y subcontratistas.</li>
+                        <li>• Capacitaciones específicas en prevención de riesgos laborales.</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta 2: Higiene e Industria -->
+                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700">
+                    <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">⚡</div>
+                    <h3 class="font-bold text-lg mb-3">Higiene Industrial y Auditorías</h3>
+                    <ul class="text-gray-400 text-sm space-y-2 text-left">
+                        <li>• Relevamientos de Riesgos Laborales y auditorías de cumplimiento ART.</li>
+                        <li>• Protocolos de puesta a tierra y continuidad eléctrica.</li>
+                        <li>• Mediciones de iluminación, ruido e índices de siniestralidad (SRT).</li>
+                        <li>• Planes de Emergencia y evacuación estructurados.</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta 3: Sistemas de Gestión -->
+                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700">
+                    <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">📊</div>
+                    <h3 class="font-bold text-lg mb-3">Sistemas de Gestión e ISO</h3>
+                    <ul class="text-gray-400 text-sm space-y-2 text-left">
+                        <li>• Implementación de metodologías de orden y limpieza (5S).</li>
+                        <li>• Asesoramiento y adecuación bajo Estándares Internacionales ISO.</li>
+                        <li>• Optimización de procesos técnicos para reducir tiempos muertos.</li>
+                        <li>• Gestión integral orientada a la mejora continua y productividad.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECCIÓN CONTACTO -->
-    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-10 py-12 mt-12">
+    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-10 py-12">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-2xl font-bold mb-6">Contacto Profesional</h2>
             <p class="text-gray-400 mb-8 text-sm">Comunicate directamente para coordinar una visita técnica o solicitar presupuesto.</p>
