@@ -158,7 +158,7 @@
             <div class="text-center mb-12">
                 <span class="text-xs font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 px-3 py-1 rounded">Métricas e Impacto</span>
                 <h2 class="text-3xl font-bold mt-3 text-white">¿Por qué invertir en Higiene y Seguridad?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-sm mt-2">Comparativa técnica del impacto operativo, legal y económico en empresas antes y después de contar con un servicio especializado.</p>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm mt-2">Comparativa técnica del impacto operativo, legal and económico en empresas antes y después de contar con un servicio especializado.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-[#1e293b] p-8 rounded-2xl border border-gray-700">
@@ -211,8 +211,11 @@
                 <div class="relative w-full max-w-[280px] aspect-[3/4] bg-[#0b1120] rounded-xl border border-gray-700 overflow-hidden shadow-2xl group">
                     <div class="absolute -inset-1 bg-gradient-to-r border border-blue-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                     
-                    <!-- Renderizado directo de tu foto real -->
-                    <img src="image.png" alt="Roger Freytes" class="absolute inset-0 w-full h-full object-cover relative z-10 transition-all duration-500">
+                    <!-- Buscador automático de imagen (recorre extensiones si Windows las ocultó o cambió) -->
+                    <img src="image.png" 
+                         onerror="if(!this.step){this.step=1; this.src='image.png.png';}else if(this.step==1){this.step=2; this.src='image.jpg';}else if(this.step==2){this.step=3; this.src='image.jpeg';}"
+                         alt="Roger Freytes" 
+                         class="absolute inset-0 w-full h-full object-cover relative z-10 transition-all duration-500">
                 </div>
             </div>
 
