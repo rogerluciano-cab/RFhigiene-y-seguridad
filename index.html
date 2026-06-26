@@ -8,25 +8,26 @@
     <!-- Chart.js para renderizar los gráficos de impacto -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-[#0b1120] text-white font-sans">
+<body class="bg-[#0b1120] text-white font-sans antialiased">
 
-    <!-- NAVBAR (Menú Limpio y Directo) -->
-    <nav class="flex items-center justify-between px-10 py-6">
+    <!-- NAVBAR (Adaptable para PC y Móviles) -->
+    <nav class="flex flex-col sm:flex-row items-center justify-between px-4 sm:px-10 py-4 sm:py-6 gap-4 border-b border-gray-800 sm:border-0">
         <div class="flex items-center gap-2">
-            <div class="bg-blue-600 px-3 py-1 font-bold rounded">RF</div>
-            <span class="font-bold text-lg">ESTUDIO TÉCNICO FREYTES</span>
+            <div class="bg-blue-600 px-3 py-1 font-bold rounded text-sm sm:text-base">RF</div>
+            <span class="font-bold text-base sm:text-lg tracking-wide">ESTUDIO TÉCNICO FREYTES</span>
         </div>
-        <div class="flex gap-6 text-sm opacity-80">
+        <!-- Enlaces: Visibles en pantallas medianas/grandes, ocultos en móviles chicos para evitar desorden -->
+        <div class="hidden md:flex gap-6 text-sm opacity-80">
             <a href="#" class="hover:text-blue-400 transition-colors">Inicio</a>
             <a href="#estadisticas" class="hover:text-blue-400 transition-colors">Estadísticas</a>
             <a href="#sobre-mi" class="hover:text-blue-400 transition-colors">Quién Soy</a>
             <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
         </div>
-        <div class="flex gap-4 items-center">
-            <button onclick="abrirModalAcceso()" class="text-sm border border-gray-600 px-4 py-2 rounded flex items-center gap-2 hover:bg-gray-800 transition-colors">
+        <div class="flex gap-2 sm:gap-4 items-center w-full sm:w-auto justify-center sm:justify-end">
+            <button onclick="abrirModalAcceso()" class="text-xs sm:text-sm border border-gray-600 px-3 py-2 rounded flex items-center gap-1.5 hover:bg-gray-800 transition-colors bg-[#1e293b] sm:bg-transparent">
                 <span>🔒</span> Acceso Roger
             </button>
-            <a href="#contacto" class="bg-blue-500 px-4 py-2 rounded font-bold text-sm hover:bg-blue-600 transition-colors">SOLICITAR VISITA</a>
+            <a href="#contacto" class="bg-blue-500 px-3 py-2 rounded font-bold text-xs sm:text-sm hover:bg-blue-600 transition-colors text-center shadow-lg shadow-blue-500/20">SOLICITAR VISITA</a>
         </div>
     </nav>
 
@@ -57,53 +58,55 @@
         </div>
     </div>
 
-    <!-- HERO -->
-    <header class="px-10 py-16 grid grid-cols-2 gap-12 items-center">
-        <div>
-            <div class="text-blue-400 text-sm font-semibold mb-4 border border-blue-900 inline-block px-3 py-1 rounded">
+    <!-- HERO (1 columna en móviles, 2 columnas en PC) -->
+    <header class="px-4 sm:px-10 py-10 sm:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="text-center lg:text-left">
+            <div class="text-blue-400 text-xs sm:text-sm font-semibold mb-4 border border-blue-900 inline-block px-3 py-1 rounded bg-blue-500/5">
                 ⚡ SOLUCIONES DE INGENIERÍA EN CÓRDOBA
             </div>
-            <h1 class="text-5xl font-extrabold leading-tight mb-6">
-                Asesoría integral en higiene y seguridad a industrias, <br>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 sm:mb-6">
+                Asesoría integral en higiene y seguridad a industrias, <br class="hidden sm:inline">
                 <span class="text-blue-400">Obras y Agro.</span>
             </h1>
-            <p class="text-gray-400 text-base mb-8 max-w-lg leading-relaxed">
+            <p class="text-gray-400 text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para evitar multas de la ART.
             </p>
-            <div class="flex gap-4">
-                <button onclick="abrirModal()" class="bg-blue-500 px-6 py-4 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center">
-                    HACER DIAGNÓSTICO TÉCNICO GRATIS
+            <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <button onclick="abrirModal()" class="bg-blue-500 px-5 py-3.5 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center w-full sm:w-auto shadow-lg shadow-blue-500/10">
+                    DIAGNÓSTICO TÉCNICO GRATIS
                 </button>
-                <a href="#servicios-detallados" class="border border-gray-600 px-6 py-4 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center">VER SERVICIOS TÉCNICOS</a>
+                <a href="#servicios-detallados" class="border border-gray-600 px-5 py-3.5 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center w-full sm:w-auto block">
+                    VER SERVICIOS TÉCNICOS
+                </a>
             </div>
         </div>
 
         <!-- TARJETAS LADO DERECHO -->
-        <div id="servicios" class="grid gap-4">
-            <a href="industrias.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
-                <span class="text-2xl">🏭</span>
+        <div id="servicios" class="grid grid-cols-1 gap-4 w-full">
+            <a href="industrias.html" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
+                <span class="text-xl sm:text-2xl mt-0.5">🏭</span>
                 <div>
-                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene en Industrias</h3>
-                    <p class="text-gray-400 text-sm mb-1">Estudios ergonómicos, mediciones SRT y auditorías de ART completas.</p>
-                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Seguridad e Higiene en Industrias</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Estudios ergonómicos, mediciones SRT y auditorías de ART completas.</p>
+                    <span class="text-[11px] sm:text-xs text-blue-400 font-semibold flex items-center gap-1 mt-1">Ver normativa vigente →</span>
                 </div>
             </a>
 
-            <a href="obras.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
-                <span class="text-2xl">🚧</span>
+            <a href="obras.html" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
+                <span class="text-xl sm:text-2xl mt-0.5">🚧</span>
                 <div>
-                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene en Obras</h3>
-                    <p class="text-gray-400 text-sm mb-1">Planes de seguridad, capacitaciones, legajos técnicos y control de contratistas.</p>
-                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Seguridad e Higiene en Obras</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Planes de seguridad, capacitaciones, legajos técnicos y control de contratistas.</p>
+                    <span class="text-[11px] sm:text-xs text-blue-400 font-semibold flex items-center gap-1 mt-1">Ver normativa vigente →</span>
                 </div>
             </a>
 
-            <a href="agro.html" class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all block text-left">
-                <span class="text-2xl">🚜</span>
+            <a href="agro.html" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
+                <span class="text-xl sm:text-2xl mt-0.5">🚜</span>
                 <div>
-                    <h3 class="font-bold text-lg text-white">Seguridad e Higiene en Agro</h3>
-                    <p class="text-gray-400 text-sm mb-1">Seguridad en acopios, silos, maquinarias e inflamables.</p>
-                    <span class="text-xs text-blue-400 font-semibold flex items-center gap-1">Ver normativa vigente →</span>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Seguridad e Higiene en Agro</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Seguridad en acopios, silos, maquinarias e inflamables.</p>
+                    <span class="text-[11px] sm:text-xs text-blue-400 font-semibold flex items-center gap-1 mt-1">Ver normativa vigente →</span>
                 </div>
             </a>
         </div>
@@ -111,16 +114,16 @@
 
     <!-- CUADRO INTERACTIVO DE DIAGNÓSTICO -->
     <div id="modalDiagnostico" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
-        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
+        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl relative">
             <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
             
-            <h3 class="text-xl font-bold mb-2 flex items-center gap-2 text-blue-400">📊 Diagnóstico Técnico de Riesgo</h3>
-            <p class="text-gray-400 text-xs mb-6">Evaluación preliminar parametrizada según la normativa argentina.</p>
+            <h3 class="text-lg sm:text-xl font-bold mb-1 flex items-center gap-2 text-blue-400">📊 Diagnóstico Técnico de Riesgo</h3>
+            <p class="text-gray-400 text-[11px] sm:text-xs mb-4 sm:mb-6">Evaluación preliminar parametrizada según la normativa argentina.</p>
             
             <div class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-2">Seleccioná tu Actividad:</label>
-                    <select id="actividad" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">Seleccioná tu Actividad:</label>
+                    <select id="actividad" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
                         <option value="industria">Establecimiento Industrial / Fábrica</option>
                         <option value="obra">Obra en Construcción / Civil</option>
                         <option value="agro">Explotación Agrícola / Campo / Silos</option>
@@ -128,90 +131,90 @@
                     </select>
                 </div>
                 
-                <div class="grid grid-cols-2 gap-4">
+                <div class="grid grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-2">Superficie (m²):</label>
-                        <input type="number" id="metros" placeholder="Ej: 300" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                        <label class="block text-xs font-semibold text-gray-300 mb-1.5">Superficie (m²):</label>
+                        <input type="number" id="metros" placeholder="Ej: 300" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-2">N° de Trabajadores:</label>
-                        <input type="number" id="personal" placeholder="Ej: 15" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                        <label class="block text-xs font-semibold text-gray-300 mb-1.5">N° de Trabajadores:</label>
+                        <input type="number" id="personal" placeholder="Ej: 15" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
                 
-                <button onclick="calcularRiesgo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors mt-2">
+                <button onclick="calcularRiesgo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm transition-colors mt-2">
                     CALCULAR NIVEL DE RIESGO
                 </button>
                 
                 <div id="resultadoRiesgo" class="hidden mt-4 p-4 rounded-xl text-center border">
-                    <span class="text-xs uppercase font-bold tracking-wider block text-gray-400 mb-1">Resultado de Evaluación</span>
-                    <div id="valorRiesgo" class="text-2xl font-extrabold mb-2"></div>
-                    <p id="descRiesgo" class="text-xs text-gray-300 leading-relaxed"></p>
+                    <span class="text-[10px] uppercase font-bold tracking-wider block text-gray-400 mb-1">Resultado de Evaluación</span>
+                    <div id="valorRiesgo" class="text-lg sm:text-xl font-extrabold mb-1"></div>
+                    <p id="descRiesgo" class="text-[11px] sm:text-xs text-gray-300 leading-relaxed"></p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- SECCIÓN DE ESTADÍSTICAS E IMPACTO REAL -->
-    <section id="estadisticas" class="px-10 py-20 bg-[#0f172a] border-t border-gray-800">
+    <section id="estadisticas" class="px-4 sm:px-10 py-12 sm:py-20 bg-[#0f172a] border-t border-gray-800">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12">
-                <span class="text-xs font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 px-3 py-1 rounded">Métricas e Impacto</span>
-                <h2 class="text-3xl font-bold mt-3 text-white">¿Por qué invertir en Higiene y Seguridad?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-sm mt-2">Comparativa técnica del impacto operativo, legal and económico en empresas antes y después de contar con un servicio especializado.</p>
+            <div class="text-center mb-8 sm:text-center">
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-blue-500 bg-blue-500/10 px-2.5 py-1 rounded">Métricas e Impacto</span>
+                <h2 class="text-2xl sm:text-3xl font-bold mt-2.5 text-white">¿Por qué invertir en Higiene y Seguridad?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm mt-2">Comparativa técnica del impacto operativo, legal y económico en empresas antes y después de contar con un servicio especializado.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-[#1e293b] p-8 rounded-2xl border border-gray-700">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center bg-[#1e293b] p-5 sm:p-8 rounded-2xl border border-gray-700">
                 <!-- Información Vendedora -->
-                <div class="space-y-6">
-                    <div class="border-l-4 border-red-500 pl-4">
-                        <h4 class="font-bold text-white text-base">Riesgos Sin Gestión Técnico-Legal</h4>
-                        <p class="text-gray-400 text-xs mt-1">Probabilidad crítica de actas de infracción de la SRT, suspensiones por falta de Legajo Técnico (Dec. 911/96) y multas severas de la ART.</p>
+                <div class="space-y-4 sm:space-y-6">
+                    <div class="border-l-4 border-red-500 pl-3 sm:pl-4">
+                        <h4 class="font-bold text-white text-sm sm:text-base">Riesgos Sin Gestión Técnico-Legal</h4>
+                        <p class="text-gray-400 text-xs mt-1 leading-relaxed">Probabilidad crítica de actas de infracción de la SRT, suspensiones por falta de Legajo Técnico (Dec. 911/96) y multas severas de la ART.</p>
                     </div>
-                    <div class="border-l-4 border-green-500 pl-4">
-                        <h4 class="font-bold text-white text-base">Beneficios con Asesoría Profesional</h4>
-                        <p class="text-gray-400 text-xs mt-1">Cumplimiento total de auditorías, reducción drástica de la siniestralidad y optimización de espacios mediante metodologías de orden y limpieza (5S).</p>
+                    <div class="border-l-4 border-green-500 pl-3 sm:pl-4">
+                        <h4 class="font-bold text-white text-sm sm:text-base">Beneficios con Asesoría Profesional</h4>
+                        <p class="text-gray-400 text-xs mt-1 leading-relaxed">Cumplimiento total de auditorías, reducción drástica de la siniestralidad y optimización de espacios mediante metodologías de orden y limpieza (5S).</p>
                     </div>
                     
                     <!-- CUADRO DE METAS TRIPLES -->
-                    <div class="bg-[#0b1120] p-5 rounded-xl border border-gray-700 text-left space-y-3">
-                        <span class="text-xs text-gray-400 uppercase font-bold block tracking-wider text-center border-b border-gray-800 pb-2">Objetivos de Gestión Técnica</span>
+                    <div class="bg-[#0b1120] p-4 sm:p-5 rounded-xl border border-gray-700 text-left space-y-2.5">
+                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase font-bold block tracking-wider text-center border-b border-gray-800 pb-2">Objetivos de Gestión Técnica</span>
                         
-                        <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center justify-between text-xs sm:text-sm">
                             <span class="text-gray-400">Cumplimiento Legal y ART:</span>
                             <span class="font-extrabold text-blue-400">0% CLAUSURAS</span>
                         </div>
                         
-                        <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center justify-between text-xs sm:text-sm">
                             <span class="text-gray-400">Siniestralidad Laboral:</span>
                             <span class="font-extrabold text-red-400">0 ACCIDENTES</span>
                         </div>
                         
-                        <div class="flex items-center justify-between text-sm">
+                        <div class="flex items-center justify-between text-xs sm:text-sm">
                             <span class="text-gray-400">Eficiencia Operativa (5S):</span>
                             <span class="font-extrabold text-green-400">100% DISPONIBILIDAD</span>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Gráfico de Canvas -->
-                <div class="w-full bg-[#0b1120] p-4 rounded-xl border border-gray-700 h-[320px]">
+                <!-- Gráfico de Canvas (Responsivo en alto) -->
+                <div class="w-full bg-[#0b1120] p-3 sm:p-4 rounded-xl border border-gray-700 h-[260px] sm:h-[320px]">
                     <canvas id="graficoImpactoPublico"></canvas>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN QUIÊN SOY -->
-    <section id="sobre-mi" class="px-10 py-20 bg-[#0b1120] border-t border-gray-800">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-[#1e293b] p-8 rounded-2xl border border-gray-700">
+    <!-- SECCIÓN QUIÉNES SOMOS / SOBRE MÍ -->
+    <section id="sobre-mi" class="px-4 sm:px-10 py-12 sm:py-20 bg-[#0b1120] border-t border-gray-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center bg-[#1e293b] p-5 sm:p-8 rounded-2xl border border-gray-700">
             
             <!-- Contenedor Imagen Seguro -->
-            <div class="md:col-span-4 flex justify-center w-full">
-                <div class="relative w-full max-w-[280px] aspect-[3/4] bg-[#0b1120] rounded-xl border border-gray-700 overflow-hidden shadow-2xl group">
+            <div class="lg:col-span-4 flex justify-center w-full">
+                <div class="relative w-full max-w-[240px] sm:max-w-[280px] aspect-[3/4] bg-[#0b1120] rounded-xl border border-gray-700 overflow-hidden shadow-2xl group">
                     <div class="absolute -inset-1 bg-gradient-to-r border border-blue-600 rounded-xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                     
-                    <!-- Buscador automático de imagen (recorre extensiones si Windows las ocultó o cambió) -->
+                    <!-- Buscador automático de imagen -->
                     <img src="image.png" 
                          onerror="if(!this.step){this.step=1; this.src='image.png.png';}else if(this.step==1){this.step=2; this.src='image.jpg';}else if(this.step==2){this.step=3; this.src='image.jpeg';}"
                          alt="Roger Freytes" 
@@ -220,20 +223,20 @@
             </div>
 
             <!-- Texto Profesional de Alto Impacto -->
-            <div class="md:col-span-8 space-y-4">
-                <div class="text-blue-400 text-xs font-semibold border border-blue-900 inline-block px-3 py-1 rounded uppercase tracking-wider">
+            <div class="lg:col-span-8 space-y-4 text-center lg:text-left">
+                <div class="text-blue-400 text-[10px] sm:text-xs font-semibold border border-blue-900 inline-block px-3 py-1 rounded uppercase tracking-wider bg-blue-500/5">
                     Perfil Profesional Técnico
                 </div>
-                <h2 class="text-2xl font-bold text-white">Soluciones Técnicas Orientadas a la Continuidad Operativa Segura</h2>
-                <p class="text-gray-400 text-xs leading-relaxed">
+                <h2 class="text-xl sm:text-2xl font-bold text-white leading-snug">Soluciones Técnicas Orientadas a la Continuidad Operativa Segura</h2>
+                <p class="text-gray-400 text-xs leading-relaxed text-justify lg:text-left">
                     Como especialista en Higiene y Seguridad, mi enfoque combina el cumplimiento estricto del marco normativo argentino (Ley 19.587, Dec. 911/96 y Res. SRT) con la implementación de metodologías ágiles como las 5S. No solo diseño documentación; estructuro sistemas preventivos reales que mitigan riesgos críticos en planta, blindan legalmente a la empresa frente a eventualidades y superan con éxito auditorías de la ART.
                 </p>
-                <p class="text-gray-400 text-xs leading-relaxed">
+                <p class="text-gray-400 text-xs leading-relaxed text-justify lg:text-left">
                     Mi experiencia abarca desde el control documental estricto de subcontratistas y la gestión de legajos técnicos en obras civiles de envergadura, hasta auditorías de riesgos eléctricos, mediciones físicas reglamentarias y planes de emergencia adaptados. Potencio mi práctica profesional mediante la formación continua en la Licenciatura en Higiene y Seguridad en el Trabajo (Universidad FASTA), asegurando metodologías actualizadas bajo estándares de gestión internacional.
                 </p>
 
                 <!-- Matrícula e info básica -->
-                <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-700 grid grid-cols-2 gap-4 text-left">
+                <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
                     <div>
                         <h4 class="text-white font-bold text-xs">Registro Profesional</h4>
                         <p class="text-blue-400 text-[11px] mt-0.5 font-medium">COPHISEC Córdoba<br><span class="text-gray-300 font-normal">MP: THST 01-92</span></p>
@@ -248,19 +251,19 @@
     </section>
 
     <!-- SERVICIOS TÉCNICOS DETALLADOS -->
-    <section id="servicios-detallados" class="px-10 py-20 bg-[#0b1120] border-t border-gray-800">
+    <section id="servicios-detallados" class="px-4 sm:px-10 py-12 sm:py-20 bg-[#0b1120] border-t border-gray-800">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Servicios de Consultoría y Asesoría Técnico-Legal</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-sm">Soluciones profesionales adaptadas para garantizar el cumplimiento estricto ante la SRT y optimizar la productividad laboral.</p>
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-3">Servicios de Consultoría y Asesoría Técnico-Legal</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm">Soluciones profesionales adaptadas para garantizar el cumplimiento estricto ante la SRT y optimizar la productividad laboral.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:grid-cols-2 lg:gap-6">
+                <div class="bg-[#1e293b] p-5 rounded-xl border border-gray-700 flex flex-col justify-between">
                     <div>
-                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">📋</div>
-                        <h3 class="font-bold text-base mb-3 text-white">Seguridad en Obras</h3>
-                        <ul class="text-gray-400 text-xs space-y-2 text-left">
+                        <div class="bg-blue-600/20 text-blue-400 w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">📋</div>
+                        <h3 class="font-bold text-base mb-2.5 text-white">Seguridad en Obras</h3>
+                        <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
                             <li>• Programas de Seguridad (Dec. 911/96) y Legajos Técnicos.</li>
                             <li>• Gestión preventiva en trabajos en altura y excavaciones.</li>
                             <li>• Auditorías de campo y control documental de subcontratistas.</li>
@@ -269,11 +272,11 @@
                     </div>
                 </div>
 
-                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
+                <div class="bg-[#1e293b] p-5 rounded-xl border border-gray-700 flex flex-col justify-between">
                     <div>
-                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">⚡</div>
-                        <h3 class="font-bold text-base mb-3 text-white">Higiene Industrial</h3>
-                        <ul class="text-gray-400 text-xs space-y-2 text-left">
+                        <div class="bg-blue-600/20 text-blue-400 w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">⚡</div>
+                        <h3 class="font-bold text-base mb-2.5 text-white">Higiene Industrial</h3>
+                        <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
                             <li>• Relevamiento general de riesgos (RAGR) y auditorías de ART.</li>
                             <li>• Protocolos de puesta a tierra y continuidad eléctrica.</li>
                             <li>• Mediciones físicas reglamentarias (Iluminación, Ruido, Ergonomía).</li>
@@ -282,11 +285,11 @@
                     </div>
                 </div>
 
-                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
+                <div class="bg-[#1e293b] p-5 rounded-xl border border-gray-700 flex flex-col justify-between">
                     <div>
-                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">🚜</div>
-                        <h3 class="font-bold text-base mb-3 text-white">Seguridad en Agro</h3>
-                        <ul class="text-gray-400 text-xs space-y-2 text-left">
+                        <div class="bg-blue-600/20 text-blue-400 w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">🚜</div>
+                        <h3 class="font-bold text-base mb-2.5 text-white">Seguridad en Agro</h3>
+                        <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
                             <li>• Análisis de riesgos en plantas de acopio, celdas y silos.</li>
                             <li>• Prevención de incendios y almacenamiento de inflamables / agroquímicos.</li>
                             <li>• Protección en maquinarias agrícolas, toma de fuerza y transmisiones.</li>
@@ -295,11 +298,11 @@
                     </div>
                 </div>
 
-                <div class="bg-[#1e293b] p-6 rounded-xl border border-gray-700 flex flex-col justify-between">
+                <div class="bg-[#1e293b] p-5 rounded-xl border border-gray-700 flex flex-col justify-between">
                     <div>
-                        <div class="bg-blue-600/20 text-blue-400 w-12 h-12 flex items-center justify-center rounded-lg mb-4 text-xl font-bold">📊</div>
-                        <h3 class="font-bold text-base mb-3 text-white">Sistemas de Gestión</h3>
-                        <ul class="text-gray-400 text-xs space-y-2 text-left">
+                        <div class="bg-blue-600/20 text-blue-400 w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">📊</div>
+                        <h3 class="font-bold text-base mb-2.5 text-white">Sistemas de Gestión</h3>
+                        <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
                             <li>• Implementación del método 5S (Orden, Limpieza y Productividad).</li>
                             <li>• Asesoramiento técnico alineado a Normas Internacionales ISO.</li>
                             <li>• Diseño de indicadores técnicos de siniestralidad.</li>
@@ -312,25 +315,25 @@
     </section>
 
     <!-- SECCIÓN CONTACTO -->
-    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-10 py-12">
+    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-4 sm:px-10 py-10 sm:py-12">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-2xl font-bold mb-6">Contacto Profesional</h2>
-            <p class="text-gray-400 mb-8 text-sm">Comunicate directamente para coordinar una visita técnica o solicitar presupuesto.</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h2 class="text-xl sm:text-2xl font-bold mb-4">Contacto Profesional</h2>
+            <p class="text-gray-400 mb-6 sm:mb-8 text-xs sm:text-sm">Comunicate directamente para coordinar una visita técnica o solicitar presupuesto.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <a href="https://wa.me/5493512345678" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-green-500 transition-all block">
                     <span class="block text-xl mb-1">💬</span>
                     <span class="block font-semibold text-sm text-green-400">WhatsApp</span>
-                    <span class="text-xs text-gray-400">Enviar mensaje directo</span>
+                    <span class="text-[11px] text-gray-400">Enviar mensaje directo</span>
                 </a>
                 <a href="mailto:rogerlucianofreytes@gmail.com" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-all block">
                     <span class="block text-xl mb-1">✉️</span>
                     <span class="block font-semibold text-sm text-blue-400">Correo Electrónico</span>
-                    <span class="text-xs text-gray-400">rogerlucianofreytes@gmail.com</span>
+                    <span class="text-[11px] text-gray-400 break-all">rogerlucianofreytes@gmail.com</span>
                 </a>
                 <a href="https://linkedin.com/in/roger-freytes" target="_blank" class="bg-[#1e293b] p-4 rounded-lg border border-gray-700 hover:border-blue-600 transition-all block">
                     <span class="block text-xl mb-1">🔗</span>
                     <span class="block font-semibold text-sm text-blue-500">LinkedIn</span>
-                    <span class="text-xs text-gray-400">Perfil Profesional</span>
+                    <span class="text-[11px] text-gray-400">Perfil Profesional</span>
                 </a>
             </div>
         </div>
@@ -343,17 +346,17 @@
         new Chart(ctxPublico, {
             type: 'bar',
             data: {
-                labels: ['Riesgo de Multas', 'Índice de Siniestros', 'Orden y Eficiencia (5S)'],
+                labels: ['Riesgo Multas', 'Siniestros', 'Orden (5S)'],
                 datasets: [{
-                    label: 'Sin Gestión Técnica',
+                    label: 'Sin Gestión',
                     data: [85, 70, 25],
                     backgroundColor: '#ef4444', 
-                    borderRadius: 6
+                    borderRadius: 5
                 }, {
-                    label: 'Con Estudio Freytes',
+                    label: 'Estudio Freytes',
                     data: [5, 10, 95],
                     backgroundColor: '#3b82f6', 
-                    borderRadius: 6
+                    borderRadius: 5
                 }]
             },
             options: {
@@ -364,17 +367,17 @@
                         beginAtZero: true, 
                         max: 100,
                         grid: { color: '#334155' },
-                        ticks: { color: '#94a3b8', font: { size: 10 } }
+                        ticks: { color: '#94a3b8', font: { size: 9 } }
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { color: '#ffffff', font: { size: 11, weight: 'bold' } }
+                        ticks: { color: '#ffffff', font: { size: 10, weight: 'bold' } }
                     }
                 },
                 plugins: {
                     legend: {
                         position: 'bottom',
-                        labels: { color: '#ffffff', font: { size: 11 } }
+                        labels: { color: '#ffffff', font: { size: 10 } }
                     }
                 }
             }
@@ -408,18 +411,18 @@
             
             if (nivel === "ALTO") {
                 txtValor.innerText = "ALTO RIESGO TÉCNICO 🚨";
-                txtValor.className = "text-xl font-extrabold mb-2 text-red-500";
-                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-red-500/30 bg-red-500/10";
+                txtValor.className = "text-base sm:text-lg font-extrabold mb-1 text-red-500";
+                divResultado.className = "mt-4 p-3 rounded-xl text-center border border-red-500/30 bg-red-500/10";
                 txtDesc.innerText = "Requiere la gestión urgente de Programas de Seguridad validados por ART, Legajos Técnicos completos y mediciones físicas obligatorias periódicas.";
             } else if (nivel === "MEDIO") {
                 txtValor.innerText = "RIESGO TÉCNICO MEDIO ⚠️";
-                txtValor.className = "text-xl font-extrabold mb-2 text-amber-500";
-                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-amber-500/30 bg-amber-500/10";
+                txtValor.className = "text-base sm:text-lg font-extrabold mb-1 text-amber-500";
+                divResultado.className = "mt-4 p-3 rounded-xl text-center border border-amber-500/30 bg-amber-500/10";
                 txtDesc.innerText = "Establecimiento sujeto a controles periódicos de riesgos mecánicos, eléctricos o de incendio. Requiere cronograma anual de capacitaciones y ordenamiento (5S).";
             } else {
-                txtValor.innerText = "RIESGO TÉCNICO MODERADO / BAJO ✅";
-                txtValor.className = "text-xl font-extrabold mb-2 text-green-400";
-                divResultado.className = "mt-4 p-4 rounded-xl text-center border border-green-500/30 bg-green-500/10";
+                txtValor.innerText = "RIESGO MODERADO / BAJO ✅";
+                txtValor.className = "text-base sm:text-lg font-extrabold mb-1 text-green-400";
+                divResultado.className = "mt-4 p-3 rounded-xl text-center border border-green-500/30 bg-green-500/10";
                 txtDesc.innerText = "El lugar exige condiciones básicas de seguridad edilicia, mapa de evacuación, dotación correcta de matafuegos y análisis básico preventivo.";
             }
         }
