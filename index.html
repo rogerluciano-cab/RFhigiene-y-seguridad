@@ -45,11 +45,9 @@
                 <div>
                     <input type="password" id="claveAcceso" placeholder="Ingresá la contraseña" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-center text-white focus:outline-none focus:border-blue-500">
                 </div>
-                
                 <button onclick="verifyClave()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors">
                     INGRESAR
                 </button>
-                
                 <div id="errorClave" class="hidden text-xs text-red-400 text-center font-semibold mt-2">
                     ⚠️ Contraseña incorrecta. Intentá de nuevo.
                 </div>
@@ -109,8 +107,8 @@
         </div>
     </header>
 
-    <div id="modalDiagnostico" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
-        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl relative">
+    <div id="modalDiagnostico" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4 overflow-y-auto">
+        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl relative my-8">
             <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
             
             <h3 class="text-lg sm:text-xl font-bold mb-1 flex items-center gap-2 text-[#42a5f5]">📊 Diagnóstico Técnico de Riesgo</h3>
@@ -137,15 +135,43 @@
                         <input type="number" id="personal" placeholder="Ej: 15" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
+
+                <div class="grid grid-cols-2 gap-3 sm:gap-4 border-t border-gray-700/50 pt-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1.5">Probabilidad (P):</label>
+                        <select id="selectProbabilidad" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
+                            <option value="1">Baja (Raro que ocurra)</option>
+                            <option value="2">Media (Puede ocurrir)</option>
+                            <option value="3">Alta (Ocurre con frecuencia)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1.5">Consecuencia (C):</label>
+                        <select id="selectConsecuencia" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
+                            <option value="1">Leve (Sin días de baja)</option>
+                            <option value="2">Moderada (Baja temporal)</option>
+                            <option value="3">Grave (Incapacidad / Fatalidad)</option>
+                        </select>
+                    </div>
+                </div>
                 
                 <button onclick="calcularRiesgo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm transition-colors mt-2">
                     CALCULAR NIVEL DE RIESGO
                 </button>
                 
-                <div id="resultadoRiesgo" class="hidden mt-4 p-4 rounded-xl text-center border">
-                    <span class="text-[10px] uppercase font-bold tracking-wider block text-gray-400 mb-1">Resultado de Evaluación</span>
-                    <div id="valorRiesgo" class="text-lg sm:text-xl font-extrabold mb-1"></div>
-                    <p id="descRiesgo" class="text-[11px] sm:text-xs text-gray-300 leading-relaxed"></p>
+                <div id="resultadoRiesgo" class="hidden mt-4 p-4 rounded-xl text-center border space-y-3">
+                    <div>
+                        <span class="text-[10px] uppercase font-bold tracking-wider block text-gray-400 mb-1">Resultado General de la Evaluación</span>
+                        <div id="valorRiesgo" class="text-lg sm:text-xl font-extrabold mb-1"></div>
+                        <p id="descRiesgo" class="text-[11px] sm:text-xs text-gray-300 leading-relaxed border-b border-gray-700/50 pb-3"></p>
+                    </div>
+                    
+                    <div class="text-left space-y-2 text-[11px] sm:text-xs">
+                        <span class="text-[10px] uppercase font-bold tracking-wider block text-gray-400 text-center">Desglose de Riesgos Cruzados</span>
+                        <p id="resIncendio" class="p-2 bg-black/20 rounded border border-gray-700"></p>
+                        <p id="resLaboral" class="p-2 bg-black/20 rounded border border-gray-700"></p>
+                        <p id="resInitinere" class="p-2 bg-black/20 rounded border border-gray-700"></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,7 +189,7 @@
                 <div class="space-y-4 sm:space-y-6">
                     <div class="border-l-4 border-red-500 pl-3 sm:pl-4">
                         <h4 class="font-bold text-white text-sm sm:text-base">Riesgos Sin Gestión Técnico-Legal</h4>
-                        <p class="text-gray-400 text-xs mt-1 leading-relaxed">Probabilidad crítica de actas de infracción de la SRT, suspensiones por falta de Legajo Técnico (Dec. 911/96) and multas severas de la ART.</p>
+                        <p class="text-gray-400 text-xs mt-1 leading-relaxed">Probabilidad crítica de actas de infracción de la SRT, suspensiones por falta de Legajo Técnico (Dec. 911/96) y multas severas de la ART.</p>
                     </div>
                     <div class="border-l-4 border-green-500 pl-3 sm:pl-4">
                         <h4 class="font-bold text-white text-sm sm:text-base">Beneficios con Asesoría Profesional</h4>
@@ -242,7 +268,7 @@
                         <div class="bg-blue-600/20 text-[#42a5f5] w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">📋</div>
                         <h3 class="font-bold text-base mb-2.5 text-white">Seguridad en Obras</h3>
                         <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
-                            <li>• Programas de Seguridad (Dec. 911/96) y Legajos Técnicos.</li>
+                            <li>• Programas de Seguridad (Dec. 911/96) and Legajos Técnicos.</li>
                             <li>• Gestión preventiva en trabajos en altura y excavaciones.</li>
                             <li>• Auditorías de campo y control documental de subcontratistas.</li>
                             <li>• Capacitaciones al personal operativo en obra.</li>
@@ -309,6 +335,7 @@
                             <span class="text-xs text-gray-400">+54 3572 594767</span>
                         </div>
                     </a>
+                    
                     <a href="mailto:rogerluciano.rfa@gmail.com" class="bg-[#1e293b] p-4 rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all flex items-center gap-4 text-left group">
                         <span class="text-2xl bg-blue-500/10 p-2 rounded-lg group-hover:bg-blue-500/20 transition-colors">✉️</span>
                         <div>
@@ -316,7 +343,8 @@
                             <span class="text-xs text-gray-400 break-all">rogerluciano.rfa@gmail.com</span>
                         </div>
                     </a>
-                    <a href="https://linkedin.com/in/roger-freytes" target="_blank" class="bg-[#1e293b] p-4 rounded-xl border border-gray-700 hover:border-blue-600 hover:bg-gray-800 transition-all flex items-center gap-4 text-left group">
+                    
+                    <a href="https://www.linkedin.com/in/roger-freytes-algarbe-60a302286/" target="_blank" class="bg-[#1e293b] p-4 rounded-xl border border-gray-700 hover:border-blue-600 hover:bg-gray-800 transition-all flex items-center gap-4 text-left group">
                         <span class="text-2xl bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">🔗</span>
                         <div>
                             <span class="block font-bold text-sm text-blue-500">LinkedIn Corporativo</span>
@@ -356,146 +384,4 @@
 
                     <div>
                         <label class="block text-xs font-semibold text-gray-300 mb-1">Detalle del requerimiento técnico:</label>
-                        <textarea id="mensajeContacto" required rows="3" placeholder="Ej: Necesito cotizar un plan de evacuación, mediciones de puesta a tierra o armado de legajo técnico..." class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-blue-500 resize-none"></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg text-xs sm:text-sm transition-all shadow-lg shadow-green-500/10 flex items-center justify-center gap-2">
-                        <span>🚀</span> ENVIAR CONSULTA POR WHATSAPP
-                    </button>
-                </form>
-            </div>
-            
-        </div>
-    </footer>
-
-    <script>
-        // --- RENDEREADO DEL GRÁFICO (Chart.js) ---
-        const ctxPublico = document.getElementById('graficoImpactoPublico').getContext('2d');
-        new Chart(ctxPublico, {
-            type: 'bar',
-            data: {
-                labels: ['Riesgo Multas', 'Siniestros', 'Orden (5S)'],
-                datasets: [{
-                    label: 'Sin Gestión',
-                    data: [85, 70, 25],
-                    backgroundColor: '#ef4444', 
-                    borderRadius: 5
-                }, {
-                    label: 'Estudio Freytes',
-                    data: [5, 10, 95],
-                    backgroundColor: '#3b82f6', 
-                    borderRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: { 
-                        beginAtZero: true, 
-                        max: 100,
-                        grid: { color: '#334155' },
-                        ticks: { color: '#94a3b8', font: { size: 9 } }
-                    },
-                    x: {
-                        grid: { display: false },
-                        ticks: { color: '#ffffff', font: { size: 10, weight: 'bold' } }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { color: '#ffffff', font: { size: 10 } }
-                    }
-                }
-            }
-        });
-
-        // --- GESTIÓN DE MODALES ---
-        function abrirModal() {
-            document.getElementById('modalDiagnostico').classList.remove('hidden');
-        }
-        function cerrarModal() {
-            document.getElementById('modalDiagnostico').classList.add('hidden');
-            document.getElementById('resultadoRiesgo').classList.add('hidden');
-        }
-        function abrirModalAcceso() {
-            document.getElementById('modalAcceso').classList.remove('hidden');
-        }
-        function cerrarModalAcceso() {
-            document.getElementById('modalAcceso').classList.add('hidden');
-            document.getElementById('errorClave').classList.add('hidden');
-            document.getElementById('claveAcceso').value = '';
-        }
-
-        // --- SIMULADOR DE RIESGO INTERACTIVO ---
-        function calcularRiesgo() {
-            const actividad = document.getElementById('actividad').value;
-            const metros = parseFloat(document.getElementById('metros').value);
-            const personal = parseInt(document.getElementById('personal').value);
-            
-            const resultadoDiv = document.getElementById('resultadoRiesgo');
-            const valorRiesgo = document.getElementById('valorRiesgo');
-            const descRiesgo = document.getElementById('descRiesgo');
-
-            if (!metros || !personal) {
-                alert('Por favor, completa la superficie y el número de trabajadores.');
-                return;
-            }
-
-            resultadoDiv.classList.remove('hidden');
-            
-            if (actividad === 'obra' || (actividad === 'industria' && personal > 20) || (actividad === 'agro' && metros > 1000)) {
-                resultadoDiv.className = "mt-4 p-4 rounded-xl text-center border bg-red-500/10 border-red-500/30 text-red-400";
-                valorRiesgo.innerText = "🚨 RIESGO ALTO / CRÍTICO";
-                descRiesgo.innerText = "Tu actividad requiere por ley un Legajo Técnico obligatorio, Programas de Seguridad aprobados por la ART y mediciones periódicas físicas para mitigar la alta probabilidad de siniestros o suspensiones.";
-            } else if (personal > 10 || metros > 500) {
-                resultadoDiv.className = "mt-4 p-4 rounded-xl text-center border bg-yellow-500/10 border-yellow-500/30 text-yellow-400";
-                valorRiesgo.innerText = "⚠️ RIESGO MEDIO";
-                descRiesgo.innerText = "Cumplimiento obligatorio de Relevamiento General de Riesgos (RAGR), capacitaciones periódicas y adecuaciones de puestos. Se recomienda auditoría preventiva para evitar actas de infracción.";
-            } else {
-                resultadoDiv.className = "mt-4 p-4 rounded-xl text-center border bg-green-500/10 border-green-500/30 text-green-400";
-                valorRiesgo.innerText = "✅ RIESGO CONTROLABLE";
-                descRiesgo.innerText = "Nivel inicial. Requiere cobertura básica técnico-legal, Plan de Evacuación/Emergencias y capacitaciones esenciales en el uso de matafuegos y orden general.";
-            }
-        }
-
-        // --- AUTENTICACIÓN PANEL PRIVADO (Simulado local) ---
-        function verifyClave() {
-            const clave = document.getElementById('claveAcceso').value;
-            const errorDiv = document.getElementById('errorClave');
-            
-            if (clave === 'admin123') {
-                errorDiv.classList.add('hidden');
-                alert('Acceso autorizado al Panel Técnico Privado.');
-                cerrarModalAcceso();
-            } else {
-                errorDiv.classList.remove('hidden');
-            }
-        }
-
-        // --- ENVÍO DE CONSULTA FORMATEADA A WHATSAPP ---
-        function enviarMensajeWhatsApp(event) {
-            event.preventDefault(); 
-            
-            const nombre = document.getElementById('nombreContacto').value;
-            const empresa = document.getElementById('empresaContacto').value || 'Particular/No especifica';
-            const rubro = document.getElementById('rubroContacto').value;
-            const mensaje = document.getElementById('mensajeContacto').value;
-            
-            const numeroTelefono = "543572594767";
-            
-            const textoMensaje = `*CONSULTA TÉCNICA - ESTUDIO FREYTES*\n\n` +
-                                 `• *Contacto:* ${nombre}\n` +
-                                 `• *Empresa:* ${empresa}\n` +
-                                 `• *Rubro:* ${rubro}\n\n` +
-                                 `*Detalle del Requerimiento:*\n${mensaje}`;
-            
-            const mensajeCodificado = encodeURIComponent(textoMensaje);
-            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensajeCodificado}`;
-            
-            window.open(urlWhatsApp, '_blank');
-        }
-    </script>
-</body>
-</html>
+                        <textarea id="mensajeContacto" required rows="3" placeholder="Ej: Necesito cotizar un plan de evacuación, mediciones de puesta a tierra o armado de legajo técnico..." class="w-full bg-
