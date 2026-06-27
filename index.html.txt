@@ -3,1070 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Técnico Freytes - Higiene, Seguridad y Habilitaciones</title>
-    <!-- Tailwind CSS -->
+    <title>Demo Emprendedores - Catálogo Interactivo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chart.js para visualizaciones -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Google Fonts: Montserrat (Títulos) e Inter (Lectura) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        title: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            celeste: '#0ea5e9', // El celeste Roger
-                            celesteHover: '#0284c7',
-                            grisOscuro: '#0f172a', // Slate 900
-                            grisTecnico: '#64748b', // Slate 500
-                            grisFondo: '#f8fafc', // Slate 50
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #0ea5e9;
-            border-radius: 3px;
-        }
-    </style>
 </head>
-<body class="bg-brand-grisFondo text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-[#fdf8f5] text-[#3c2f2f] font-sans antialiased">
 
-    <nav class="bg-slate-900/95 backdrop-blur text-white py-4 px-6 sticky top-0 z-50 shadow-md border-b border-slate-800 transition-all">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#inicio" class="flex items-center gap-3 group">
-                <div class="bg-brand-celeste text-slate-950 px-3 py-1.5 rounded-lg font-title font-extrabold text-lg tracking-wider shadow-md shadow-sky-500/10 group-hover:scale-105 transition-transform">
-                    RF
-                </div>
-                <div>
-                    <span class="font-title font-black text-sm md:text-base tracking-tight block">ESTUDIO TÉCNICO FREYTES</span>
-                    <span class="text-[10px] text-brand-celeste tracking-widest uppercase font-semibold block -mt-1">Consultoría en Higiene y Seguridad</span>
-                </div>
-            </a>
-
-            <!-- Navegación Pública -->
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-300">
-                <a href="#inicio" class="hover:text-brand-celeste transition-colors">Inicio</a>
-                <a href="#servicios" class="hover:text-brand-celeste transition-colors">Servicios</a>
-                <a href="#impacto" class="hover:text-brand-celeste transition-colors">Estadísticas</a>
-                <a href="#calculador" class="hover:text-brand-celeste transition-colors">Auto-Diagnóstico</a>
-                <a href="#contacto" class="hover:text-brand-celeste transition-colors">Contacto</a>
-            </div>
-
-            <!-- Botón Acceso Profesional (Oculto/Privado para Roger) -->
-            <div class="flex items-center gap-3">
-                <button onclick="toggleAdminModal()" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-700 hover:border-brand-celeste text-slate-300 transition-all cursor-pointer">
-                    🔑 <span>Acceso Roger</span>
-                </button>
-                <a href="#contacto" class="hidden sm:inline-block bg-brand-celeste hover:bg-brand-celesteHover text-slate-950 font-bold px-4 py-2 rounded-lg text-xs tracking-wider transition-all uppercase shadow-lg shadow-sky-500/20 hover:scale-[1.02]">
-                    Solicitar Visita
-                </a>
+    <nav class="flex items-center justify-between px-6 py-4 bg-white shadow-sm border-b border-pink-100">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl">✨</span>
+            <div class="text-left">
+                <span class="font-bold text-lg tracking-wide block text-pink-600 leading-tight">BEAUTY GLOW</span>
+                <span class="text-gray-400 text-[10px] uppercase font-semibold tracking-wider block">Cosmética & Cuidado Real</span>
             </div>
         </div>
+        <a href="#contacto" class="bg-pink-500 text-white px-4 py-2 rounded-full font-bold text-xs hover:bg-pink-600 transition-colors shadow-md shadow-pink-500/20">
+            PEDIR POR WHATSAPP
+        </a>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header id="inicio" class="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white py-20 px-6 overflow-hidden border-b border-slate-800">
-        <!-- Decoraciones de fondo -->
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(14,165,233,0.1),transparent_50%)]"></div>
-        <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-            <div class="lg:col-span-7 space-y-6">
-                <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 px-3 py-1 rounded-full text-brand-celeste text-xs font-bold uppercase tracking-wider">
-                    ⚡ Soluciones Profesionales en Córdoba
-                </div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-title font-black leading-tight text-white">
-                    Habilitaciones Sin Vueltas. <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-celeste to-teal-400">Tranquilidad Asegurada.</span>
-                </h1>
-                <p class="text-slate-400 text-base md:text-lg max-w-2xl font-light leading-relaxed">
-                    Evitá clausuras, multas y demoras municipales. Nos encargamos de todo el proceso técnico y documental para que te enfoques exclusivamente en hacer crecer tu negocio.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                    <a href="#calculador" class="bg-brand-celeste hover:bg-brand-celesteHover text-slate-950 font-extrabold px-8 py-4 rounded-xl text-center text-sm tracking-wider uppercase transition-all shadow-lg shadow-sky-500/20 hover:-translate-y-0.5">
-                        Hacer Diagnóstico Técnico Gratis
-                    </a>
-                    <a href="#servicios" class="border border-slate-700 hover:border-brand-celeste bg-slate-900/50 hover:bg-slate-900 px-8 py-4 rounded-xl text-center text-sm font-bold tracking-wider uppercase transition-all text-slate-300">
-                        Ver Servicios Técnicos
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Quick Info Cards -->
-            <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80 backdrop-blur-sm">
-                    <span class="text-3xl block mb-2">📋</span>
-                    <h3 class="font-title font-bold text-white text-base">Gestión Integral</h3>
-                    <p class="text-xs text-slate-400 mt-1">Planes de evacuación, simulacros y gestiones municipales ágiles.</p>
-                </div>
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80 backdrop-blur-sm">
-                    <span class="text-3xl block mb-2">🔥</span>
-                    <h3 class="font-title font-bold text-white text-base">Carga de Fuego</h3>
-                    <p class="text-xs text-slate-400 mt-1">Cálculos analíticos de riesgo y dotación precisa de extintores.</p>
-                </div>
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80 backdrop-blur-sm col-span-2">
-                    <div class="flex items-center gap-4">
-                        <span class="text-4xl">🚀</span>
-                        <div>
-                            <h3 class="font-title font-bold text-white text-base">100% de Aprobación</h3>
-                            <p class="text-xs text-slate-400 mt-0.5">Nuestros clientes operan con total cumplimiento normativo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <header class="px-6 py-12 text-center bg-gradient-to-b from-pink-50 to-[#fdf8f5]">
+        <span class="text-xs font-bold tracking-widest text-pink-500 uppercase bg-pink-100 px-3 py-1 rounded-full">Cruelty Free & Vegano 🌱</span>
+        <h1 class="text-3xl font-extrabold text-[#2d2222] mt-4 leading-tight">
+            Tu rutina de Skincare, <br>
+            <span class="text-pink-500">fácil y personalizada.</span>
+        </h1>
+        <p class="text-gray-500 text-sm mt-3 max-w-sm mx-auto leading-relaxed">
+            Productos naturales diseñados para resaltar tu brillo real. ¿No sabés qué necesita tu piel? Usá nuestro test automático abajo.
+        </p>
+        <div class="mt-6">
+            <a href="#test-piel" class="bg-pink-500 text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-pink-600 transition-all inline-block shadow-lg shadow-pink-500/10">
+                ✨ ASESOR DE PIEL GRATIS
+            </a>
         </div>
     </header>
 
-    <!-- SERVICIOS -->
-    <section id="servicios" class="py-20 px-6 max-w-7xl mx-auto w-full space-y-12">
-        <div class="text-center max-w-3xl mx-auto space-y-3">
-            <span class="text-xs font-extrabold text-brand-celeste uppercase tracking-widest block">Servicios de Ingeniería</span>
-            <h2 class="text-3xl md:text-4xl font-title font-extrabold text-slate-900">Soluciones para Industrias, Comercios y Obras</h2>
-            <p class="text-sm md:text-base text-slate-600 font-light">
-                Garantizamos la seguridad operativa de tu establecimiento bajo los lineamientos de la Ley 19.587 y normativas locales vigentes.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Servicio 1 -->
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-celeste/40 transition-all flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">📋</div>
-                    <h3 class="font-title font-bold text-xl text-slate-900 group-hover:text-brand-celeste transition-colors">Planes de Emergencia</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed font-light">
-                        Diseño detallado de planes de evacuación, roles ante siniestros, demarcación de salidas de emergencia y capacitación activa para todo tu personal.
-                    </p>
-                </div>
-                <a href="#contacto" class="inline-flex items-center gap-2 text-xs font-bold text-brand-celeste uppercase tracking-wider pt-6 hover:text-brand-celesteHover">
-                    Consultar servicio &rarr;
-                </a>
+    <section id="test-piel" class="px-4 py-10 max-w-md mx-auto">
+        <div class="bg-white border border-pink-100 rounded-2xl p-5 shadow-xl shadow-pink-500/5">
+            <div class="text-center mb-5">
+                <span class="text-3xl block mb-1">🧼</span>
+                <h3 class="text-lg font-bold text-[#2d2222]">Test de Piel Express</h3>
+                <p class="text-gray-400 text-xs">Descubrí tu rutina ideal en 2 clics.</p>
             </div>
 
-            <!-- Servicio 2 -->
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-celeste/40 transition-all flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">🔥</div>
-                    <h3 class="font-title font-bold text-xl text-slate-900 group-hover:text-brand-celeste transition-colors">Cálculo de Carga de Fuego</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed font-light">
-                        Estudio analítico de la densidad de carga térmica en tus depósitos o salones comerciales para determinar la resistencia estructural y cantidad de extintores necesarios.
-                    </p>
-                </div>
-                <a href="#contacto" class="inline-flex items-center gap-2 text-xs font-bold text-brand-celeste uppercase tracking-wider pt-6 hover:text-brand-celesteHover">
-                    Consultar servicio &rarr;
-                </a>
-            </div>
-
-            <!-- Servicio 3 -->
-            <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-brand-celeste/40 transition-all flex flex-col justify-between group">
-                <div class="space-y-4">
-                    <div class="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">🏛️</div>
-                    <h3 class="font-title font-bold text-xl text-slate-900 group-hover:text-brand-celeste transition-colors">Habilitación Comercial</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed font-light">
-                        Gestión integral técnica para municipalidades de toda la región. Armado de carpetas, planos de bomberos, certificados de puesta a tierra y gestiones presenciales.
-                    </p>
-                </div>
-                <a href="#contacto" class="inline-flex items-center gap-2 text-xs font-bold text-brand-celeste uppercase tracking-wider pt-6 hover:text-brand-celesteHover">
-                    Consultar servicio &rarr;
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- IMPACT STATS SECTION -->
-    <section id="impacto" class="bg-slate-900 text-white py-20 px-6 border-t border-b border-slate-800">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-5 space-y-6">
-                <span class="text-xs font-extrabold text-brand-celeste uppercase tracking-widest block">Cumplimiento Técnico</span>
-                <h2 class="text-3xl md:text-4xl font-title font-extrabold">Por qué tu negocio necesita Gestión Profesional</h2>
-                <p class="text-slate-400 font-light leading-relaxed">
-                    Las estadísticas muestran que los comercios e industrias sin un técnico permanente sufren hasta un 85% más de observaciones y riesgos de clausura durante inspecciones ordinarias. Nuestra gestión técnica reduce ese margen a valores óptimos.
-                </p>
-                <div class="space-y-4 pt-4">
-                    <div class="flex items-start gap-4">
-                        <div class="bg-brand-celeste text-slate-950 p-2 rounded-lg font-bold">✓</div>
-                        <div>
-                            <h4 class="font-bold text-white text-sm">Protección Legal Integral</h4>
-                            <p class="text-xs text-slate-400 mt-0.5">Respaldamos cada cálculo técnico con matrícula profesional nacional y provincial.</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-4">
-                        <div class="bg-brand-celeste text-slate-950 p-2 rounded-lg font-bold">✓</div>
-                        <div>
-                            <h4 class="font-bold text-white text-sm">Respuesta Inmediata</h4>
-                            <p class="text-xs text-slate-400 mt-0.5">Asistencia presencial ante inspecciones, clausuras preventivas o peritajes.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-7 bg-slate-950/60 p-6 md:p-8 rounded-2xl border border-slate-800 shadow-2xl relative">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="font-title font-bold text-sm uppercase tracking-wider text-slate-300">Comparativa de Riesgo y Cumplimiento</h3>
-                    <span class="text-[10px] bg-slate-800 text-brand-celeste px-2 py-1 rounded">Métricas Municipales 2026</span>
-                </div>
-                <div class="h-[280px] w-full relative">
-                    <canvas id="impactChart"></canvas>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AUTO-DIAGNOSTICO CALCULATOR -->
-    <section id="calculador" class="py-20 px-6 max-w-7xl mx-auto w-full space-y-12">
-        <div class="text-center max-w-3xl mx-auto space-y-3">
-            <span class="text-xs font-extrabold text-brand-celeste uppercase tracking-widest block">Evaluador de Requisitos</span>
-            <h2 class="text-3xl md:text-4xl font-title font-extrabold text-slate-900">Auto-Diagnóstico de Higiene y Seguridad</h2>
-            <p class="text-sm md:text-base text-slate-600 font-light">
-                Seleccioná los datos de tu establecimiento para saber de forma preliminar qué normativas te corresponden presentar.
-            </p>
-        </div>
-
-        <div class="bg-white rounded-3xl border border-slate-200 p-8 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-            
-            <!-- Controles -->
-            <div class="lg:col-span-6 space-y-6 flex flex-col justify-between">
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">1. Rubro de Actividad</label>
-                        <select id="calcRubro" onchange="runDiagnostic()" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-sm text-slate-700 font-semibold focus:ring-2 focus:ring-brand-celeste outline-none cursor-pointer">
-                            <option value="gastronomico">Gastronomía y Eventos (Alta concurrencia)</option>
-                            <option value="taller">Taller, Fábrica o Depósito (Riesgo industrial)</option>
-                            <option value="obra">Obra en Construcción o Montaje</option>
-                            <option value="local">Local Comercial / Oficinas (Riesgo bajo/medio)</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">2. Superficie Cubierta (m²)</label>
-                        <div class="flex items-center gap-4">
-                            <input type="range" id="calcArea" min="20" max="1500" value="150" oninput="runDiagnostic()" class="w-full accent-brand-celeste cursor-pointer">
-                            <span id="areaLabel" class="text-sm font-black bg-slate-100 px-3 py-1.5 rounded-lg text-slate-700 min-w-[80px] text-center">150 m²</span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">3. Cantidad de Empleados</label>
-                        <div class="flex items-center gap-4">
-                            <input type="range" id="calcPersonal" min="1" max="100" value="5" oninput="runDiagnostic()" class="w-full accent-brand-celeste cursor-pointer">
-                            <span id="personalLabel" class="text-sm font-black bg-slate-100 px-3 py-1.5 rounded-lg text-slate-700 min-w-[80px] text-center">5 pers.</span>
-                        </div>
-                    </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1.5">1. ¿Cómo sentís tu rostro durante el día?</label>
+                    <select id="tipoPiel" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs text-gray-700 focus:outline-none focus:border-pink-500">
+                        <option value="seca">Tirante, opaco o con descamación</option>
+                        <option value="grasa">Con brillo constante y poros abiertos</option>
+                        <option value="mixta">Zona T con brillo (frente/nariz) y mejillas secas</option>
+                    </select>
                 </div>
 
-                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100 text-xs text-slate-500 italic">
-                    *Este cálculo preliminar es estimativo bajo los lineamientos básicos de las ordenanzas de habilitación y la ley 19.587. Requiere validación final por parte de Roger Freytes.
-                </div>
-            </div>
-
-            <!-- Reporte Visual -->
-            <div class="lg:col-span-6 bg-slate-900 text-white p-8 rounded-2xl flex flex-col justify-between border border-slate-800 shadow-inner">
-                <div class="space-y-6">
-                    <div class="flex justify-between items-start">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Resultado del Análisis preliminar</span>
-                        <span id="riskBadge" class="text-[10px] font-bold uppercase tracking-wider bg-amber-500/10 border border-amber-500/30 text-amber-400 px-2 py-1 rounded">Riesgo Medio</span>
-                    </div>
-
-                    <div class="space-y-2">
-                        <h4 class="text-sm text-slate-400">Requerimientos técnicos obligatorios sugeridos:</h4>
-                        <ul id="reqList" class="space-y-3 text-sm pt-2">
-                            <!-- Inyectado por JS -->
-                        </ul>
-                    </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-600 mb-1.5">2. ¿Cuál es tu objetivo principal?</label>
+                    <select id="objetivoPiel" class="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-xs text-gray-700 focus:outline-none focus:border-pink-500">
+                        <option value="hidratar">Hidratación profunda y luminosidad</option>
+                        <option value="puntos">Controlar granitos y puntos negros</option>
+                        <option value="manchas">Suavizar líneas de expresión y manchas</option>
+                    </select>
                 </div>
 
-                <div class="border-t border-slate-800 pt-6 mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div>
-                        <span class="text-xs text-slate-400 block">¿Necesitás cotizar la gestión?</span>
-                        <span class="text-sm font-bold text-brand-celeste block">Asesoramiento integral inmediato</span>
-                    </div>
-                    <button onclick="requestQuoteFromCalc()" class="w-full sm:w-auto bg-brand-celeste hover:bg-brand-celesteHover text-slate-950 font-bold px-6 py-3 rounded-xl text-xs tracking-wider uppercase transition-all shadow-lg shadow-sky-500/10 hover:scale-[1.01] cursor-pointer">
-                        Enviar Consulta WhatsApp
+                <button onclick="recomendarRutina()" class="w-full bg-[#2d2222] hover:bg-black text-white font-bold py-3 px-4 rounded-xl text-xs tracking-wider transition-colors mt-2">
+                    VER MI RUTINA IDEAL
+                </button>
+
+                <div id="resultadoTest" class="hidden mt-4 p-4 rounded-xl text-center border space-y-3">
+                    <span class="text-[10px] uppercase font-bold tracking-wider block text-gray-400">Tu recomendación técnica</span>
+                    <div id="nombreRutina" class="text-base font-extrabold text-pink-600"></div>
+                    <p id="descRutina" class="text-xs text-gray-600 leading-relaxed pb-2 border-b border-gray-100"></p>
+                    
+                    <button onclick="comprarRecomendado()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg text-xs transition-colors">
+                        💬 Pedir esta rutina por WhatsApp
                     </button>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
-    <section id="contacto" class="py-20 px-6 bg-slate-900 text-white border-t border-slate-800 relative">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_80%,rgba(14,165,233,0.05),transparent_40%)]"></div>
-        
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative z-10">
-            <div class="lg:col-span-5 space-y-6">
-                <span class="text-xs font-extrabold text-brand-celeste uppercase tracking-widest block">Contacto Directo</span>
-                <h2 class="text-3xl md:text-4xl font-title font-extrabold">Coordinemos tu próxima inspección</h2>
-                <p class="text-slate-400 font-light leading-relaxed">
-                    Escribinos hoy para solicitar un diagnóstico de estado sin cargo para tu local o taller. Te responderemos en menos de 2 horas hábiles.
-                </p>
-                <div class="space-y-4 pt-4 text-sm text-slate-300">
-                    <p class="flex items-center gap-3">
-                        <span class="text-lg">📲</span>
-                        <span><strong>Teléfono:</strong> 03572-15594767</span>
-                    </p>
-                    <p class="flex items-center gap-3">
-                        <span class="text-lg">✉️</span>
-                        <span><strong>Email:</strong> rogerluciano.rfa@gmail.com</span>
-                    </p>
-                    <p class="flex items-center gap-3">
-                        <span class="text-lg">📍</span>
-                        <span><strong>Zona de atención:</strong> Santa Rosa de Calamuchita, Córdoba, Argentina</span>
-                    </p>
+    <footer id="contacto" class="bg-white border-t border-pink-100 px-6 py-10 text-center">
+        <div class="max-w-sm mx-auto space-y-4">
+            <div>
+                <h3 class="font-bold text-lg text-[#2d2222]">¿Querés armar un pedido personalizado?</h3>
+                <p class="text-xs text-gray-400 mt-1">Escribinos directamente y coordinamos el envío.</p>
+            </div>
+
+            <form onsubmit="enviarPedidoGeneral(event)" class="space-y-3 text-left">
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 mb-1">Nombre:</label>
+                    <input type="text" id="nombreCliente" required placeholder="Ej: Laura Pérez" class="w-full bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-xs focus:outline-none focus:border-pink-500">
                 </div>
-            </div>
-
-            <!-- Formulario Leads a WhatsApp -->
-            <div class="lg:col-span-7 bg-slate-950/40 p-8 rounded-3xl border border-slate-800">
-                <form id="leadForm" onsubmit="sendLeadWhatsApp(event)" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="space-y-1">
-                            <label class="text-xs text-slate-400 font-semibold uppercase">Tu Nombre / Empresa</label>
-                            <input type="text" id="leadName" required placeholder="Ej: Juan de Taller Metalúrgico" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-sm text-white focus:ring-1 focus:ring-brand-celeste outline-none">
-                        </div>
-                        <div class="space-y-1">
-                            <label class="text-xs text-slate-400 font-semibold uppercase">Tu Celular</label>
-                            <input type="tel" id="leadPhone" required placeholder="Ej: 357215XXXXXX" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-sm text-white focus:ring-1 focus:ring-brand-celeste outline-none">
-                        </div>
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-xs text-slate-400 font-semibold uppercase">Ubicación del Negocio</label>
-                        <input type="text" id="leadLoc" required placeholder="Ej: Santa Rosa de Calamuchita" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-sm text-white focus:ring-1 focus:ring-brand-celeste outline-none">
-                    </div>
-                    <div class="space-y-1">
-                        <label class="text-xs text-slate-400 font-semibold uppercase">Consulta o Trámite Técnico</label>
-                        <textarea id="leadMsg" rows="4" required placeholder="Contanos brevemente qué necesitás resolver (Habilitación, Carga de fuego, peritaje, etc.)" class="w-full bg-slate-900 border border-slate-800 rounded-lg p-3 text-sm text-white focus:ring-1 focus:ring-brand-celeste outline-none"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-brand-celeste hover:bg-brand-celesteHover text-slate-950 font-extrabold py-4 rounded-xl shadow-lg shadow-sky-500/10 hover:scale-[1.01] tracking-wider uppercase text-sm transition-all cursor-pointer">
-                        Enviar Consulta a WhatsApp de Roger
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER PÚBLICO -->
-    <footer class="bg-slate-950 border-t border-slate-900 py-12 mt-auto">
-        <div class="max-w-7xl mx-auto px-6 text-center space-y-4">
-            <p class="text-sm text-slate-500">&copy; 2026 Roger Freytes - Consultoría Técnica en Higiene y Seguridad Laboral</p>
-            <p class="text-[10px] text-slate-600 italic">Desarrollo Tecnológico Integrado de Estudio de Marketing y Consultoría Técnica.</p>
+                <div>
+                    <label class="block text-[11px] font-bold text-gray-500 mb-1">¿Qué productos te gustaría sumar?:</label>
+                    <textarea id="productosPedido" required rows="2" placeholder="Ej: Sérum de Vitamina C y Agua Micelar..." class="w-full bg-gray-50 border border-gray-200 rounded-lg p-2.5 text-xs focus:outline-none focus:border-pink-500 resize-none"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2.5 rounded-lg text-xs tracking-wider transition-all shadow-md shadow-green-500/10">
+                    🚀 ENVIAR PEDIDO A WHATSAPP
+                </button>
+            </form>
         </div>
     </footer>
 
-    <!-- ADMIN PORTAL MODAL (Roger's private section) -->
-    <div id="adminModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-slate-900 rounded-3xl border border-slate-800 w-full max-w-5xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <!-- Header Modal -->
-            <div class="bg-slate-950 px-6 py-4 border-b border-slate-800 flex justify-between items-center">
-                <div class="flex items-center gap-3">
-                    <span class="text-brand-celeste text-lg">🔑</span>
-                    <h3 class="font-title font-bold text-white text-base">Portal Administrativo - Roger Freytes</h3>
-                </div>
-                <button onclick="toggleAdminModal()" class="text-slate-400 hover:text-white text-lg font-bold cursor-pointer">&times;</button>
-            </div>
-
-            <!-- Login Gateway if lock is on -->
-            <div id="lockScreen" class="p-12 flex flex-col items-center justify-center space-y-6 text-center">
-                <span class="text-5xl">👤</span>
-                <div class="space-y-2">
-                    <h4 class="font-title font-bold text-white text-lg">Control de Acceso</h4>
-                    <p class="text-xs text-slate-400 max-w-xs">Introduce tu código PIN de consultor para habilitar las herramientas de generación de contenido.</p>
-                </div>
-                <div class="space-y-3 w-full max-w-[240px]">
-                    <input type="password" id="pinInput" placeholder="Código PIN" class="text-center w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-lg text-white font-bold tracking-widest focus:ring-1 focus:ring-brand-celeste outline-none">
-                    <button onclick="validatePIN()" class="w-full bg-brand-celeste text-slate-950 font-bold p-3 rounded-xl hover:bg-brand-celesteHover transition-all cursor-pointer">Desbloquear Panel</button>
-                    <p id="pinError" class="text-xs text-rose-500 font-semibold hidden">PIN incorrecto. Reintentá.</p>
-                </div>
-            </div>
-
-            <!-- Dashboard de Administración (Oculto al inicio) -->
-            <div id="adminContent" class="hidden overflow-y-auto custom-scrollbar flex-grow p-6 md:p-8 space-y-8 bg-slate-900">
-                <!-- Tabs -->
-                <div class="flex border-b border-slate-800 gap-4 mb-6">
-                    <button onclick="switchTab('tabFlyer')" id="btnTabFlyer" class="border-b-2 border-brand-celeste text-brand-celeste pb-3 px-4 font-bold text-sm tracking-wide transition-all cursor-pointer">
-                        🎨 Estudio de Flyer
-                    </button>
-                    <button onclick="switchTab('tabAI')" id="btnTabAI" class="border-b-2 border-transparent text-slate-400 pb-3 px-4 font-bold text-sm tracking-wide transition-all cursor-pointer">
-                        🤖 AI Pitch WhatsApp
-                    </button>
-                </div>
-
-                <!-- TAB 1: FLYER GENERATOR -->
-                <div id="tabFlyer" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                    
-                    <!-- Controls (Left) -->
-                    <div class="lg:col-span-5 space-y-5">
-                        <div class="bg-slate-950/40 p-5 rounded-2xl border border-slate-800 space-y-4">
-                            <label class="block text-xs font-bold text-brand-celeste uppercase tracking-wider">1. Cargar Plantilla Base</label>
-                            <input type="file" id="imageLoader" accept="image/*" class="text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-brand-celeste file:text-slate-950 hover:file:bg-brand-celesteHover cursor-pointer">
-                            <span id="uploadStatus" class="block text-xs text-slate-500 italic mt-1">Cargar HISTORIA 01.png desde tu galería.</span>
-                        </div>
-
-                        <div class="bg-slate-950/40 p-5 rounded-2xl border border-slate-800 space-y-4">
-                            <label class="block text-xs font-bold text-brand-celeste uppercase tracking-wider">2. Personalización de Textos</label>
-                            
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-slate-400 font-semibold">TÍTULO (Mayúsculas)</label>
-                                <textarea id="textTitle" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-brand-celeste">¿ESTÁS POR ABRIR O NECESITÁS RENOVAR TU HABILITACIÓN?</textarea>
-                            </div>
-
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-slate-400 font-semibold">INTRODUCCIÓN</label>
-                                <textarea id="textDesc" rows="2" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-brand-celeste">Evitá multas y clausuras. Yo me encargo de la gestión técnica obligatoria para que trabajes tranquilo:</textarea>
-                            </div>
-
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-slate-400 font-semibold">BULLETS (Uno por renglón)</label>
-                                <textarea id="textBullets" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white font-mono focus:outline-none focus:border-brand-celeste">📋 Plan de Emergencia y Evacuación
-📋 Cálculo de Carga de Fuego
-📋 Planos y Roles de Emergencia</textarea>
-                            </div>
-
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-slate-400 font-semibold">BOTÓN CTA (Mayúsculas)</label>
-                                <input type="text" id="textCta" value="¡CONSULTAME HOY SIN COMPROMISO!" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-brand-celeste">
-                            </div>
-
-                            <div class="space-y-1">
-                                <label class="text-[10px] text-slate-400 font-semibold">CONTACTO</label>
-                                <input type="text" id="textContact" value="📲 03572-15594767  |  ✉️ rogerluciano.rfa@gmail.com" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-brand-celeste">
-                            </div>
-                        </div>
-
-                        <div class="bg-slate-950/40 p-5 rounded-2xl border border-slate-800 space-y-4">
-                            <label class="block text-xs font-bold text-brand-celeste uppercase tracking-wider">3. Calibración y Colores</label>
-                            
-                            <div class="flex items-center justify-between text-xs">
-                                <span class="text-slate-400 font-medium">Color de Marca</span>
-                                <input type="color" id="brandColor" value="#0ea5e9" class="bg-transparent border-0 cursor-pointer w-8 h-8">
-                            </div>
-
-                            <div class="space-y-1">
-                                <div class="flex justify-between text-[10px] text-slate-400">
-                                    <span>ALTURA TÍTULO</span>
-                                    <span id="valTitleY">290px</span>
-                                </div>
-                                <input type="range" id="sliderTitleY" min="150" max="450" value="290" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-celeste">
-                            </div>
-
-                            <div class="space-y-1">
-                                <div class="flex justify-between text-[10px] text-slate-400">
-                                    <span>ALTURA CONTENIDO</span>
-                                    <span id="valContentY">530px</span>
-                                </div>
-                                <input type="range" id="sliderContentY" min="400" max="800" value="530" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-celeste">
-                            </div>
-
-                            <div class="space-y-1">
-                                <div class="flex justify-between text-[10px] text-slate-400">
-                                    <span>ALTURA BOTÓN CTA</span>
-                                    <span id="valCtaY">1380px</span>
-                                </div>
-                                <input type="range" id="sliderCtaY" min="1100" max="1500" value="1380" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-celeste">
-                            </div>
-
-                            <div class="space-y-1">
-                                <div class="flex justify-between text-[10px] text-slate-400">
-                                    <span>ALTURA DATOS CONTACTO</span>
-                                    <span id="valContactY">1570px</span>
-                                </div>
-                                <input type="range" id="sliderContactY" min="1400" max="1750" value="1570" class="w-full h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-brand-celeste">
-                            </div>
-                        </div>
-
-                        <button id="btnDownload" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg shadow-emerald-500/10 transition-all uppercase tracking-wider text-xs flex items-center justify-center gap-2 cursor-pointer">
-                            <span>⬇️</span> Descargar Imagen Terminada
-                        </button>
-                    </div>
-
-                    <!-- Canvas Preview Display (Right) -->
-                    <div class="lg:col-span-7 flex flex-col items-center justify-center space-y-4">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider self-start">Previsualización en Pantalla (Simulada 9:16)</span>
-                        <div class="bg-slate-950 p-2.5 rounded-3xl border border-slate-800 shadow-2xl overflow-hidden flex items-center justify-center w-full max-w-[340px]">
-                            <canvas id="flyerCanvas" width="1080" height="1920" class="max-w-full h-auto rounded-2xl shadow-inner border border-slate-800 bg-white" style="aspect-ratio: 9/16;"></canvas>
-                        </div>
-                        <p class="text-[10px] text-slate-500 text-center max-w-sm italic">
-                            La imagen se renderizará automáticamente a escala de visualización. Al descargarla, obtendrás el archivo completo en alta resolución para subir directamente a Historias.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- TAB 2: AI WHATSAPP PITCH GENERATOR -->
-                <div id="tabAI" class="hidden space-y-6">
-                    <div class="bg-slate-950/40 p-6 rounded-2xl border border-slate-800 space-y-4">
-                        <div class="flex items-center gap-3">
-                            <span class="text-2xl">🤖</span>
-                            <div>
-                                <h4 class="font-title font-bold text-white text-base">Redactor AI de Mensajes para WhatsApp</h4>
-                                <p class="text-xs text-slate-400">Generá de forma automática pitches personalizados para prospectos utilizando la Inteligencia Artificial de Google (Gemini).</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-                        <!-- Inputs -->
-                        <div class="lg:col-span-5 bg-slate-950/40 p-6 rounded-2xl border border-slate-800 space-y-4 flex flex-col justify-between">
-                            <div class="space-y-4">
-                                <div class="space-y-1">
-                                    <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Nombre del Prospecto / Negocio</label>
-                                    <input type="text" id="aiClientName" placeholder="Ej: Carlos de Gomería 'El Rayo'" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-celeste">
-                                </div>
-
-                                <div class="space-y-1">
-                                    <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Tipo de Establecimiento</label>
-                                    <select id="aiIndustry" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-celeste cursor-pointer">
-                                        <option value="Taller mecánico o metalúrgico">Taller mecánico o metalúrgico</option>
-                                        <option value="Restaurante / Bar / Gastronómico">Restaurante / Bar / Gastronómico</option>
-                                        <option value="Local de venta al público en general">Local de venta al público en general</option>
-                                        <option value="Depósito industrial o planta logística">Depósito industrial o planta logística</option>
-                                        <option value="Obra o subcontratista técnico">Obra o subcontratista técnico</option>
-                                    </select>
-                                </div>
-
-                                <div class="space-y-1">
-                                    <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Urgencia o Motivo Principal</label>
-                                    <select id="aiGoal" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-celeste cursor-pointer">
-                                        <option value="Habilitación municipal obligatoria">Habilitación municipal obligatoria</option>
-                                        <option value="Renovación de Plan de Evacuación anual">Renovación de Plan de Evacuación anual</option>
-                                        <option value="Inspección de bomberos o municipalidad inminente">Inspección de bomberos o municipalidad inminente</option>
-                                        <option value="Mejorar orden técnico y evitar multas">Mejorar orden técnico y evitar multas</option>
-                                    </select>
-                                </div>
-
-                                <div class="space-y-1">
-                                    <label class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Detalles Adicionales (Opcional)</label>
-                                    <textarea id="aiDetails" rows="3" placeholder="Ej: Pasé ayer por la vereda y vi que abrió hace poco. Ofrecer visita técnica sin cargo para el viernes." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs text-white focus:outline-none focus:border-brand-celeste"></textarea>
-                                </div>
-                            </div>
-
-                            <button onclick="generateAIPitch()" class="w-full bg-brand-celeste hover:bg-brand-celesteHover text-slate-950 font-extrabold py-3.5 rounded-xl text-xs tracking-wider uppercase transition-all shadow-lg shadow-sky-500/10 hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer mt-4">
-                                <span id="aiBtnText">Generar Mensaje WhatsApp</span>
-                                <div id="aiSpinner" class="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin hidden"></div>
-                            </button>
-                        </div>
-
-                        <!-- Output Screen -->
-                        <div class="lg:col-span-7 bg-slate-950/60 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
-                            <div class="space-y-4 flex-grow">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Propuesta Redactada por AI</span>
-                                    <button onclick="copyToClipboard()" class="text-xs font-bold text-brand-celeste hover:text-brand-celesteHover flex items-center gap-1 cursor-pointer">
-                                        📋 <span>Copiar Mensaje</span>
-                                    </button>
-                                </div>
-                                <div id="aiOutput" class="bg-slate-950 rounded-xl p-4 text-xs font-mono text-slate-300 leading-relaxed overflow-y-auto max-h-[300px] border border-slate-800 min-h-[220px]">
-                                    Completá los campos de la izquierda y presioná "Generar Mensaje" para que la Inteligencia Artificial redacte un mensaje de contacto de alto impacto adaptado a tus necesidades como consultor técnico.
-                                </div>
-                            </div>
-                            <div class="border-t border-slate-800/80 pt-4 mt-4 flex items-center justify-between text-[11px] text-slate-500 italic">
-                                <span>* El mensaje usa el dialecto argentino corporativo-técnico propio de Roger.</span>
-                                <span id="copySuccess" class="text-emerald-400 font-semibold hidden">¡Mensaje Copiado!</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
     <script>
-        // --- CÓDIGO CLAVE DE SEGURIDAD (PIN) ---
-        const CONSULTANT_PIN = "2026"; // PIN para que solo acceda Roger
-        let isUnlocked = false;
+        let recomendacionGlobal = "";
 
-        function toggleAdminModal() {
-            const modal = document.getElementById('adminModal');
-            modal.classList.toggle('hidden');
-            if (!modal.classList.contains('hidden')) {
-                if (isUnlocked) {
-                    document.getElementById('lockScreen').classList.add('hidden');
-                    document.getElementById('adminContent').classList.remove('hidden');
-                    draw(); // Render flyer canvas on load
-                } else {
-                    document.getElementById('lockScreen').classList.remove('hidden');
-                    document.getElementById('adminContent').classList.add('hidden');
-                }
-            }
-        }
+        function recomendarRutina() {
+            const piel = document.getElementById('tipoPiel').value;
+            const objetivo = document.getElementById('objetivoPiel').value;
+            const contenedor = document.getElementById('resultadoTest');
+            const titulo = document.getElementById('nombreRutina');
+            const desc = document.getElementById('descRutina');
 
-        function validatePIN() {
-            const pinInput = document.getElementById('pinInput');
-            const pinError = document.getElementById('pinError');
-            if (pinInput.value === CONSULTANT_PIN) {
-                isUnlocked = true;
-                pinError.classList.add('hidden');
-                document.getElementById('lockScreen').classList.add('hidden');
-                document.getElementById('adminContent').classList.remove('hidden');
-                draw(); // Render canvas
+            contenedor.classList.remove('hidden');
+
+            // Lógica automática de recomendación cruzada
+            if (piel === 'grasa' || objetivo === 'puntos') {
+                contenedor.className = "mt-4 p-4 rounded-xl text-center border bg-green-50/50 border-green-200 text-green-800 space-y-2";
+                titulo.innerText = "🌿 Kit Balance Purificante";
+                desc.innerText = "Ideal para regular el sebo sin resecar. Incluye: Gel Limpiador Facial de Té Verde + Tónico Matificante de Niacinamida.";
+                recomendacionGlobal = "Kit Balance Purificante (Té Verde + Niacinamida)";
+            } else if (piel === 'seca' || objetivo === 'hidratar') {
+                contenedor.className = "mt-4 p-4 rounded-xl text-center border bg-blue-50/50 border-blue-200 text-blue-800 space-y-2";
+                titulo.innerText = "💧 Combo Ultra Hidratación";
+                desc.innerText = "Devuelve el agua y la elasticidad a tu rostro. Incluye: Crema Nutritiva de Ácido Hialurónico + Sérum Glow Facial.";
+                recomendacionGlobal = "Combo Ultra Hidratación (Ácido Hialurónico + Sérum Glow)";
             } else {
-                pinError.classList.remove('hidden');
-                pinInput.value = "";
-                pinInput.focus();
+                contenedor.className = "mt-4 p-4 rounded-xl text-center border bg-pink-50/50 border-pink-200 text-pink-800 space-y-2";
+                titulo.innerText = "✨ Rutina Renovadora Anti-Stress";
+                desc.innerText = "Para unificar el tono y lucir una piel descansada. Incluye: Sérum Concentrado de Vitamina C + Emulsión Suave de Manzanilla.";
+                recomendacionGlobal = "Rutina Renovadora Anti-Stress (Vitamina C + Manzanilla)";
             }
         }
 
-        function switchTab(tabId) {
-            const tabFlyer = document.getElementById('tabFlyer');
-            const tabAI = document.getElementById('tabAI');
-            const btnTabFlyer = document.getElementById('btnTabFlyer');
-            const btnTabAI = document.getElementById('btnTabAI');
-
-            if (tabId === 'tabFlyer') {
-                tabFlyer.classList.remove('hidden');
-                tabAI.classList.add('hidden');
-                btnTabFlyer.classList.add('border-brand-celeste', 'text-brand-celeste');
-                btnTabFlyer.classList.remove('border-transparent', 'text-slate-400');
-                btnTabAI.classList.add('border-transparent', 'text-slate-400');
-                btnTabAI.classList.remove('border-brand-celeste', 'text-brand-celeste');
-                draw(); // Redraw flyer on tab switch
-            } else {
-                tabFlyer.classList.add('hidden');
-                tabAI.classList.remove('hidden');
-                btnTabAI.classList.add('border-brand-celeste', 'text-brand-celeste');
-                btnTabAI.classList.remove('border-transparent', 'text-slate-400');
-                btnTabFlyer.classList.add('border-transparent', 'text-slate-400');
-                btnTabFlyer.classList.remove('border-brand-celeste', 'text-brand-celeste');
-            }
+        function comprarRecomendado() {
+            const numero = "543572594767"; // Acá va el número del cliente final
+            const texto = `*NUEVO PEDIDO DESDE LA WEB*\n\n` +
+                          `• *Consulta:* Hola! Me hice el test express en la página y mi resultado fue:\n` +
+                          `• *Recomendación:* _${recomendacionGlobal}_\n\n` +
+                          `Me gustaría que me asesores para comprar este kit y coordinar el pago. ¡Gracias!`;
+            window.open(`https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(texto)}`, '_blank');
         }
 
-        // --- LÓGICA DEL CALCULADOR DE RIESGO ---
-        function runDiagnostic() {
-            const rubro = document.getElementById('calcRubro').value;
-            const area = parseInt(document.getElementById('calcArea').value);
-            const personal = parseInt(document.getElementById('calcPersonal').value);
-
-            // Actualizar etiquetas
-            document.getElementById('areaLabel').textContent = `${area} m²`;
-            document.getElementById('personalLabel').textContent = `${personal} pers.`;
-
-            const reqList = document.getElementById('reqList');
-            const riskBadge = document.getElementById('riskBadge');
-            
-            let reqs = [];
-            let riskLevel = "Bajo";
-            let badgeClass = "bg-emerald-500/10 border-emerald-500/30 text-emerald-400";
-
-            if (rubro === 'gastronomico') {
-                riskLevel = area > 100 ? "Alto" : "Medio";
-                reqs.push("🔹 Plan de Emergencia y Evacuación Homologado");
-                reqs.push("🔹 Croquis de Vías de Escape y Cartelería Fotoluminiscente");
-                reqs.push("🔹 Informe Técnico de Carga de Fuego analítico");
-                if (area > 200) reqs.push("🔹 Certificación de Tratamiento Ignífugo en decoraciones");
-                reqs.push("🔹 Planos Técnicos e Informe de Concurrencia de Público");
-            } else if (rubro === 'taller') {
-                riskLevel = "Alto";
-                reqs.push("🔹 Estudio de Resistencia de Puesta a Tierra y Continuidad de Masas (Protocolo SRT 900/15)");
-                reqs.push("🔹 Estudio de Carga de Fuego y Dotación Completa de Extintores (CO2 y Polvo Químico)");
-                reqs.push("🔹 Plan de Autoprotección Técnica y Roles de Emergencia");
-                if (personal > 10) reqs.push("🔹 Planilla de Capacitación y entrega de EPP obligatorios");
-            } else if (rubro === 'obra') {
-                riskLevel = "Alto";
-                reqs.push("🔹 Legajo Técnico de Higiene y Seguridad ante ART");
-                reqs.push("🔹 Programa de Seguridad de Obra (Res. SRT 51/97, 35/98 o 319/99)");
-                reqs.push("🔹 Visitas de Asesoramiento Técnico y Firma de Constancias");
-                reqs.push("🔹 Coordinación de Simulacros e Inducciones de Ingreso");
-            } else {
-                riskLevel = area > 250 ? "Medio" : "Bajo";
-                reqs.push("🔹 Informe Técnico de Aptitud Comercial");
-                reqs.push("🔹 Plano Básico de Salidas de Emergencia y Extintores");
-                if (area > 150) reqs.push("🔹 Memoria descriptiva y cálculo de Extintores Mínimos");
-            }
-
-            if (riskLevel === "Alto") {
-                badgeClass = "bg-rose-500/10 border-rose-500/30 text-rose-400";
-            } else if (riskLevel === "Medio") {
-                badgeClass = "bg-amber-500/10 border-amber-500/30 text-amber-400";
-            }
-
-            riskBadge.textContent = `Riesgo ${riskLevel}`;
-            riskBadge.className = `text-[10px] font-bold uppercase tracking-wider ${badgeClass} px-2 py-1 rounded`;
-
-            reqList.innerHTML = reqs.map(r => `<li>${r}</li>`).join('');
-        }
-
-        function requestQuoteFromCalc() {
-            const rubroText = document.getElementById('calcRubro').selectedOptions[0].text;
-            const area = document.getElementById('calcArea').value;
-            const personal = document.getElementById('calcPersonal').value;
-            const text = `Hola Roger! Realicé el auto-diagnóstico en tu web. Actividad: ${rubroText}, Superficie: ${area} m², Personal: ${personal} personas. ¿Me podrías asesorar sobre los trámites obligatorios?`;
-            window.open(`https://wa.me/543572594767?text=${encodeURIComponent(text)}`, '_blank');
-        }
-
-        // --- ENVÍO DE LEADS A WHATSAPP ---
-        function sendLeadWhatsApp(event) {
+        function enviarPedidoGeneral(event) {
             event.preventDefault();
-            const name = document.getElementById('leadName').value;
-            const phone = document.getElementById('leadPhone').value;
-            const location = document.getElementById('leadLoc').value;
-            const message = document.getElementById('leadMsg').value;
+            const nombre = document.getElementById('nombreCliente').value;
+            const productos = document.getElementById('productosPedido').value;
+            const numero = "543572594767";
 
-            const text = `Hola Roger, mi nombre es ${name} (Tel: ${phone}), de la localidad de ${location}. Te contacto desde la sección web de tu consultora por la siguiente inquietud técnica: ${message}`;
-            window.open(`https://wa.me/543572594767?text=${encodeURIComponent(text)}`, '_blank');
-        }
-
-        // --- CÓDIGO DEL GRÁFICO COMPARATIVO DE RIESGO ---
-        const ctxChart = document.getElementById('impactChart').getContext('2d');
-        new Chart(ctxChart, {
-            type: 'bar',
-            data: {
-                labels: ['Probabilidad de Sanciones/Multas', 'Preparación de Personal ante Siniestros', 'Seguridad Civil de Clientes'],
-                datasets: [{
-                    label: 'Sin Gestión Técnica (Vulnerable)',
-                    data: [88, 12, 24],
-                    backgroundColor: '#e2e8f0', // Slate 300
-                    borderRadius: 8,
-                }, {
-                    label: 'Con Estudio Roger Freytes',
-                    data: [4, 98, 96],
-                    backgroundColor: '#0ea5e9', // Celeste Roger
-                    borderRadius: 8,
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 100,
-                        ticks: { color: '#94a3b8' },
-                        grid: { color: 'rgba(51, 65, 85, 0.2)' }
-                    },
-                    x: {
-                        ticks: { color: '#94a3b8', font: { size: 10 } },
-                        grid: { display: false }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { color: '#cbd5e1', font: { size: 11 } }
-                    }
-                }
-            }
-        });
-
-        // --- LÓGICA DEL EDITOR DE FLYERS (HISTORIA 01.png) ---
-        const canvas = document.getElementById('flyerCanvas');
-        const ctx = canvas.getContext('2d');
-        const fileInput = document.getElementById('imageLoader');
-        const brandColorInput = document.getElementById('brandColor');
-
-        // Controles de texto
-        const textTitle = document.getElementById('textTitle');
-        const textDesc = document.getElementById('textDesc');
-        const textBullets = document.getElementById('textBullets');
-        const textCta = document.getElementById('textCta');
-        const textContact = document.getElementById('textContact');
-
-        // Sliders
-        const sliderTitleY = document.getElementById('sliderTitleY');
-        const sliderContentY = document.getElementById('sliderContentY');
-        const sliderCtaY = document.getElementById('sliderCtaY');
-        const sliderContactY = document.getElementById('sliderContactY');
-
-        // Etiquetas
-        const valTitleY = document.getElementById('valTitleY');
-        const valContentY = document.getElementById('valContentY');
-        const valCtaY = document.getElementById('valCtaY');
-        const valContactY = document.getElementById('valContactY');
-
-        const uploadStatus = document.getElementById('uploadStatus');
-        const btnDownload = document.getElementById('btnDownload');
-
-        let bgImage = new Image();
-        let isImageLoaded = false;
-
-        function drawPlaceholder() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Fondo Blanco base
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Borde Celeste simulado de plantilla
-            ctx.strokeStyle = brandColorInput.value;
-            ctx.lineWidth = 30;
-            ctx.strokeRect(40, 40, canvas.width - 80, canvas.height - 80);
-
-            // Logo Centrado abajo
-            ctx.fillStyle = '#e2e8f0';
-            ctx.strokeStyle = '#94a3b8';
-            ctx.lineWidth = 4;
-            const logoW = 320;
-            const logoH = 140;
-            const logoX = (canvas.width - logoW) / 2;
-            const logoY = canvas.height - 180;
-            
-            ctx.beginPath();
-            ctx.roundRect(logoX, logoY, logoW, logoH, 15);
-            ctx.fill();
-            ctx.stroke();
-
-            ctx.fillStyle = '#64748b';
-            ctx.font = 'bold 24px Montserrat';
-            ctx.textAlign = 'center';
-            ctx.fillText('[ LOGO CENTRADO ]', canvas.width / 2, logoY + 80);
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            if (isImageLoaded) {
-                ctx.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
-            } else {
-                drawPlaceholder();
-            }
-
-            const brandColor = brandColorInput.value;
-            const darkGray = '#1e293b';
-
-            // 1. Título
-            ctx.fillStyle = brandColor;
-            ctx.font = 'extrabold 44px Montserrat, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'top';
-            
-            const titleY = parseInt(sliderTitleY.value);
-            valTitleY.textContent = titleY + 'px';
-            wrapText(ctx, textTitle.value.toUpperCase(), canvas.width / 2, titleY, 820, 58);
-
-            // 2. Descripción e items
-            ctx.fillStyle = darkGray;
-            ctx.font = 'bold 30px "Inter", sans-serif';
-            ctx.textAlign = 'left';
-            
-            const contentY = parseInt(sliderContentY.value);
-            valContentY.textContent = contentY + 'px';
-            
-            const nextY = wrapText(ctx, textDesc.value, 150, contentY, 780, 44);
-
-            ctx.font = 'bold 32px "Inter", sans-serif';
-            const lines = textBullets.value.split('\n');
-            let bulletY = nextY + 30;
-            lines.forEach(line => {
-                if(line.trim() !== "") {
-                    ctx.fillText(line.trim(), 150, bulletY);
-                    bulletY += 56;
-                }
-            });
-
-            // 3. Botón de Llamado a la Acción (CTA)
-            const ctaY = parseInt(sliderCtaY.value);
-            valCtaY.textContent = ctaY + 'px';
-            const btnW = 780;
-            const btnH = 96;
-            const btnX = (canvas.width - btnW) / 2;
-
-            ctx.fillStyle = brandColor;
-            ctx.beginPath();
-            ctx.roundRect(btnX, ctaY, btnW, btnH, 20);
-            ctx.fill();
-
-            ctx.fillStyle = '#FFFFFF';
-            ctx.font = 'extrabold 32px Montserrat, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(textCta.value.toUpperCase(), canvas.width / 2, ctaY + (btnH / 2));
-
-            // 4. Datos de Contacto
-            ctx.fillStyle = '#475569';
-            ctx.font = 'bold 26px "Inter", sans-serif';
-            ctx.textBaseline = 'top';
-            
-            const contactY = parseInt(sliderContactY.value);
-            valContactY.textContent = contactY + 'px';
-            ctx.fillText(textContact.value, canvas.width / 2, contactY);
-        }
-
-        function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
-            const words = text.split(' ');
-            let line = '';
-            let currentY = y;
-            const lines = [];
-
-            for (let n = 0; n < words.length; n++) {
-                let testLine = line + words[n] + ' ';
-                let metrics = ctx.measureText(testLine);
-                let testWidth = metrics.width;
-                if (testWidth > maxWidth && n > 0) {
-                    lines.push(line);
-                    line = words[n] + ' ';
-                } else {
-                    line = testLine;
-                }
-            }
-            lines.push(line);
-
-            for (let i = 0; i < lines.length; i++) {
-                ctx.fillText(lines[i].trim(), x, currentY);
-                currentY += lineHeight;
-            }
-            return currentY;
-        }
-
-        fileInput.addEventListener('change', function(e) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                bgImage.onload = function() {
-                    isImageLoaded = true;
-                    uploadStatus.textContent = "¡Plantilla HISTORIA 01.png Cargada!";
-                    uploadStatus.className = "block text-xs text-emerald-400 font-semibold mt-1";
-                    draw();
-                }
-                bgImage.src = event.target.result;
-            }
-            if(e.target.files[0]) {
-                reader.readAsDataURL(e.target.files[0]);
-            }
-        });
-
-        // Live Event Listeners para el Editor
-        const editorInputs = [
-            textTitle, textDesc, textBullets, textCta, textContact,
-            sliderTitleY, sliderContentY, sliderCtaY, sliderContactY, brandColorInput
-        ];
-        editorInputs.forEach(input => {
-            input.addEventListener('input', draw);
-        });
-
-        btnDownload.addEventListener('click', function() {
-            const link = document.createElement('a');
-            link.download = 'Flyer_Roger_Freytes.png';
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        });
-
-        // --- INTEGRACIÓN DE INTELIGENCIA ARTIFICIAL (GEMINI API) ---
-        async function generateAIPitch() {
-            const clientName = document.getElementById('aiClientName').value.trim();
-            const industry = document.getElementById('aiIndustry').value;
-            const goal = document.getElementById('aiGoal').value;
-            const details = document.getElementById('aiDetails').value.trim();
-            
-            const aiOutput = document.getElementById('aiOutput');
-            const aiBtnText = document.getElementById('aiBtnText');
-            const aiSpinner = document.getElementById('aiSpinner');
-
-            if (!clientName) {
-                aiOutput.innerHTML = "❌ Por favor, ingresá el nombre del prospecto o negocio para personalizar el mensaje.";
-                return;
-            }
-
-            aiBtnText.textContent = "Redactando con AI...";
-            aiSpinner.classList.remove('hidden');
-
-            const systemPrompt = "Actuá como un redactor comercial B2B experto en higiene y seguridad industrial y habilitaciones comerciales en Argentina. Tu objetivo es ayudar a Roger Freytes (Técnico Matatriculado con 12 años de experiencia) a escribir un mensaje de prospección corto, profesional, directo, persuasivo y amigable para enviar por WhatsApp. Utilizá lenguaje corporativo argentino moderado (buen día, cómo estás, te escribo, etc.). Evitá sonar agresivo. Poné las palabras claves más importantes del servicio entre asteriscos para que WhatsApp las muestre en negrita. No incluyas explicaciones previas, redactá de forma directa el mensaje final que Roger copiará.";
-            
-            const userPrompt = `Redactá una propuesta comercial para enviar por WhatsApp al prospecto: ${clientName}.
-            Rubro del comercio: ${industry}.
-            Objetivo o urgencia del cliente: ${goal}.
-            Detalles y referencias adicionales: ${details || "Ninguno"}.
-            Firmá como Roger Freytes, Consultor Técnico en Higiene y Seguridad Laboral. Tel: 03572-15594767.`;
-
-            // Canvas runtime inyectará la clave API de forma automática cuando el campo quede vacío
-            const apiKey = ""; 
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userPrompt }] }],
-                systemInstruction: {
-                    parts: [{ text: systemPrompt }]
-                }
-            };
-
-            // Implementando llamadas con Exponential Backoff
-            let delay = 1000;
-            const maxRetries = 3;
-            for (let attempt = 1; attempt <= maxRetries; attempt++) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (response.status === 429) {
-                        throw new Error("Rate limit");
-                    }
-
-                    const result = await response.json();
-                    const text = result?.candidates?.[0]?.content?.parts?.[0]?.text;
-                    
-                    if (text) {
-                        aiOutput.innerHTML = text.replace(/\n/g, '<br>');
-                        break;
-                    } else {
-                        aiOutput.innerHTML = "⚠️ Ocurrió un error inesperado al procesar la respuesta de la IA.";
-                    }
-                } catch (error) {
-                    if (attempt === maxRetries) {
-                        aiOutput.innerHTML = `❌ Error al conectar con la Inteligencia Artificial. Por favor, intentá nuevamente más tarde.`;
-                    } else {
-                        await new Promise(resolve => setTimeout(resolve, delay));
-                        delay *= 2;
-                    }
-                }
-            }
-
-            aiBtnText.textContent = "Generar Mensaje WhatsApp";
-            aiSpinner.classList.add('hidden');
-        }
-
-        function copyToClipboard() {
-            const aiOutput = document.getElementById('aiOutput');
-            const copySuccess = document.getElementById('copySuccess');
-            
-            // Reemplazar <br> por saltos de línea planos para copiar
-            const plainText = aiOutput.innerHTML.replace(/<br\s*\/?>/gi, '\n');
-            
-            const el = document.createElement('textarea');
-            el.value = plainText;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-
-            copySuccess.classList.remove('hidden');
-            setTimeout(() => {
-                copySuccess.classList.add('hidden');
-            }, 3000);
-        }
-
-        // Ejecutar diagnóstico inicial
-        runDiagnostic();
-
-        // Polyfill para navegadores sin roundRect
-        if (!CanvasRenderingContext2D.prototype.roundRect) {
-            CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-                if (w < 2 * r) r = w / 2;
-                if (h < 2 * r) r = h / 2;
-                this.beginPath();
-                this.moveTo(x + r, y);
-                this.arcTo(x + w, y, x + w, y + h, r);
-                this.arcTo(x + w, y + h, x, y + h, r);
-                this.arcTo(x, y + h, x, y, r);
-                this.arcTo(x, y, x + w, y, r);
-                this.closePath();
-                return this;
-            };
+            const texto = `*NUEVO PEDIDO PERSONALIZADO*\n\n` +
+                          `• *Cliente:* ${nombre}\n` +
+                          `• *Pedido:* ${productos}\n\n` +
+                          `¿Tenés stock disponible para preparar este pedido?`;
+            window.open(`https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(texto)}`, '_blank');
         }
     </script>
 </body>
