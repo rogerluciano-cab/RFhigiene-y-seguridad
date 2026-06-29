@@ -1,504 +1,609 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Técnico Freytes - Higiene y Seguridad</title>
+    <title>Estudio Técnico Freytes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .modal-active { overflow: hidden; }
-        html { scroll-behavior: smooth; }
-    </style>
 </head>
-<body class="bg-[#0B132B] text-slate-100 font-sans antialiased selection:bg-blue-500 selection:text-white">
+<body class="bg-[#0b1120] text-white font-sans antialiased">
 
-    <!-- NAV BAR -->
-    <nav class="bg-[#0B132B]/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-800/80 px-4 py-3.5 transition-all">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div class="bg-white p-1 rounded border border-blue-500/30 shadow-sm">
-                    <span class="text-blue-900 font-black text-xl tracking-tighter px-1.5 py-0.5 border border-blue-900 rounded-sm">ORF</span>
-                </div>
-                <div>
-                    <span class="text-white font-extrabold text-lg tracking-wide block leading-none">ESTUDIO TÉCNICO FREYTES</span>
-                    <span class="text-blue-400 font-medium text-xs tracking-tight">Prevención estratégica, cumplimiento seguro.</span>
-                </div>
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="flex flex-col sm:flex-row items-center justify-between px-4 sm:px-10 py-4 sm:py-6 gap-4 border-b border-gray-800 sm:border-0">
+        <div class="flex items-center gap-3">
+            <img src="https://i.postimg.cc/wjZwQV6g/RF-jpg-original-(1).jpg" alt="Logo Estudio Técnico Freytes" class="h-12 w-auto rounded-lg bg-white p-1 shadow-md">
+            <div class="text-left">
+                <span class="font-bold text-base sm:text-lg tracking-wide block leading-tight">ESTUDIO TÉCNICO FREYTES</span>
+                <span class="text-[#42a5f5] text-[10px] sm:text-xs font-medium block">Prevención estratégica, cumplimiento seguro.</span>
             </div>
-            <div class="flex flex-wrap justify-center items-center gap-6 text-sm font-semibold text-slate-300">
-                <a href="#inicio" class="hover:text-blue-400 transition-colors">Inicio</a>
-                <a href="#estadisticas" class="hover:text-blue-400 transition-colors">Estadísticas</a>
-                <a href="#quien-soy" class="hover:text-blue-400 transition-colors">Quién Soy</a>
-                <a href="#consulta-normativa" class="hover:text-blue-400 transition-colors">Centro Normativo</a>
-                <a href="#contacto" class="hover:text-blue-400 transition-colors">Contacto</a>
-            </div>
-            <div class="flex items-center gap-3">
-                <button class="flex items-center gap-2 bg-slate-900/80 border border-slate-700/60 px-3.5 py-2 rounded-lg text-xs font-bold text-amber-400 hover:border-amber-500/40 transition-all">
-                    <span>🔒</span> Acceso Roger
-                </button>
-                <a href="#contacto" class="bg-blue-600 shadow-lg shadow-blue-600/20 px-4 py-2 rounded-lg text-xs font-black tracking-wider text-white hover:bg-blue-500 transition-all">
-                    SOLICITAR VISITA
-                </a>
-            </div>
+        </div>
+        <div class="hidden md:flex gap-6 text-sm opacity-80">
+            <a href="#" class="hover:text-[#42a5f5] transition-colors">Inicio</a>
+            <a href="#estadisticas" class="hover:text-[#42a5f5] transition-colors">Estadísticas</a>
+            <a href="#sobre-mi" class="hover:text-[#42a5f5] transition-colors">Quién Soy</a>
+            <a href="#consulta-normativa" class="hover:text-[#42a5f5] transition-colors">Centro Normativo</a>
+            <a href="#contacto" class="hover:text-[#42a5f5] transition-colors">Contacto</a>
+        </div>
+        <div class="flex gap-2 sm:gap-4 items-center w-full sm:w-auto justify-center sm:justify-end">
+            <button onclick="abrirModalAcceso()" class="text-xs sm:text-sm border border-gray-600 px-3 py-2 rounded flex items-center gap-1.5 hover:bg-gray-800 transition-colors bg-[#1e293b] sm:bg-transparent">
+                <span>🔒</span> Acceso Roger
+            </button>
+            <a href="#contacto" class="bg-blue-500 px-3 py-2 rounded font-bold text-xs sm:text-sm hover:bg-blue-600 transition-colors text-center shadow-lg shadow-blue-500/20">SOLICITAR VISITA</a>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header id="inicio" class="max-w-7xl mx-auto px-4 py-16 md:py-24 grid lg:grid-cols-12 gap-12 items-center min-h-[calc(100vh-73px)]">
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 px-3 py-1.5 rounded-full text-xs font-bold text-blue-400 tracking-wide uppercase mx-auto lg:mx-0">
+    <!-- MODAL DE ACCESO PRIVADO -->
+    <div id="modalAcceso" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-sm rounded-2xl p-6 shadow-2xl relative">
+            <button onclick="cerrarModalAcceso()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
+            
+            <div class="text-center mb-4">
+                <span class="text-4xl block mb-2">🔒</span>
+                <h3 class="text-lg font-bold text-[#42a5f5]">Panel Técnico Privado</h3>
+                <p class="text-gray-400 text-xs">Ingresá tu clave para gestionar plantillas.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <div>
+                    <input type="password" id="claveAcceso" placeholder="Ingresá la contraseña" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-center text-white focus:outline-none focus:border-blue-500">
+                </div>
+                
+                <button onclick="verifyClave()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors">
+                    INGRESAR
+                </button>
+                
+                <div id="errorClave" class="hidden text-xs text-red-400 text-center font-semibold mt-2">
+                    ⚠️ Contraseña incorrecta. Intentá de nuevo.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO SECTION + TARJETAS DE ACCESO RÁPIDO A SERVICIOS CONTRATABLES -->
+    <header class="px-4 sm:px-10 py-10 sm:py-16 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="text-center lg:text-left">
+            <div class="text-[#42a5f5] text-xs sm:text-sm font-semibold mb-4 border border-blue-900/50 inline-block px-3 py-1 rounded bg-blue-500/5">
                 ⚡ SOLUCIONES DE INGENIERÍA EN CÓRDOBA
             </div>
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
-                Asesoría integral en higiene y seguridad a industrias, <span class="text-blue-400">Obras y Agro.</span>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 sm:mb-6">
+                Asesoría integral en higiene y seguridad a industrias, <br class="hidden sm:inline">
+                <span class="text-[#42a5f5]">Obras y Agro.</span>
             </h1>
-            <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
+            <p class="text-gray-400 text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para evitar multas de la ART.
             </p>
-            
-            <!-- MEJORA 1 y 2: Botón de escape rápido y micro-texto de autoridad matriculada -->
-            <div class="pt-2">
-                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                    <button onclick="abrirModal()" class="bg-blue-500 px-6 py-4 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center w-full sm:w-auto shadow-lg shadow-blue-500/20 tracking-wider">
-                        DIAGNÓSTICO TÉCNICO GRATIS
-                    </button>
-                    <a href="https://wa.me/543572594767?text=Hola%20Roger,%20necesito%20una%20consulta%20técnica%20urgente%20para%20mi%20establecimiento." target="_blank" class="border border-green-600/80 text-green-400 px-6 py-4 rounded font-bold text-sm hover:bg-green-500/10 transition-colors text-center w-full sm:w-auto flex items-center justify-center gap-2 shadow-lg shadow-green-900/10">
-                        <i class="fab fa-whatsapp text-lg"></i> CONSULTA TÉCNICA URGENTE
-                    </a>
-                </div>
-                <p class="text-slate-500 text-xs mt-3 flex items-center justify-center lg:justify-start gap-1.5 font-medium">
-                    <i class="fas fa-check-circle text-blue-500"></i> Servicio profesional a cargo de Técnico Matriculado COPHISEC (Córdoba)[cite: 2].
-                </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <button onclick="abrirModal()" class="bg-blue-500 px-5 py-3.5 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center w-full sm:w-auto shadow-lg shadow-blue-500/10">
+                    DIAGNÓSTICO TÉCNICO GRATIS
+                </button>
+                <a href="#servicios-detallados" class="border border-gray-600 px-5 py-3.5 rounded font-bold text-sm hover:bg-gray-800 transition-colors text-center w-full sm:w-auto block">
+                    VER SERVICIOS TÉCNICOS
+                </a>
             </div>
         </div>
 
-        <div class="lg:col-span-5 space-y-4">
-            <a href="#servicio-industria" class="block bg-slate-900/40 border border-slate-800 hover:border-blue-500/40 p-5 rounded-xl transition-all group shadow-xl">
-                <div class="flex gap-4 items-start">
-                    <div class="bg-amber-500/10 p-3 rounded-lg text-amber-500 text-xl group-hover:scale-110 transition-transform">🏭</div>
-                    <div>
-                        <h3 class="font-bold text-white text-base mb-1 group-hover:text-blue-400 transition-colors">Servicio de Consultoría Industrial</h3>
-                        <p class="text-slate-400 text-xs font-medium leading-relaxed mb-2">Auditorías de desvíos por riesgo eléctrico, adecuación a Normas ISO, mediciones físicas obligatorias SRT e implementación del Sistema 5S de productividad.[cite: 2]</p>
-                        <span class="text-blue-400 text-xs font-bold flex items-center gap-1">Ver alcances del servicio <span class="group-hover:translate-y-0.5 transition-transform">↓</span></span>
-                    </div>
+        <!-- TARJETAS CONTRATABLES (VINCULADAS A TU EXPERIENCIA Y PERFIL) -->
+        <div id="servicios" class="grid grid-cols-1 gap-4 w-full">
+            <a href="#servicio-industria" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
+                <span class="text-xl sm:text-2xl mt-0.5">🏭</span>
+                <div>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Servicio de Consultoría Industrial</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Auditorías de desvíos por riesgo eléctrico, adecuación a Normas ISO, mediciones físicas obligatorias SRT e implementación del Sistema 5S de productividad.</p>
+                    <span class="text-[11px] sm:text-xs text-[#42a5f5] font-semibold flex items-center gap-1 mt-1">Ver alcances del servicio ↓</span>
                 </div>
             </a>
-            <a href="#servicio-obra" class="block bg-slate-900/40 border border-slate-800 hover:border-blue-500/40 p-5 rounded-xl transition-all group shadow-xl">
-                <div class="flex gap-4 items-start">
-                    <div class="bg-yellow-500/10 p-3 rounded-lg text-yellow-500 text-xl group-hover:scale-110 transition-transform">🚧</div>
-                    <div>
-                        <!-- MEJORA 6: Destacar el Legajo Técnico de Obra en el texto -->
-                        <h3 class="font-bold text-white text-base mb-1 group-hover:text-blue-400 transition-colors">Gestión y Dirección Técnica en Obras</h3>
-                        <p class="text-slate-400 text-xs font-medium leading-relaxed mb-2">Confección y aprobación de Programas de Seguridad (Dec. 911/96), <strong class="text-yellow-400 font-semibold">Legajos Técnicos de obra completos</strong> y control documental estricto de contratistas.[cite: 2]</p>
-                        <span class="text-blue-400 text-xs font-bold flex items-center gap-1">Ver alcances del servicio <span class="group-hover:translate-y-0.5 transition-transform">↓</span></span>
-                    </div>
+
+            <a href="#servicio-obra" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
+                <span class="text-xl sm:text-2xl mt-0.5">🚧</span>
+                <div>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Gestión y Dirección Técnica en Obras</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Confección y aprobación de Programas de Seguridad (Dec. 911/96), Legajos Técnicos de obra completos y control documental estricto de contratistas.</p>
+                    <span class="text-[11px] sm:text-xs text-[#42a5f5] font-semibold flex items-center gap-1 mt-1">Ver alcances del servicio ↓</span>
                 </div>
             </a>
-            <a href="#servicio-agro" class="block bg-slate-900/40 border border-slate-800 hover:border-blue-500/40 p-5 rounded-xl transition-all group shadow-xl">
-                <div class="flex gap-4 items-start">
-                    <div class="bg-green-500/10 p-3 rounded-lg text-green-500 text-xl group-hover:scale-110 transition-transform">🚜</div>
-                    <div>
-                        <h3 class="font-bold text-white text-base mb-1 group-hover:text-blue-400 transition-colors">Asesoramiento Preventivo Rural y Agro</h3>
-                        <p class="text-slate-400 text-xs font-medium leading-relaxed mb-2">Análisis de riesgos operativos en plantas de acopio, celdas y silos. Planes de emergencia adaptados y auditorías técnicas a maquinarias y rodados.[cite: 2]</p>
-                        <span class="text-blue-400 text-xs font-bold flex items-center gap-1">Ver alcances del servicio <span class="group-hover:translate-y-0.5 transition-transform">↓</span></span>
-                    </div>
+
+            <a href="#servicio-agro" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
+                <span class="text-xl sm:text-2xl mt-0.5">🚜</span>
+                <div>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Asesoramiento Preventivo Rural y Agro</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Análisis de riesgos operativos en plantas de acopio, celdas y silos. Planes de emergencia adaptados y auditorías técnicas a maquinarias y rodados.</p>
+                    <span class="text-[11px] sm:text-xs text-[#42a5f5] font-semibold flex items-center gap-1 mt-1">Ver alcances del servicio ↓</span>
                 </div>
             </a>
         </div>
     </header>
 
-    <!-- ESTADISTICAS SECTION -->
-    <section id="estadisticas" class="bg-[#0F1C3F] border-y border-slate-800/60 py-20 px-4">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
-            <div class="lg:col-span-5 space-y-6">
-                <div class="inline-block bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-md text-xs font-bold text-blue-400 uppercase">
-                    Métricas del Sector
+    <!-- MODAL DIAGNÓSTICO -->
+    <div id="modalDiagnostico" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl relative">
+            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
+            
+            <h3 class="text-lg sm:text-xl font-bold mb-1 flex items-center gap-2 text-[#42a5f5]">📊 Diagnóstico Técnico de Riesgo</h3>
+            <p class="text-gray-400 text-[11px] sm:text-xs mb-4 sm:mb-6">Evaluación preliminar parametrizada según la normativa argentina.</p>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1.5">Seleccioná tu Actividad:</label>
+                    <select id="actividad" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
+                        <option value="industria">Establecimiento Industrial / Fábrica</option>
+                        <option value="obra">Obra en Construcción / Civil</option>
+                        <option value="agro">Explotación Agrícola / Campo / Silos</option>
+                        <option value="comercio">Comercio / Oficinas / Cafetería</option>
+                    </select>
                 </div>
-                <!-- MEJORA 4: Título orientado al dolor económico y prevención de accidentes -->
-                <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
-                    Invertir en prevención reduce hasta un 70% los costos por accidentes y juicios laborales.[cite: 2]
-                </h2>
-                <p class="text-slate-400 text-sm md:text-base font-medium leading-relaxed">
-                    Las estadísticas oficiales de la Superintendencia de Riesgos del Trabajo (SRT) demuestran que la falta de un plan técnico de seguridad e higiene es la causa principal de clausuras, multas severas y sobrecostos por litigios laborales en la provincia de Córdoba.[cite: 2]
-                </p>
-                <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-xl space-y-2">
-                    <span class="text-xs font-bold text-amber-400 uppercase block tracking-wider">⚠️ Factor de Riesgo Crítico</span>
-                    <p class="text-xs text-slate-300 font-medium leading-relaxed">
-                        El sector de la construcción y las plantas industriales concentran el mayor porcentaje de siniestralidad debido a desvíos en trabajos en altura y riesgo eléctrico no auditados a tiempo.[cite: 2]
-                    </p>
-                </div>
-            </div>
-            <div class="lg:col-span-7 bg-slate-900/60 border border-slate-800 p-6 md:p-8 rounded-2xl shadow-xl">
-                <div class="flex justify-between items-center mb-6">
+                
+                <div class="grid grid-cols-2 gap-3 sm:gap-4">
                     <div>
-                        <h4 class="text-white font-bold text-base">Distribución Estimada de Riesgos por Rubro</h4>
-                        <p class="text-slate-500 text-xs font-medium">Indicadores promedio de siniestralidad e inspecciones SRT</p>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1.5">Superficie (m²):</label>
+                        <input type="number" id="metros" placeholder="Ej: 300" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
-                    <span class="bg-blue-500/10 text-blue-400 text-xs px-2.5 py-1 rounded-md font-bold border border-blue-500/20">Anual</span>
-                </div>
-                <div class="h-[320px] w-full">
-                    <canvas id="graficoRiesgos"></canvas>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DETALLE DE SERVICIOS -->
-    <section class="max-w-7xl mx-auto px-4 py-24 space-y-24">
-        <div class="text-center max-w-3xl mx-auto space-y-4">
-            <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">Servicios Profesionales de Ingeniería Ambiental, Seguridad e Higiene</h2>
-            <p class="text-slate-400 text-sm md:text-base font-medium">Soluciones a medida para garantizar entornos de trabajo seguros, eficientes y en total conformidad con el marco legal argentino.[cite: 2]</p>
-        </div>
-
-        <!-- INDUSTRIAL -->
-        <div id="servicio-industria" class="grid lg:grid-cols-12 gap-12 items-center pt-8 border-t border-slate-800/40">
-            <div class="lg:col-span-5 space-y-6 lg:order-1">
-                <div class="bg-amber-500/10 text-amber-500 p-4 rounded-xl text-3xl w-fit shadow-lg shadow-amber-500/5">🏭</div>
-                <h3 class="text-2xl md:text-3xl font-black text-white tracking-tight">Higiene e Ingeniería Industrial</h3>
-                <!-- MEJORA 3: Remate orientado al dolor/solución al final del párrafo -->
-                <p class="text-slate-400 text-sm md:text-base font-medium leading-relaxed">
-                    Diseñamos e implementamos sistemas de gestión enfocados en la prevención de riesgos en establecimientos fabriles y PyMEs. <strong class="text-amber-400/90 font-semibold">Evitá sanciones económicas, suspensiones de actividad y demandas de la ART ordenando tu planta técnica hoy mismo.</strong>[cite: 2]
-                </p>
-                <div class="grid grid-cols-2 gap-4 text-xs font-bold text-slate-300">
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Mediciones Físicas SRT</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Riesgo Eléctrico</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Ergonomía Laboral</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Sistema 5S / Productividad</div>
-                </div>
-            </div>
-            <div class="lg:col-span-7 bg-slate-900/30 border border-slate-800 p-6 md:p-8 rounded-2xl">
-                <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 text-blue-400">Alcances Técnicos Obligatorios (Dec. 351/79)</h4>
-                <ul class="space-y-3.5 text-xs font-medium text-slate-400">
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Mediciones Homologadas:</strong> Iluminación (Res. 84/12), Ruido Laboral (Res. 85/12), Puesta a Tierra (Res. 900/15) y Contaminantes Químicos.[cite: 2]</span></li>
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Planes de Evacuación y Emergencia:</strong> Simulacros guiados, cálculo de carga de fuego, dimensionamiento de extintores y señalización fotoluminiscente conforme a normas IRAM.[cite: 2]</span></li>
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Capacitación Interna Obligatoria:</strong> Registro de firmas según Res. SRT 299/11 para entrega de Elementos de Protección Personal (EPP).[cite: 2]</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- OBRAS -->
-        <div id="servicio-obra" class="grid lg:grid-cols-12 gap-12 items-center pt-8 border-t border-slate-800/40">
-            <div class="lg:col-span-5 space-y-6">
-                <div class="bg-yellow-500/10 text-yellow-500 p-4 rounded-xl text-3xl w-fit shadow-lg shadow-yellow-500/5">🚧</div>
-                <h3 class="text-2xl md:text-3xl font-black text-white tracking-tight">Seguridad y Dirección Técnica en Obras</h3>
-                <!-- MEJORA 3: Remate orientado al dolor/solución al final del párrafo -->
-                <p class="text-slate-400 text-sm md:text-base font-medium leading-relaxed">
-                    Control técnico riguroso en construcciones civiles y montajes industriales de alta complejidad. <strong class="text-yellow-400/90 font-semibold">Garantizamos la continuidad operativa de la obra, evitando clausuras inmediatas del Ministerio de Trabajo y multas solidarias por desvíos de subcontratistas.</strong>[cite: 2]
-                </p>
-                <div class="grid grid-cols-2 gap-4 text-xs font-bold text-slate-300">
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Programas de Seguridad</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Legajos de Obra</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Visitas de Inspección</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Auditoría Contratistas</div>
-                </div>
-            </div>
-            <div class="lg:col-span-7 bg-slate-900/30 border border-slate-800 p-6 md:p-8 rounded-2xl">
-                <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 text-blue-400">Cumplimiento Estricto del Decreto 911/96</h4>
-                <ul class="space-y-3.5 text-xs font-medium text-slate-400">
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Tramitación Completa ante la ART:</strong> Confección, firma profesional y presentación de Programas de Seguridad (Res. 51/97, 319/99, 35/98 según corresponda) y Avisos de Obra.[cite: 2]</span></li>
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Supervisión en Campo y Checklists:</strong> Auditoría presencial en etapas críticas: excavaciones, trabajos en altura, andamios, uso de líneas de vida, operación de autoelevadores e izajes.[cite: 2]</span></li>
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Legajo Técnico Digitalizado:</strong> Centralización de nóminas de personal, certificados de cobertura (cláusula de no repetición), entrega de EPP y fichas de maquinarias para auditorías sorpresa.[cite: 2]</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- AGRO -->
-        <div id="servicio-agro" class="grid lg:grid-cols-12 gap-12 items-center pt-8 border-t border-slate-800/40">
-            <div class="lg:col-span-5 space-y-6 lg:order-1">
-                <div class="bg-green-500/10 text-green-500 p-4 rounded-xl text-3xl w-fit shadow-lg shadow-green-500/5">🚜</div>
-                <h3 class="text-2xl md:text-3xl font-black text-white tracking-tight">Seguridad Agraria y Plantas de Acopio</h3>
-                <!-- MEJORA 3: Remate orientado al dolor/solución al final del párrafo -->
-                <p class="text-slate-400 text-sm md:text-base font-medium leading-relaxed">
-                    Prevención de riesgos específicos en el sector agroindustrial, campos de cultivo y plantas de almacenamiento de granos. <strong class="text-green-400/90 font-semibold">Protegé la integridad física de los operarios frente a los riesgos críticos del agro y blindá jurídicamente tu patrimonio empresarial.</strong>[cite: 2]
-                </p>
-                <div class="grid grid-cols-2 gap-4 text-xs font-bold text-slate-300">
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Espacios Confinados</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Riesgo de Explosión</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Maquinaria Agrícola</div>
-                    <div class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 p-3 rounded-lg"><span class="text-blue-400">▪</span> Planes de Emergencia</div>
-                </div>
-            </div>
-            <div class="lg:col-span-7 bg-slate-900/30 border border-slate-800 p-6 md:p-8 rounded-2xl">
-                <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 text-blue-400">Protocolos para el Agro (Dec. 617/97)</h4>
-                <ul class="space-y-3.5 text-xs font-medium text-slate-400">
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Seguridad en Silos y Celdas:</strong> Protocolos estrictos para ingreso a espacios confinados, medición de atmósferas peligrosas, prevención de atrapamientos y sistemas de bloqueo eléctrico (Lockout/Tagout).[cite: 2]</span></li>
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Prevención de Explosiones de Polvo (ATEX):</strong> Evaluación de sistemas de aspiración, control de fuentes de ignición en norias y red de distribución de granos.[cite: 2]</span></li>
-                    <li class="flex items-start gap-2.5"><span class="text-blue-500 mt-0.5">✔</span> <span><strong>Gestión de Agroquímicos:</strong> Asesoramiento en condiciones de almacenamiento seguro (depósitos fitosanitarios), hojas de datos de seguridad (FDS) y capacitación en elementos de protección específicos.[cite: 2]</span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECCION SOBRE MI / QUIEN SOY -->
-    <section id="quien-soy" class="bg-[#0F1C3F] border-y border-slate-800/60 py-24 px-4">
-        <div class="max-w-4xl mx-auto text-center space-y-6">
-            <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-md text-xs font-bold text-blue-400 uppercase">
-                Perfil Profesional
-            </div>
-            <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">Soluciones Técnico-Legales Orientadas al Éxito Empresarial</h2>
-            <p class="text-slate-300 text-base font-medium max-w-3xl mx-auto leading-relaxed">
-                Mi nombre es **Roger Freytes Algarbe**, soy Técnico de Higiene y Seguridad en el Trabajo[cite: 1, 2] y estudiante avanzado de la Licenciatura en la Universidad FASTA[cite: 2]. Mi enfoque profesional radica en transformar las exigencias normativas del Ministerio de Trabajo, Municipios y la SRT en ventajas competitivas reales para las empresas[cite: 2]. No me limito a confeccionar documentación técnica; me involucro directamente en la mejora de los procesos productivos, disminuyendo la siniestralidad y resguardando el capital más valioso de mis clientes.[cite: 2]
-            </p>
-            <div class="pt-4 flex flex-wrap justify-center gap-8 text-xs font-bold text-slate-400">
-                <span class="flex items-center gap-2"><i class="fas fa-id-card text-blue-400 text-sm"></i> Matrícula Profesional Activa COPHISEC</span>
-                <span class="flex items-center gap-2"><i class="fas fa-graduation-cap text-blue-400 text-sm"></i> Formación Técnica Continua</span>
-                <span class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-blue-400 text-sm"></i> Cobertura en toda la Provincia de Córdoba</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- FORMULARIO DE CONTACTO -->
-    <section id="contacto" class="max-w-4xl mx-auto px-4 py-24">
-        <div class="bg-slate-900/50 border border-slate-800 p-8 md:p-12 rounded-2xl shadow-2xl space-y-8">
-            <div class="text-center space-y-2">
-                <h2 class="text-3xl font-black text-white tracking-tight">Solicitá una Visita Técnica o Presupuesto</h2>
-                <p class="text-slate-400 text-sm font-medium">Completá el formulario para tipificar tu caso y procesar el envío inmediato a nuestro canal de WhatsApp institucional.[cite: 2]</p>
-            </div>
-            <form id="formContacto" class="grid md:grid-cols-2 gap-6 text-sm font-semibold text-slate-300">
-                <div class="space-y-2">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Nombre Completo / Razón Social</label>
-                    <input type="text" id="nombre" required class="w-full bg-[#0B132B] border border-slate-800 rounded-lg px-4 py-3 text-white font-medium focus:border-blue-500 focus:outline-none transition-colors" placeholder="Ej: Constructora Córdoba S.A.">
-                </div>
-                <div class="space-y-2">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Localidad (Provincia de Córdoba)</label>
-                    <input type="text" id="localidad" required class="w-full bg-[#0B132B] border border-slate-800 rounded-lg px-4 py-3 text-white font-medium focus:border-blue-500 focus:outline-none transition-colors" placeholder="Ej: San Francisco, Villa María">
-                </div>
-                <div class="space-y-2">
-                    <!-- MEJORA 5: Opciones del selector de rubros optimizadas y corregidas -->
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Rubro del Establecimiento</label>
-                    <select id="rubro" required class="w-full bg-[#0B132B] border border-slate-800 rounded-lg px-4 py-3 text-slate-300 font-medium focus:border-blue-500 focus:outline-none transition-colors">
-                        <option value="Construcción / Obra">Construcción / Obra (Dec. 911/96)</option>
-                        <option value="Establecimiento Industrial">Establecimiento Industrial (Dec. 351/79)</option>
-                        <option value="Agro / Planta de Acopio">Agro / Planta de Acopio (Dec. 617/97)</option>
-                        <option value="Comercio / Servicios">Comercio / Servicios</option>
-                    </select>
-                </div>
-                <div class="space-y-2">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Cantidad Estimada de Personal</label>
-                    <input type="number" id="personal" required class="w-full bg-[#0B132B] border border-slate-800 rounded-lg px-4 py-3 text-white font-medium focus:border-blue-500 focus:outline-none transition-colors" placeholder="Ej: 15">
-                </div>
-                <div class="md:col-span-2 space-y-2">
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400">Detalle del Requerimiento / Problema Actual</label>
-                    <textarea id="mensaje" rows="4" required class="w-full bg-[#0B132B] border border-slate-800 rounded-lg px-4 py-3 text-white font-medium focus:border-blue-500 focus:outline-none transition-colors resize-none" placeholder="Describa brevemente si necesita un Legajo Técnico, Programa de Seguridad, mediciones físicas o si cuenta con una intimación vigente de la ART/Minist. de Trabajo..."></textarea>
-                </div>
-                <div class="md:col-span-2 pt-2">
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-black tracking-wider py-4 rounded-lg shadow-lg shadow-blue-600/20 transition-colors flex items-center justify-center gap-2">
-                        <i class="fab fa-whatsapp text-lg"></i> ENVIAR SOLICITUD POR WHATSAPP
-                    </button>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- CENTRO DE CONSULTA NORMATIVA -->
-    <section id="consulta-normativa" class="bg-[#070D1F] border-t border-slate-800 py-20 px-4">
-        <div class="max-w-7xl mx-auto space-y-12">
-            <div class="text-center max-w-3xl mx-auto space-y-3">
-                <div class="inline-block bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-md text-xs font-bold text-blue-400 uppercase">
-                    Digesto Legal Argentino
-                </div>
-                <h2 class="text-3xl font-black text-white tracking-tight">Centro de Consulta Normativa Vigente</h2>
-                <p class="text-slate-400 text-xs md:text-sm font-medium">Marco técnico regulatorio auditado por nuestro estudio para la validación de inspecciones de la SRT y ministeriales.[cite: 2]</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6 text-xs font-medium text-slate-400">
-                <!-- Marco General -->
-                <div class="bg-slate-900/40 border border-slate-800/80 p-6 rounded-xl space-y-4">
-                    <h3 class="text-white font-extrabold text-sm border-b border-slate-800 pb-2.5 flex items-center gap-2">
-                        <span class="text-blue-400 text-base">⚖</span> Leyes Nacionales Base
-                    </h3>
-                    <ul class="space-y-3">
-                        <li><strong class="text-slate-200 block mb-0.5">Ley N° 19.587</strong> Higiene y Seguridad en el Trabajo. Columna vertebral de la prevención técnica en Argentina.[cite: 2]</li>
-                        <li><strong class="text-slate-200 block mb-0.5">Ley N° 24.557</strong> Riesgos del Trabajo. Regula el funcionamiento de las ART, incapacidades y contingencias laborales.[cite: 2]</li>
-                    </ul>
-                </div>
-                <!-- Decretos Reglamentarios -->
-                <div class="bg-slate-900/40 border border-slate-800/80 p-6 rounded-xl space-y-4">
-                    <h3 class="text-white font-extrabold text-sm border-b border-slate-800 pb-2.5 flex items-center gap-2">
-                        <span class="text-amber-400 text-base">📜</span> Decretos Reglamentarios
-                    </h3>
-                    <ul class="space-y-3">
-                        <li><strong class="text-slate-200 block mb-0.5">Decreto N° 351/79</strong> Regulación técnica específica para industrias, comercios y establecimientos generales.[cite: 2]</li>
-                        <li><strong class="text-slate-200 block mb-0.5">Decreto N° 911/96</strong> Reglamento obligatorio para el sector de la construcción y obras civiles.[cite: 2]</li>
-                        <li><strong class="text-slate-200 block mb-0.5">Decreto N° 617/97</strong> Reglamento de higiene y seguridad exclusivo para la actividad agraria.[cite: 2]</li>
-                    </ul>
-                </div>
-                <!-- Resoluciones SRT -->
-                <div class="bg-slate-900/40 border border-slate-800/80 p-6 rounded-xl space-y-4">
-                    <h3 class="text-white font-extrabold text-sm border-b border-slate-800 pb-2.5 flex items-center gap-2">
-                        <span class="text-green-400 text-base">📋</span> Resoluciones SRT Principales
-                    </h3>
-                    <ul class="space-y-2.5">
-                        <li><strong class="text-slate-200 block mb-0.5">Res. SRT 61/2023</strong> Sistema complementario de actas digitales e inspecciones.[cite: 2]</li>
-                        <li><strong class="text-slate-200 block mb-0.5">Res. SRT 85/2012</strong> Protocolo oficial obligatorio para medición de ruido en ambiente laboral.[cite: 2]</li>
-                        <li><strong class="text-slate-200 block mb-0.5">Res. SRT 900/15 & 84/12</strong> Protocolos de medición de puesta a tierra e iluminación.[cite: 2]</li>
-                        <li><strong class="text-slate-200 block mb-0.5">Res. SRT 299/2011</strong> Formulario obligatorio para el registro de entrega de EPP al personal.[cite: 2]</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-900/80 bg-[#0B132B] px-4 py-8 text-center text-xs font-semibold text-slate-500">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>© 2026 Estudio Técnico Freytes. Desarrollado bajo normativas SRT y COPHISEC de la Provincia de Córdoba.[cite: 2]</p>
-            <p class="text-slate-600">Servicios de Consultoría Independiente en Riesgos del Trabajo.</p>
-        </div>
-    </footer>
-
-    <!-- MODAL DIAGNÓSTICO GRATUITO -->
-    <div id="modalDiag" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="bg-slate-900 border border-slate-800 max-w-md w-full rounded-2xl p-6 md:p-8 space-y-6 shadow-2xl relative transform scale-95 transition-transform duration-300" id="modalContent">
-            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
-            <div class="space-y-2 text-center">
-                <span class="text-3xl">📊</span>
-                <h3 class="text-xl font-black text-white tracking-tight">Simulador de Requerimientos Legales</h3>
-                <p class="text-slate-400 text-xs font-medium">Seleccioná las condiciones actuales de tu empresa para identificar qué documentación obligatoria te exige la normativa argentina vigente.[cite: 2]</p>
-            </div>
-            <div class="space-y-4 text-xs font-bold text-slate-300">
-                <div class="space-y-1.5">
-                    <label class="block text-slate-400 uppercase tracking-wide">Tipo de Actividad</label>
-                    <select id="modalRubro" class="w-full bg-[#0B132B] border border-slate-800 rounded-lg px-3 py-2.5 text-slate-200 focus:border-blue-500 focus:outline-none">
-                        <option value="obra">Obra en Construcción o Montaje</option>
-                        <option value="fabrica">Planta Industrial o Manufacturera</option>
-                        <option value="acopio">Establecimiento Agropecuario / Acopio</option>
-                        <option value="comercio">Oficina, Comercio o Depósito Logístico</option>
-                    </select>
-                </div>
-                <div class="space-y-1.5">
-                    <label class="block text-slate-400 uppercase tracking-wide">Condiciones de Riesgo Crítico (Seleccionar si aplica)</label>
-                    <div class="space-y-2 font-medium text-slate-400 pt-1">
-                        <label class="flex items-center gap-2"><input type="checkbox" id="chkAltura" class="rounded border-slate-800 bg-[#0B132B] text-blue-500 focus:ring-0"> Trabajos en altura (> 2 metros)</label>
-                        <label class="flex items-center gap-2"><input type="checkbox" id="chkElectrico" class="rounded border-slate-800 bg-[#0B132B] text-blue-500 focus:ring-0"> Subestaciones o tableros de alta potencia</label>
-                        <label class="flex items-center gap-2"><input type="checkbox" id="chkConfinado" class="rounded border-slate-800 bg-[#0B132B] text-blue-500 focus:ring-0"> Ingreso a silos o tanques profundos</label>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1.5">N° de Trabajadores:</label>
+                        <input type="number" id="personal" placeholder="Ej: 15" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
                     </div>
                 </div>
-                <button onclick="calcularSimulacion()" class="w-full bg-blue-500 hover:bg-blue-400 text-white py-3 rounded-lg font-black tracking-wider shadow-md shadow-blue-500/10 transition-colors">
-                    GENERAR DIAGNÓSTICO PRELIMINAR
+                
+                <button onclick="calcularRiesgo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm transition-colors mt-2">
+                    CALCULAR NIVEL DE RIESGO
                 </button>
-            </div>
-            <div id="resultadoSimulacion" class="hidden p-4 bg-[#0B132B] border border-slate-800 rounded-xl space-y-2 text-xs font-medium">
-                <!-- Render dinámico por JS -->
+                
+                <div id="resultadoRiesgo" class="hidden mt-4 p-4 rounded-xl text-center border">
+                    <span class="text-[10px] uppercase font-bold tracking-wider block text-gray-400 mb-1">Resultado de Evaluación</span>
+                    <div id="valorRiesgo" class="text-lg sm:text-xl font-extrabold mb-1"></div>
+                    <p id="descRiesgo" class="text-[11px] sm:text-xs text-gray-300 leading-relaxed"></p>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+    <!-- ESTADÍSTICAS -->
+    <section id="estadisticas" class="px-4 sm:px-10 py-12 sm:py-20 bg-[#0f172a] border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#42a5f5] bg-blue-500/10 px-2.5 py-1 rounded">Métricas e Impacto</span>
+                <h2 class="text-2xl sm:text-3xl font-bold mt-2.5 text-white">¿Por qué invertir en Higiene y Seguridad?</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm mt-2">Comparativa técnica del impacto operativo, legal y económico en empresas antes y después de contar con un servicio especializado.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center bg-[#1e293b] p-5 sm:p-8 rounded-2xl border border-gray-700">
+                <div class="space-y-4 sm:space-y-6">
+                    <div class="border-l-4 border-red-500 pl-3 sm:pl-4">
+                        <h4 class="font-bold text-white text-sm sm:text-base">Riesgos Sin Gestión Técnico-Legal</h4>
+                        <p class="text-gray-400 text-xs mt-1 leading-relaxed">Probabilidad crítica de actas de infracción de la SRT, suspensiones por falta de Legajo Técnico (Dec. 911/96) y multas severas de la ART.</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-3 sm:pl-4">
+                        <h4 class="font-bold text-white text-sm sm:text-base">Beneficios con Asesoría Profesional</h4>
+                        <p class="text-gray-400 text-xs mt-1 leading-relaxed">Cumplimiento total de auditorías, reducción drástica de la siniestralidad y optimización de espacios mediante metodologías de orden y limpieza (5S).</p>
+                    </div>
+                    
+                    <div class="bg-[#0b1120] p-4 sm:p-5 rounded-xl border border-gray-700 text-left space-y-2.5">
+                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase font-bold block tracking-wider text-center border-b border-gray-800 pb-2">Objetivos de Gestión Técnica</span>
+                        <div class="flex items-center justify-between text-xs sm:text-sm">
+                            <span class="text-gray-400">Cumplimiento Legal y ART:</span>
+                            <span class="font-extrabold text-[#42a5f5]">0% CLAUSURAS</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs sm:text-sm">
+                            <span class="text-gray-400">Siniestralidad Laboral:</span>
+                            <span class="font-extrabold text-red-400">0 ACCIDENTES</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs sm:text-sm">
+                            <span class="text-gray-400">Eficiencia Operativa (5S):</span>
+                            <span class="font-extrabold text-green-400">100% DISPONIBILIDAD</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full bg-[#0b1120] p-3 sm:p-4 rounded-xl border border-gray-700 h-[260px] sm:h-[320px]">
+                    <canvas id="graficoImpactoPublico"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi" class="px-4 sm:px-10 py-12 sm:py-20 bg-[#0b1120] border-t border-gray-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center bg-[#1e293b] p-5 sm:p-8 rounded-2xl border border-gray-700">
+            
+            <div class="lg:col-span-4 flex justify-center w-full">
+                <div class="w-full max-w-[240px] sm:max-w-[280px] aspect-square rounded-xl border border-gray-600 overflow-hidden shadow-2xl bg-white p-4 flex items-center justify-center">
+                    <img src="https://i.postimg.cc/wjZwQV6g/RF-jpg-original-(1).jpg" alt="Logo Estudio Técnico Freytes" class="max-w-full max-h-full object-contain">
+                </div>
+            </div>
+
+            <div class="lg:col-span-8 space-y-4 text-center lg:text-left mt-2 lg:mt-0">
+                <div class="text-[#42a5f5] text-[10px] sm:text-xs font-semibold border border-blue-900/50 inline-block px-3 py-1 rounded uppercase tracking-wider bg-blue-500/5">
+                    Perfil Profesional Técnico
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold text-white leading-snug">Soluciones Técnico-Legales Orientadas a la Continuidad Operativa Segura</h2>
+                <p class="text-gray-400 text-xs leading-relaxed text-justify lg:text-left">
+                    Como especialista en Higiene y Seguridad, mi enfoque combina el cumplimiento estricto del marco normativo argentino (Ley N° 19.587, sus decretos reglamentarios y la normativa vigente de la SRT) con la implementación de metodologías ágiles como las 5S. No solo diseño documentación; estructuro sistemas preventivos reales que mitigan riesgos críticos en planta, blindan legalmente a la empresa frente a eventualidades y superan con éxito auditorías de la ART.
+                </p>
+                <p class="text-gray-400 text-xs leading-relaxed text-justify lg:text-left">
+                    Mi experiencia abarca desde el control documental estricto de subcontratistas y la gestión de legajos técnicos en obras civiles de envergadura, hasta auditorías de riesgos eléctricos, mediciones físicas reglamentarias y planes de emergencia adaptados. Potencio mi práctica profesional mediante la formación continua en la Licenciatura en Higiene y Seguridad en el Trabajo (Universidad FASTA), asegurando metodologías actualizadas bajo estándares de gestión internacional.
+                </p>
+
+                <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-700 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    <div>
+                        <h4 class="text-white font-bold text-xs">Registro Profesional</h4>
+                        <p class="text-[#42a5f5] text-[11px] mt-0.5 font-medium">COPHISEC Córdoba<br><span class="text-gray-300 font-normal">MP: THST 01-92</span></p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold text-xs">Área de Cobertura</h4>
+                        <p class="text-[#42a5f5] text-[11px] mt-0.5 font-medium">Provincia de Córdoba</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS DETALLADOS (VINCULADOS A TU EXPERIENCIA) -->
+    <section id="servicios-detallados" class="px-4 sm:px-10 py-12 sm:py-20 bg-[#0b1120] border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-8">
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#42a5f5] bg-blue-500/10 px-2.5 py-1 rounded">Soluciones Profesionales</span>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-3 mt-2">Servicios de Consultoría y Asesoría Técnico-Legal</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm">Estructuras operativas parametrizadas bajo estándares de control y auditoría externa para garantizar continuidad y resguardo legal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                <!-- Industria -->
+                <div id="servicio-industria" class="bg-[#1e293b] p-5 rounded-xl border border-gray-700 flex flex-col justify-between scroll-mt-6">
+                    <div>
+                        <div class="bg-blue-600/20 text-[#42a5f5] w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">🏭</div>
+                        <h3 class="font-bold text-base mb-2.5 text-white">Consultoría Industrial</h3>
+                        <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
+                            <li>• <strong>Informes Técnicos Eléctricos:</strong> Detección, relevamiento y corrección de desvíos críticos por riesgo eléctrico en plantas industriales.</li>
+                            <li>• <strong>Mediciones Obligatorias:</strong> Protocolos normalizados de puesta a tierra, iluminación, ergonomía y ruido laboral (Res. SRT 85/12).</li>
+                            <li>• <strong>Vigilancia Epidemiológica:</strong> Gestión y registro oficial de sustancias y agentes cancerígenos ante la SRT (Res. SRT 81/19).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Obra -->
+                <div id="servicio-obra" class="bg-[#1e293b] p-5 rounded-xl border border-gray-700 flex flex-col justify-between scroll-mt-6">
+                    <div>
+                        <div class="bg-blue-600/20 text-[#42a5f5] w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">📋</div>
+                        <h3 class="font-bold text-base mb-2.5 text-white">Dirección en Obras</h3>
+                        <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
+                            <li>• <strong>Legajo Técnico de Obra:</strong> Confección, ordenamiento e implementación del legajo de higiene y seguridad conforme al Dec. 911/96.</li>
+                            <li>• <strong>Control de Contratistas:</strong> Auditoría documental estricta y matriculación de subcontratistas para blindaje de responsabilidad solidaria.</li>
+                            <li>• <strong>Programas de Seguridad:</strong> Redacción y tramitación expedita de Programas de Seguridad y Avisos de Obra ante la ART.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Agro -->
+                <div id="servicio-agro" class="bg-[#1e293b] p-5 rounded-xl border border-gray-700 flex flex-col justify-between scroll-mt-6">
+                    <div>
+                        <div class="bg-blue-600/20 text-[#42a5f5] w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">🚜</div>
+                        <h3 class="font-bold text-base mb-2.5 text-white">Seguridad Agraria</h3>
+                        <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
+                            <li>• <strong>Riesgos en Acopio y Silos:</strong> Planes de prevención y procedimientos seguros en espacios confinados y celdas de almacenamiento.</li>
+                            <li>• <strong>Auditorías de Maquinaria:</strong> Relevamientos de seguridad en tractores e implementos según estándares mecánicos vigentes (Res. SRT 97/18).</li>
+                            <li>• <strong>Planes de Emergencia:</strong> Diseño estructural de roles de evacuación y contingencias adaptadas al entorno rural.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sistemas de Gestión / 5S -->
+                <div class="bg-[#1e293b] p-5 rounded-xl border border-gray-700 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-blue-600/20 text-[#42a5f5] w-10 h-10 flex items-center justify-center rounded-lg mb-3.5 text-lg font-bold">📊</div>
+                        <h3 class="font-bold text-base mb-2.5 text-white">Sistemas de Gestión</h3>
+                        <ul class="text-gray-400 text-[11px] sm:text-xs space-y-2 text-left leading-relaxed">
+                            <li>• <strong>Metodología 5S:</strong> Diseño e implementación de procesos de Orden, Limpieza y Estandarización para la optimización de tiempos operativos.</li>
+                            <li>• <strong>Alineación Normativa ISO:</strong> Preparación técnica y auditorías internas bajo lineamientos de sistemas internacionales de gestión.</li>
+                            <li>• <strong>Ingeniería del Comportamiento:</strong> Capacitaciones técnicas operativas orientadas a erradicar actos inseguros recurrentes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: CENTRO DE CONSULTA NORMATIVA (RESPETANDO JERARQUÍA JURÍDICA) -->
+    <section id="consulta-normativa" class="px-4 sm:px-10 py-12 sm:py-20 bg-[#0f172a] border-t border-gray-800">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#42a5f5] bg-blue-500/10 px-2.5 py-1 rounded">Marco Legal de Consulta</span>
+                <h2 class="text-2xl sm:text-3xl font-bold mt-2.5 text-white">Centro de Consulta Normativa</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-xs sm:text-sm mt-2">Digesto técnico-legal estructurado jerárquicamente de acuerdo al sistema regulatorio de riesgos del trabajo en la República Argentina.</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 1. LEYES NACIONALES -->
+                <div class="bg-[#1e293b] rounded-xl border border-gray-700 p-5 sm:p-6">
+                    <div class="flex items-center gap-3 border-b border-gray-700 pb-3 mb-4">
+                        <span class="text-[#42a5f5] font-black text-lg">⚖️</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white uppercase tracking-wider">I. Leyes Nacionales (Marco General Primario)</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-sm font-bold text-[#42a5f5]">Ley N° 19.587 — Higiene y Seguridad en el Trabajo</h4>
+                            <p class="text-gray-400 text-xs mt-1 leading-relaxed">Constituye el pilar legal fundamental en la República Argentina. Establece las condiciones generales de seguridad con el objeto de proteger la vida, preservar la integridad psicofísica de los trabajadores y regular la aplicación de medidas preventivas en todo el territorio nacional.</p>
+                        </div>
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-sm font-bold text-[#42a5f5]">Ley N° 24.557 — Riesgos del Trabajo</h4>
+                            <p class="text-gray-400 text-xs mt-1 leading-relaxed">Regula el sistema de prevención de riesgos laborales y reparación de daños derivados del trabajo. Determina las funciones básicas y de control de las Aseguradoras de Riesgos del Trabajo (ART) y establece la obligatoriedad patronal de presentar declaraciones juradas de riesgos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. DECRETOS REGLAMENTARIOS -->
+                <div class="bg-[#1e293b] rounded-xl border border-gray-700 p-5 sm:p-6">
+                    <div class="flex items-center gap-3 border-b border-gray-700 pb-3 mb-4">
+                        <span class="text-[#42a5f5] font-black text-lg">📜</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white uppercase tracking-wider">II. Decretos Reglamentarios (Especificidad por Actividad)</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Decreto N° 351/79</h4>
+                                <span class="text-[10px] text-yellow-500 font-bold uppercase block my-1">Establecimientos Industriales</span>
+                                <p class="text-gray-400 text-xs leading-relaxed">Aprueba la reglamentación técnica general de la Ley N° 19.587 para la industria general. Dicta las condiciones de infraestructura, protección contra incendios (carga de fuego), riesgo eléctrico, ventilación, iluminación y límites admisibles de contaminantes.</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Decreto N° 911/96</h4>
+                                <span class="text-[10px] text-orange-500 font-bold uppercase block my-1">Industria de la Construcción</span>
+                                <p class="text-gray-400 text-xs leading-relaxed">Determina el reglamento de higiene y seguridad específico para la actividad de la construcción. Resuelve la implementación de medidas preventivas adaptadas a la dinámica de obras civiles y viales, regulando trabajos en altura, excavaciones y uso de maquinaria.</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800 flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Decreto N° 617/97</h4>
+                                <span class="text-[10px] text-green-500 font-bold uppercase block my-1">Actividad Agraria</span>
+                                <p class="text-gray-400 text-xs leading-relaxed">Establece las normas de prevención de riesgos laborales adaptadas en exclusividad a las tareas rurales. Contempla directrices sobre manipulación de agroquímicos, factores biológicos, almacenamiento en silos/acopios y resguardos en maquinaria agrícola.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. RESOLUCIONES SRT -->
+                <div class="bg-[#1e293b] rounded-xl border border-gray-700 p-5 sm:p-6">
+                    <div class="flex items-center gap-3 border-b border-gray-700 pb-3 mb-4">
+                        <span class="text-[#42a5f5] font-black text-lg">📋</span>
+                        <h3 class="text-base sm:text-lg font-bold text-white uppercase tracking-wider">III. Resoluciones de la Superintendencia de Riesgos del Trabajo (SRT)</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-xs font-bold text-[#42a5f5] uppercase tracking-wider">Resolución SRT N° 61/2023</h4>
+                            <span class="text-[11px] text-white font-bold block mt-0.5">Condiciones de Seguridad para Trabajos en Altura</span>
+                            <p class="text-gray-400 text-[11px] mt-1.5 leading-relaxed">Establece de manera transversal los requisitos mínimos obligatorios para planificar y ejecutar tareas con riesgo de caída a distinto nivel, regulando sistemas de protección activa/pasiva y la aptitud médica específica.</p>
+                        </div>
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-xs font-bold text-[#42a5f5] uppercase tracking-wider">Resolución SRT N° 81/2019</h4>
+                            <span class="text-[11px] text-white font-bold block mt-0.5">Control de Sustancias y Agentes Cancerígenos</span>
+                            <p class="text-gray-400 text-[11px] mt-1.5 leading-relaxed">Crea el Sistema de Vigilancia de Control de Agentes Cancerígenos, obligando a las empresas a declarar la utilización de sustancias críticas y coordinar los correspondientes protocolos de dosimetría o exposición.</p>
+                        </div>
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-xs font-bold text-[#42a5f5] uppercase tracking-wider">Resolución SRT N° 85/2012</h4>
+                            <span class="text-[11px] text-white font-bold block mt-0.5">Protocolo de Medición de Ruido en Ambiente Laboral</span>
+                            <p class="text-gray-400 text-[11px] mt-1.5 leading-relaxed">Determina las metodologías técnicas e instrumentales de cumplimiento obligatorio para la evaluación cuantitativa de la exposición al ruido industrial, resguardando la salud auditiva del personal.</p>
+                        </div>
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800">
+                            <h4 class="text-xs font-bold text-[#42a5f5] uppercase tracking-wider">Resolución SRT N° 299/2011</h4>
+                            <span class="text-[11px] text-white font-bold block mt-0.5">Registro de Entrega de Elementos de Protección Personal</span>
+                            <p class="text-gray-400 text-[11px] mt-1.5 leading-relaxed">Regula las condiciones de certificación y provisión de EPP. Establece con carácter obligatorio el uso y archivo del Formulario 299 como constancia jurídica de entrega ante inspecciones o litigios.</p>
+                        </div>
+                        <div class="bg-[#0b1120] p-4 rounded-lg border border-gray-800 sm:col-span-2">
+                            <h4 class="text-xs font-bold text-[#42a5f5] uppercase tracking-wider">Resoluciones SRT N° 51/97, 35/98 y 319/99</h4>
+                            <span class="text-[11px] text-white font-bold block mt-0.5">Programas de Seguridad y Avisos de Obra en la Construcción</span>
+                            <p class="text-gray-400 text-[11px] mt-1.5 leading-relaxed">Trilogía normativa que dictamina los mecanismos de presentación, aprobación y validez legal de los Programas de Seguridad y Avisos de Obra ante las respectivas ART antes de dar inicio a cualquier labor operativa de construcción.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <footer id="contacto" class="bg-[#0f172a] border-t border-gray-800 px-4 sm:px-10 py-12 sm:py-16">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            <div class="lg:col-span-5 space-y-6 text-center lg:text-left">
+                <div>
+                    <h2 class="text-2xl font-bold mb-3 text-white">Contacto Profesional</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">Comunicate directamente para coordinar una visita técnica en planta u obra, o solicitar un presupuesto adaptado a tu empresa.</p>
+                </div>
+                
+                <div class="space-y-3.5">
+                    <a href="https://wa.me/543572594767" target="_blank" class="bg-[#1e293b] p-4 rounded-xl border border-gray-700 hover:border-green-500 hover:bg-gray-800 transition-all flex items-center gap-4 text-left group">
+                        <span class="text-2xl bg-green-500/10 p-2 rounded-lg group-hover:bg-green-500/20 transition-colors">💬</span>
+                        <div>
+                            <span class="block font-bold text-sm text-green-400">WhatsApp Directo</span>
+                            <span class="text-xs text-gray-400">+54 3572 594767</span>
+                        </div>
+                    </a>
+                    <a href="mailto:rogerluciano.rfa@gmail.com" class="bg-[#1e293b] p-4 rounded-xl border border-gray-700 hover:border-blue-500 hover:bg-gray-800 transition-all flex items-center gap-4 text-left group">
+                        <span class="text-2xl bg-blue-500/10 p-2 rounded-lg group-hover:bg-blue-500/20 transition-colors">✉️</span>
+                        <div>
+                            <span class="block font-bold text-sm text-blue-400">Correo Electrónico</span>
+                            <span class="text-xs text-gray-400 break-all">rogerluciano.rfa@gmail.com</span>
+                        </div>
+                    </a>
+                    <a href="https://linkedin.com/in/roger-freytes" target="_blank" class="bg-[#1e293b] p-4 rounded-xl border border-gray-700 hover:border-blue-600 hover:bg-gray-800 transition-all flex items-center gap-4 text-left group">
+                        <span class="text-2xl bg-blue-600/10 p-2 rounded-lg group-hover:bg-blue-600/20 transition-colors">🔗</span>
+                        <div>
+                            <span class="block font-bold text-sm text-blue-500">LinkedIn Corporativo</span>
+                            <span class="text-xs text-gray-400">Ver perfil técnico</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 w-full bg-[#1e293b] border border-gray-700 rounded-2xl p-5 sm:p-6 shadow-xl space-y-4">
+                <div class="border-b border-gray-700 pb-3">
+                    <h3 class="text-lg font-bold text-[#42a5f5] flex items-center gap-2">📩 Enviar Consulta Técnica</h3>
+                    <p class="text-gray-400 text-xs mt-0.5">Completá los datos para estructurar tu solicitud de asesoría de forma automática.</p>
+                </div>
+                
+                <form id="formWhatsApp" onsubmit="enviarMensajeWhatsApp(event)" class="space-y-3.5">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Nombre / Responsable:</label>
+                            <input type="text" id="nombreContacto" required placeholder="Ej: Carlos Gómez" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 mb-1">Empresa / Establecimiento:</label>
+                            <input type="text" id="empresaContacto" placeholder="Ej: Metalúrgica Córdoba S.A." class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Rubro / Actividad Principal:</label>
+                        <select id="rubroContacto" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                            <option value="Industrial">Establecimiento Industrial / Fábrica</option>
+                            <option value="Construcción u Obra">Construcción / Obra Civil o Vial</option>
+                            <option value="Agropecuario">Agro / Silos / Explotación Rural</option>
+                            <option value="Comercio / Services">Comercio / Oficinas / Cafetería</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Detalle del requerimiento técnico:</label>
+                        <textarea id="mensajeContacto" required rows="3" placeholder="Ej: Necesito cotizar un plan de evacuación, mediciones de puesta a tierra o armado de legajo técnico..." class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-blue-500 resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg text-xs sm:text-sm transition-all shadow-lg shadow-green-500/10 flex items-center justify-center gap-2">
+                        <span>🚀</span> ENVIAR CONSULTA POR WHATSAPP
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+    </footer>
+
     <script>
-        // CONFIGURACIÓN DEL GRÁFICO (CHART.JS)
-        const ctx = document.getElementById('graficoRiesgos').getContext('2d');
-        new Chart(ctx, {
+        // --- RENDEREADO DEL GRÁFICO (Chart.js) ---
+        const ctxPublico = document.getElementById('graficoImpactoPublico').getContext('2d');
+        new Chart(ctxPublico, {
             type: 'bar',
             data: {
-                labels: ['Construcción', 'Industria Metalúrgica', 'Planteas de Acopio/Agro', 'Comercio y Logística'],
+                labels: ['Riesgo Multas', 'Siniestros', 'Orden (5S)'],
                 datasets: [{
-                    label: 'Índice de Fiscalización SRT (%)',
-                    data: [85, 70, 65, 40],
-                    backgroundColor: 'rgba(59, 130, 246, 0.4)',
-                    borderColor: 'rgba(59, 130, 246, 1)',
-                    borderWidth: 2,
-                    borderRadius: 6
+                    label: 'Sin Gestión',
+                    data: [85, 70, 25],
+                    backgroundColor: '#ef4444', 
+                    borderRadius: 5
                 }, {
-                    label: 'Siniestros por Falta de Plan Técnico (%)',
-                    data: [75, 55, 60, 25],
-                    backgroundColor: 'rgba(245, 158, 11, 0.3)',
-                    borderColor: 'rgba(245, 158, 11, 1)',
-                    borderWidth: 2,
-                    borderRadius: 6
+                    label: 'Estudio Freytes',
+                    data: [5, 10, 95],
+                    backgroundColor: '#3b82f6', 
+                    borderRadius: 5
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        labels: { color: '#94a3b8', font: { weight: 'bold', size: 11 } }
+                scales: {
+                    y: { 
+                        beginAtZero: true, 
+                        max: 100,
+                        grid: { color: '#334155' },
+                        ticks: { color: '#94a3b8', font: { size: 9 } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#ffffff', font: { size: 10, weight: 'bold' } }
                     }
                 },
-                scales: {
-                    x: { ticks: { color: '#64748b', font: { weight: 'bold' } }, grid: { display: false } },
-                    y: { ticks: { color: '#64748b' }, grid: { color: 'rgba(51, 65, 85, 0.3)' } }
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#ffffff', font: { size: 10 } }
+                    }
                 }
             }
         });
 
-        // MANEJO DEL MODAL DIAGNÓSTICO
-        const modal = document.getElementById('modalDiag');
-        const modalContent = document.getElementById('modalContent');
-        
+        // --- GESTIÓN DE MODALES ---
         function abrirModal() {
-            document.body.classList.add('modal-active');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modalContent.classList.remove('scale-95');
+            document.getElementById('modalDiagnostico').classList.remove('hidden');
         }
         function cerrarModal() {
-            document.body.classList.remove('modal-active');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modalContent.classList.add('scale-95');
-            document.getElementById('resultadoSimulacion').classList.add('hidden');
+            document.getElementById('modalDiagnostico').classList.add('hidden');
+            document.getElementById('resultadoRiesgo').classList.add('hidden');
+        }
+        function abrirModalAcceso() {
+            document.getElementById('modalAcceso').classList.remove('hidden');
+        }
+        function cerrarModalAcceso() {
+            document.getElementById('modalAcceso').classList.add('hidden');
+            document.getElementById('errorClave').classList.add('hidden');
+            document.getElementById('claveAcceso').value = '';
         }
 
-        function calcularSimulacion() {
-            const rubro = document.getElementById('modalRubro').value;
-            const hAltura = document.getElementById('chkAltura').checked;
-            const hElec = document.getElementById('chkElectrico').checked;
-            const hConf = document.getElementById('chkConfinado').checked;
-            const resBox = document.getElementById('resultadoSimulacion');
+        // --- SIMULADOR DE RIESGO INTERACTIVO ---
+        function calcularRiesgo() {
+            const actividad = document.getElementById('actividad').value;
+            const metros = parseFloat(document.getElementById('metros').value);
+            const personal = parseInt(document.getElementById('personal').value);
             
-            let reqs = [];
-            
-            if(rubro === 'obra') {
-                reqs.push("Aviso de Obra y Programa de Seguridad Res. 51/97 aprobado por ART antes de iniciar.");[cite: 2]
-                reqs.push("Legajo Técnico de Obra completo y visible en el obrador (Dec. 911/96).");[cite: 2]
-            } else if (rubro === 'fabrica') {
-                reqs.push("Estudio de Carga de Fuego y Plan de Evacuación aprobado (Dec. 351/79).");[cite: 2]
-                reqs.push("Relevamiento General de Riesgos Laborales (RGRL) presentado anualmente.");
-            } else if (rubro === 'acopio') {
-                reqs.push("Protocolo preventivo específico para Silos y Celdas (Dec. 617/97).");[cite: 2]
-            } else {
-                reqs.push("Certificación de Extintores e Iluminación de Emergencia Municipal.");
+            const resultadoDiv = document.getElementById('resultadoRiesgo');
+            const valorRiesgo = document.getElementById('valorRiesgo');
+            const descRiesgo = document.getElementById('descRiesgo');
+
+            if (!metros || !personal) {
+                alert('Por favor, completa la superficie y el número de trabajadores.');
+                return;
             }
 
-            if(hAltura) reqs.push("Permisos de Trabajo en Altura y Checklists diarios de líneas de vida / andamios.");[cite: 2]
-            if(hElec) reqs.push("Protocolo de Medición de Puesta a Tierra obligatoria bajo Res. SRT 900/15.");[cite: 2]
-            if(hConf) reqs.push("Procedimiento escrito de Espacios Confinados con vigía externo y detector de gases.");[cite: 2]
-
-            resBox.innerHTML = `
-                <span class="text-amber-400 font-bold block mb-1 uppercase tracking-wider">⚠️ Requerimientos Exigibles Detectados:</span>
-                <ul class="space-y-1.5 text-slate-300 list-disc pl-4 text-[11px] leading-relaxed">
-                    ${reqs.map(r => `<li>${r}</li>`).join('')}
-                </ul>
-                <div class="pt-2">
-                    <a href="https://wa.me/543572594767?text=Hola%20Roger,%20generé%20el%20diagnóstico%20en%20la%20web%20para%20el%20rubro%20${rubro}.%20Necesito%20asesoramiento." target="_blank" class="block bg-green-600 text-center py-2 rounded text-white font-black hover:bg-green-500 transition-colors">
-                        VALIDAR REQUISITOS CON EL TÉCNICO
-                    </a>
-                </div>
-            `;
-            resBox.classList.remove('hidden');
+            resultadoDiv.classList.remove('hidden');
+            
+            if (actividad === 'obra' || (actividad === 'industria' && personal > 20) || (actividad === 'agro' && metros > 1000)) {
+                resultadoDiv.className = "mt-4 p-4 rounded-xl text-center border bg-red-500/10 border-red-500/30 text-red-400";
+                valorRiesgo.innerText = "🚨 RIESGO ALTO / CRÍTICO";
+                descRiesgo.innerText = "Tu actividad requiere por ley un Legajo Técnico obligatorio, Programas de Seguridad aprobados por la ART y mediciones periódicas físicas para mitigar la alta probabilidad de siniestros o suspensiones.";
+            } else if (personal > 10 || metros > 500) {
+                resultadoDiv.className = "mt-4 p-4 rounded-xl text-center border bg-yellow-500/10 border-yellow-500/30 text-yellow-400";
+                valorRiesgo.innerText = "⚠️ RIESGO MEDIO";
+                descRiesgo.innerText = "Cumplimiento obligatorio de Relevamiento General de Riesgos (RAGR), capacitaciones periódicas y adecuaciones de puestos. Se recomienda auditoría preventiva para evitar actas de infracción.";
+            } else {
+                resultadoDiv.className = "mt-4 p-4 rounded-xl text-center border bg-green-500/10 border-green-500/30 text-green-400";
+                valorRiesgo.innerText = "✅ RIESGO CONTROLABLE";
+                descRiesgo.innerText = "Nivel inicial. Requiere cobertura básica técnico-legal, Plan de Evacuación/Emergencias y capacitaciones esenciales en el uso de matafuegos y orden general.";
+            }
         }
 
-        // ENVÍO DE FORMULARIO DE CONTACTO A WHATSAPP
-        document.getElementById('formContacto').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const nombre = document.getElementById('nombre').value;
-            const localidad = document.getElementById('localidad').value;
-            const rubro = document.getElementById('rubro').value;
-            const personal = document.getElementById('personal').value;
-            const mensaje = document.getElementById('mensaje').value;
+        // --- AUTENTICACIÓN PANEL PRIVADO ---
+        function verifyClave() {
+            const clave = document.getElementById('claveAcceso').value;
+            const errorDiv = document.getElementById('errorClave');
             
-            // MEJORA 5: Mensaje formateado de manera más profesional para la lectura inmediata
-            const textoWhatsApp = `*NUEVA CONSULTA TÉCNICA - ESTUDIO FREYTES*\n\n` +
-                                 `• *Cliente/Razón Social:* ${nombre}\n` +
-                                 `• *Localidad:* ${localidad}\n` +
-                                 `• *Rubro Comercial:* ${rubro}\n` +
-                                 `• *Dotación de Personal:* ${personal} operarios\n\n` +
-                                 `• *Detalle del Problema/Requerimiento:* ${mensaje}`;
+            if (clave === 'admin123') {
+                errorDiv.classList.add('hidden');
+                alert('Acceso autorizado al Panel Técnico Privado.');
+                cerrarModalAcceso();
+            } else {
+                errorDiv.classList.remove('hidden');
+            }
+        }
+
+        // --- ENVÍO DE CONSULTA A WHATSAPP ---
+        function enviarMensajeWhatsApp(event) {
+            event.preventDefault(); 
             
-            const url = `https://wa.me/543572594767?text=${encodeURIComponent(textoWhatsApp)}`;
-            window.open(url, '_blank');
-        });
+            const nombre = document.getElementById('nombreContacto').value;
+            const empresa = document.getElementById('empresaContacto').value || 'Particular/No especifica';
+            const rubro = document.getElementById('rubroContacto').value;
+            const mensaje = document.getElementById('mensajeContacto').value;
+            
+            const numeroTelefono = "543572594767";
+            
+            const textoMensaje = `*CONSULTA TÉCNICA - ESTUDIO FREYTES*\n\n` +
+                                 `• *Contacto:* ${nombre}\n` +
+                                 `• *Empresa:* ${empresa}\n` +
+                                 `• *Rubro:* ${rubro}\n\n` +
+                                 `*Detalle del Requerimiento:*\n${mensaje}`;
+            
+            const mensajeCodificado = encodeURIComponent(textoMensaje);
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefono}&text=${mensajeCodificado}`;
+            
+            window.open(urlWhatsApp, '_blank');
+        }
     </script>
 </body>
 </html>
