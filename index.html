@@ -20,8 +20,8 @@
         <div class="hidden md:flex gap-6 text-sm opacity-80">
             <a href="#" class="hover:text-[#42a5f5] transition-colors">Inicio</a>
             <a href="#estadisticas" class="hover:text-[#42a5f5] transition-colors">Estadísticas</a>
-            <a href="#panel-interactivo" class="hover:text-[#42a5f5] transition-colors">Servicios y Normativas</a>
             <a href="#sobre-mi" class="hover:text-[#42a5f5] transition-colors">Quién Soy</a>
+            <a href="#consulta-normativa" class="hover:text-[#42a5f5] transition-colors">Centro Normativo</a>
             <a href="#contacto" class="hover:text-[#42a5f5] transition-colors">Contacto</a>
         </div>
         <div class="flex gap-2 sm:gap-4 items-center w-full sm:w-auto justify-center sm:justify-end">
@@ -35,22 +35,18 @@
     <div id="modalAcceso" class="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
         <div class="bg-[#1e293b] border border-gray-700 w-full max-w-sm rounded-2xl p-6 shadow-2xl relative">
             <button onclick="cerrarModalAcceso()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
-            
             <div class="text-center mb-4">
                 <span class="text-4xl block mb-2">🔒</span>
                 <h3 class="text-lg font-bold text-[#42a5f5]">Panel Técnico Privado</h3>
                 <p class="text-gray-400 text-xs">Ingresá tu clave para gestionar plantillas.</p>
             </div>
-            
             <div class="space-y-4">
                 <div>
                     <input type="password" id="claveAcceso" placeholder="Ingresá la contraseña" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-3 text-sm text-center text-white focus:outline-none focus:border-blue-500">
                 </div>
-                
                 <button onclick="verifyClave()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 px-4 rounded-lg text-sm transition-colors">
                     INGRESAR
                 </button>
-                
                 <div id="errorClave" class="hidden text-xs text-red-400 text-center font-semibold mt-2">
                     ⚠️ Contraseña incorrecta. Intentá de nuevo.
                 </div>
@@ -70,7 +66,6 @@
             <p class="text-gray-400 text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Protegemos el capital de tu empresa y optimizamos la productividad mediante sistemas de orden y limpieza (5S). Brindamos asesoría bajo estándares internacionales y gestión de normas ISO, asegurando el cumplimiento técnico y legal para evitar multas de la ART.
             </p>
-            
             <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <button onclick="abrirModal()" class="bg-blue-500 px-5 py-3.5 rounded font-bold text-sm hover:bg-blue-600 transition-colors text-center w-full sm:w-auto shadow-lg shadow-blue-500/10">
                     DIAGNÓSTICO TÉCNICO GRATIS
@@ -79,193 +74,46 @@
                     <span>💬</span> CONSULTAR POR WHATSAPP
                 </a>
             </div>
-
             <div class="mt-4 text-gray-400 text-xs font-medium tracking-wide flex items-center justify-center lg:justify-start gap-1.5 opacity-90">
                 <span>🛡️</span> Técnico Matriculado en <span class="text-[#42a5f5] font-semibold">COPHISEC Córdoba</span> — M.P.: <span class="text-white font-bold">THST 01-92</span>
             </div>
         </div>
 
-        <div id="panel-interactivo" class="grid grid-cols-1 gap-4 w-full scroll-mt-6">
-            
-            <button onclick="cambiarVentana('ventana-industria')" id="btn-ventana-industria" class="ventana-btn bg-blue-600/20 p-5 sm:p-6 rounded-xl border border-blue-500 flex gap-4 transition-all text-left w-full focus:outline-none">
+        <div id="servicios" class="grid grid-cols-1 gap-4 w-full">
+            <a href="#servicio-industria" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
                 <span class="text-xl sm:text-2xl mt-0.5">🏭</span>
-                <div class="w-full">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-base sm:text-lg text-white">Servicio de Consultoría Industrial</h3>
-                        <span id="indicador-ventana-industria" class="text-xs bg-blue-500 text-white px-2 py-0.5 rounded font-bold">Activo</span>
-                    </div>
-                    <p class="text-gray-300 text-xs sm:text-sm mb-1 leading-relaxed">Auditorías de desvíos por riesgo eléctrico, adecuación a Normas ISO y Sistema 5S de productividad.</p>
+                <div>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Servicio de Consultoría Industrial</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Auditorías de desvíos por riesgo eléctrico, adecuación a Normas ISO, mediciones físicas obligatorias SRT e implementación del Sistema 5S de productividad.</p>
+                    <span class="text-[11px] sm:text-xs text-[#42a5f5] font-semibold flex items-center gap-1 mt-1">Ver alcances del servicio ↓</span>
                 </div>
-            </button>
+            </a>
 
-            <button onclick="cambiarVentana('ventana-obra')" id="btn-ventana-obra" class="ventana-btn bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-gray-500 transition-all text-left w-full focus:outline-none">
+            <a href="#servicio-obra" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
                 <span class="text-xl sm:text-2xl mt-0.5">🚧</span>
-                <div class="w-full">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-base sm:text-lg text-white">Gestión y Dirección Técnica en Obras</h3>
-                        <span id="indicador-ventana-obra" class="text-xs bg-gray-800 text-gray-400 px-2 py-0.5 rounded font-bold hidden">Ver</span>
-                    </div>
-                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Confección de Programas de Seguridad (Dec. 911/96), Legajos Técnicos y control documental contratistas.</p>
+                <div>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Gestión y Dirección Técnica en Obras</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Confección y aprobación de Programas de Seguridad (Dec. 911/96), Legajos Técnicos de obra completos y control documental estricto de contratistas.</p>
+                    <span class="text-[11px] sm:text-xs text-[#42a5f5] font-semibold flex items-center gap-1 mt-1">Ver alcances del servicio ↓</span>
                 </div>
-            </button>
+            </a>
 
-            <button onclick="cambiarVentana('ventana-agro')" id="btn-ventana-agro" class="ventana-btn bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-gray-500 transition-all text-left w-full focus:outline-none">
+            <a href="#servicio-agro" class="bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-blue-500 hover:scale-[1.01] transition-all text-left">
                 <span class="text-xl sm:text-2xl mt-0.5">🚜</span>
-                <div class="w-full">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-base sm:text-lg text-white">Seguridad Rural y Plantas de Acopio</h3>
-                        <span id="indicador-ventana-agro" class="text-xs bg-gray-800 text-gray-400 px-2 py-0.5 rounded font-bold hidden">Ver</span>
-                    </div>
-                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Prevención en espacios confinados, silos, riesgos mecánicos y cumplimiento del Decreto 617/97.</p>
+                <div>
+                    <h3 class="font-bold text-base sm:text-lg text-white">Asesoramiento Preventivo Rural y Agro</h3>
+                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Análisis de riesgos operativos en plantas de acopio, celdas y silos. Planes de emergencia adaptados y auditorías técnicas a maquinarias y rodados.</p>
+                    <span class="text-[11px] sm:text-xs text-[#42a5f5] font-semibold flex items-center gap-1 mt-1">Ver alcances del servicio ↓</span>
                 </div>
-            </button>
-
-            <button onclick="cambiarVentana('ventana-normativa')" id="btn-ventana-normativa" class="ventana-btn bg-[#1e293b] p-5 sm:p-6 rounded-xl border border-gray-700 flex gap-4 hover:border-gray-500 transition-all text-left w-full focus:outline-none">
-                <span class="text-xl sm:text-2xl mt-0.5">⚖️</span>
-                <div class="w-full">
-                    <div class="flex items-center justify-between">
-                        <h3 class="font-bold text-base sm:text-lg text-[#42a5f5]">Centro de Consulta Normativa Legal</h3>
-                        <span id="indicador-ventana-normativa" class="text-xs bg-gray-800 text-gray-400 px-2 py-0.5 rounded font-bold hidden">Ver</span>
-                    </div>
-                    <p class="text-gray-400 text-xs sm:text-sm mb-1 leading-relaxed">Explorá Leyes Nacionales, Decretos Reglamentarios y resoluciones vigentes de la SRT en Argentina.</p>
-                </div>
-            </button>
+            </a>
         </div>
     </header>
-
-    <section class="px-4 sm:px-10 pb-16">
-        <div class="bg-[#1e293b] rounded-2xl border border-gray-700 p-6 sm:p-8 shadow-xl min-h-[250px]">
-            
-            <div id="content-ventana-industria" class="ventana-contenido space-y-6">
-                <div class="border-b border-gray-700 pb-3">
-                    <h4 class="text-lg font-bold text-white flex items-center gap-2">🏭 Servicios de Consultoría Industrial</h4>
-                    <p class="text-xs text-gray-400">Soluciones de prevención y cumplimiento técnico parametrizadas bajo el Decreto 351/79.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">⚡ Informes Técnicos Eléctricos</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Detección, relevamiento fotográfico y planes de corrección de desvíos críticos por riesgo eléctrico en tableros, cableados e infraestructura de planta.</p>
-                    </div>
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">📋 Mediciones Obligatorias</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Protocolos homologados de puesta a tierra (PAT), niveles de iluminación, ergonomía laboral y ruido en ambiente de trabajo conforme a normativas SRT vigentes.</p>
-                    </div>
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">📊 Metodología Lean 5S</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Optimización de layouts industriales orientada a la Clasificación, Orden, Limpieza, Estandarización y Disciplina operativa para reducir tiempos muertos.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="content-ventana-obra" class="ventana-contenido hidden space-y-6">
-                <div class="border-b border-gray-700 pb-3">
-                    <h4 class="text-lg font-bold text-white flex items-center gap-2">🚧 Dirección Técnica en Obras</h4>
-                    <p class="text-xs text-gray-400">Protección técnico-legal estricta en proyectos civiles, viales y de montaje conforme al Decreto 911/96.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">📂 Legajo Técnico de Obra</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Estructuración, apertura e implementación completa en terreno de toda la documentación exigida rigurosamente por entes de control y ART.</p>
-                    </div>
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">👥 Control de Contratistas</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Auditoría documental exhaustiva de subcontratistas antes del ingreso. Gestión de documentación cruzada para blindar la responsabilidad solidaria corporativa.</p>
-                    </div>
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">📄 Programas de Seguridad</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Redacción técnica especializada, tramitación ágil y seguimiento de aprobación de Programas de Seguridad con sus respectivos avisos de inicio de obra.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="content-ventana-agro" class="ventana-contenido hidden space-y-6">
-                <div class="border-b border-gray-700 pb-3">
-                    <h4 class="text-lg font-bold text-white flex items-center gap-2">🚜 Servicios y Prevención en el Agro</h4>
-                    <p class="text-xs text-gray-400">Mitigación de riesgos rurales y operativos en el sector agrícola bajo el Decreto 617/97.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">🌾 Riesgos en Acopios y Silos</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Análisis de riesgos operativos en plantas de acopio y celdas. Procedimientos normalizados para ingreso seguro a espacios confinados y prevención de atrapamientos.</p>
-                    </div>
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">⚙️ Resguardos en Maquinarias</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Evaluación técnica y recomendaciones mecánicas de protección en ejes de fuerza, poleas, tractores y herramientas de labranza rural.</p>
-                    </div>
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800">
-                        <h5 class="text-sm font-bold text-[#42a5f5] mb-2">🧪 Gestión de Agroquímicos</h5>
-                        <p class="text-gray-400 text-xs leading-relaxed">Capacitaciones específicas operativas sobre almacenamiento seguro, uso correcto de EPP y disposición de residuos químicos peligrosos.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="content-ventana-normativa" class="ventana-contenido hidden space-y-6">
-                <div class="border-b border-gray-700 pb-3">
-                    <h4 class="text-lg font-bold text-[#42a5f5] flex items-center gap-2">⚖️ Centro de Consulta Normativa Legal</h4>
-                    <p class="text-xs text-gray-400">Digesto técnico estructurado del sistema de riesgos del trabajo en la República Argentina.</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800 space-y-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-blue-400 block border-b border-gray-800 pb-1">I. Leyes Generales</span>
-                        <div class="space-y-1">
-                            <h5 class="text-xs font-bold text-white">Ley N° 19.587 (Higiene y Seguridad)</h5>
-                            <p class="text-gray-400 text-[11px] leading-relaxed">Pilar fundamental que regula las condiciones de protección psicofísica y prevención en todo el territorio nacional.</p>
-                        </div>
-                        <div class="space-y-1 pt-2">
-                            <h5 class="text-xs font-bold text-white">Ley N° 24.557 (Riesgos del Trabajo)</h5>
-                            <p class="text-gray-400 text-[11px] leading-relaxed">Normativa que regula el funcionamiento de las ART, reparación de daños y la obligatoriedad de preventivos patronales.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800 space-y-4">
-                        <span class="text-xs font-bold uppercase tracking-wider text-orange-400 block border-b border-gray-800 pb-1">II. Decretos por Actividad</span>
-                        <div class="space-y-1">
-                            <h5 class="text-xs font-bold text-white">Decreto 351/79 — Industria</h5>
-                            <p class="text-gray-400 text-[11px] leading-relaxed">Reglamentación técnica para establecimientos industriales en general (carga de fuego, ventilación, layouts).</p>
-                        </div>
-                        <div class="space-y-1 pt-1.5">
-                            <h5 class="text-xs font-bold text-white">Decreto 911/96 — Construcción</h5>
-                            <p class="text-gray-400 text-[11px] leading-relaxed">Normas de seguridad adaptadas rigurosamente a obras civiles, excavaciones, andamios y trabajos en altura.</p>
-                        </div>
-                        <div class="space-y-1 pt-1.5">
-                            <h5 class="text-xs font-bold text-white">Decreto 617/97 — Actividad Agraria</h5>
-                            <p class="text-gray-400 text-[11px] leading-relaxed">Regulación del sector agropecuario: acopios, silos, factores biológicos y resguardos en maquinaria rural.</p>
-                        </div>
-                    </div>
-
-                    <div class="bg-[#0b1120] p-4 rounded-xl border border-gray-800 space-y-3">
-                        <span class="text-xs font-bold uppercase tracking-wider text-yellow-500 block border-b border-gray-800 pb-1">III. Resoluciones SRT</span>
-                        <div>
-                            <h5 class="text-[11px] font-bold text-white">Res. 61/23 — Trabajo en Altura</h5>
-                            <p class="text-gray-400 text-[10px] leading-tight">Requisitos obligatorios de protección colectiva e individual para tareas a distinto nivel.</p>
-                        </div>
-                        <div>
-                            <h5 class="text-[11px] font-bold text-white">Res. 81/19 — Vigilancia de Cancerígenos</h5>
-                            <p class="text-gray-400 text-[10px] leading-tight">Declaración y control de uso de agentes de riesgo químico o industrial ante la SRT.</p>
-                        </div>
-                        <div>
-                            <h5 class="text-[11px] font-bold text-white">Res. 85/12 — Protocolo de Ruido</h5>
-                            <p class="text-gray-400 text-[10px] leading-tight">Metodología obligatoria de medición instrumental cuantitativa de ruido en puestos de trabajo.</p>
-                        </div>
-                        <div>
-                            <h5 class="text-[11px] font-bold text-white">Res. 299/11 — Registro de Entrega de EPP</h5>
-                            <p class="text-gray-400 text-[10px] leading-tight">Formulario de carácter obligatorio para constatar la entrega de Elementos de Protección Personal.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
 
     <div id="modalDiagnostico" class="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
         <div class="bg-[#1e293b] border border-gray-700 w-full max-w-md rounded-2xl p-5 sm:p-6 shadow-2xl relative">
             <button onclick="cerrarModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white font-bold text-xl">&times;</button>
-            
             <h3 class="text-lg sm:text-xl font-bold mb-1 flex items-center gap-2 text-[#42a5f5]">📊 Diagnóstico Técnico de Riesgo</h3>
             <p class="text-gray-400 text-[11px] sm:text-xs mb-4 sm:mb-6">Evaluación preliminar parametrizada según la normativa argentina.</p>
-            
             <div class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-gray-300 mb-1.5">Seleccioná tu Actividad:</label>
@@ -276,7 +124,6 @@
                         <option value="comercio">Comercio / Oficinas / Cafetería</option>
                     </select>
                 </div>
-                
                 <div class="grid grid-cols-2 gap-3 sm:gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-gray-300 mb-1.5">Superficie (m²):</label>
@@ -284,21 +131,4 @@
                     </div>
                     <div>
                         <label class="block text-xs font-semibold text-gray-300 mb-1.5">N° de Trabajadores:</label>
-                        <input type="number" id="personal" placeholder="Ej: 15" class="w-full bg-[#0b1120] border border-gray-600 rounded-lg p-2.5 text-xs sm:text-sm text-white focus:outline-none focus:border-blue-500">
-                    </div>
-                </div>
-                
-                <button onclick="calcularRiesgo()" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 sm:py-3 px-4 rounded-lg text-xs sm:text-sm transition-colors mt-2">
-                    CALCULAR NIVEL DE RIESGO
-                </button>
-                
-                <div id="resultadoRiesgo" class="hidden mt-4 p-4 rounded-xl text-center border">
-                    <span class="text-[10px] uppercase font-bold tracking-wider block text-gray-400 mb-1">Resultado de Evaluación</span>
-                    <div id="valorRiesgo" class="text-lg sm:text-xl font-extrabold mb-1"></div>
-                    <p id="descRiesgo" class="text-[11px] sm:text-xs text-gray-300 leading-relaxed"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section id="estadisticas" class="px-4 sm
+                        <input type
