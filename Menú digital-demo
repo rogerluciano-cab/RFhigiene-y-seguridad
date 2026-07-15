@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Digital - Aura Gourmet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-stone-950 text-stone-100 font-sans">
+
+    <!-- Header -->
+    <header class="p-6 text-center border-b border-stone-800">
+        <h1 class="text-3xl font-serif text-amber-500">Aura Gourmet</h1>
+        <p class="text-stone-400">Escaneá, elegí y pedí desde tu mesa</p>
+    </header>
+
+    <!-- Filtros de Categoría -->
+    <nav class="sticky top-0 bg-stone-950/90 backdrop-blur p-4 flex gap-4 overflow-x-auto justify-center">
+        <button onclick="filterMenu('all')" class="px-4 py-2 bg-amber-600 rounded-full text-sm">Todo</button>
+        <button onclick="filterMenu('platos')" class="px-4 py-2 border border-stone-700 rounded-full text-sm">Platos</button>
+        <button onclick="filterMenu('bebidas')" class="px-4 py-2 border border-stone-700 rounded-full text-sm">Bebidas</button>
+    </nav>
+
+    <!-- Menú -->
+    <main id="menu-container" class="p-4 grid gap-4 max-w-md mx-auto">
+        <!-- Los productos se inyectan acá con JS -->
+    </main>
+
+    <!-- Botón Carrito Flotante -->
+    <button onclick="toggleCart()" class="fixed bottom-6 right-6 bg-amber-600 p-4 rounded-full shadow-lg z-50">
+        🛒 <span id="cart-count">0</span>
+    </button>
+
+    <!-- Carrito (Modal simple) -->
+    <div id="cart-modal" class="hidden fixed inset-0 bg-stone-950 p-6 z-50 overflow-y-auto">
+        <h2 class="text-2xl font-serif mb-4">Tu Pedido</h2>
+        <div id="cart-items" class="space-y-4 mb-8"></div>
+        <div class="border-t border-stone-700 pt-4 mb-8">
+            <p class="text-xl">Total: $<span id="cart-total">0</span></p>
+        </div>
+        <button onclick="sendToWhatsApp()" class="w-full bg-green-600 p-4 rounded-xl font-bold">Enviar Pedido por WhatsApp</button>
+        <button onclick="toggleCart()" class="w-full mt-4 text-stone-400">Seguir eligiendo</button>
+    </div>
+
+    <script>
+        // Data simulada (Esto es lo que después vendría del Google Sheets)
+        const menuData = [
+            { id: 1, name: "Bife de Chorizo", price: 15000, cat: "platos", desc: "Acompañado con papas rústicas" },
+            { id: 2, name: "Hamburguesa Gourmet", price: 9000, cat: "platos", desc: "Queso cheddar, bacon y rúcula" },
+            { id: 3, name: "Vino Malbec", price: 8000, cat: "bebidas", desc: "Copa de bodega seleccionada" },
+            { id: 4, name: "Cerveza Artesanal", price: 3500, cat: "bebidas", desc: "Pinta tirada" }
+        ];
+
+        let cart = [];
+
+        function renderMenu(filter = 'all') {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+            const filtered = filter === 'all' ? menuData : menuData.filter(i => i.cat === filter);
+            
+            filtered.forEach(item => {
+                container.innerHTML += `
+                    <div class="bg-stone-900 p-4 rounded-2xl flex justify-between items-center">
+                        <div>
+                            <h3 class="font-bold">${item.name}</h3>
+                            <p class="text-sm text-stone-400">${item.desc}</p>
+                            <p class="text-amber-500 font-bold">$${item.price}</p>
+                        </div>
+                        <button onclick="addToCart(${item.id})" class="bg-stone-800 px-4 py-2 rounded-lg">+</button>
+                    </div>
+                `;
+            });
+        }
+
+        function filterMenu(cat) { renderMenu(cat); }
+
+        function addToCart(id) {
+            const item = menuData.find(i => i.id === id);
+            cart.push(item);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = cart.map(i => `<p>${i.name} - $${i.price}</p>`).join('');
+            document.getElementById('cart-total').innerText = cart.reduce((acc, curr) => acc + curr.price, 0);
+        }
+
+        function toggleCart() { document.getElementById('cart-modal').classList.toggle('hidden'); }
+
+        function sendToWhatsApp() {
+            const phone = "5491100000000"; // Número del restaurante
+            const total = document.getElementById('cart-total').innerText;
+            const items = cart.map(i => i.name).join(', ');
+            const msg = `Hola! Quiero hacer un pedido:\n\n${items}\n\nTotal: $${total}`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        renderMenu();
+    </script>
+</body>
+</html>
