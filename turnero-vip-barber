@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Turnos - Barbería El Socio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+        .font-serif {
+            font-family: 'Cinzel', serif;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ca8a04;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen pb-24 selection:bg-yellow-600 selection:text-black">
+
+    <!-- Encabezado de la Barbería -->
+    <header class="relative bg-zinc-900 border-b border-zinc-800 text-center py-10 px-4 overflow-hidden">
+        <!-- Luces de fondo -->
+        <div class="absolute -top-24 -left-24 w-48 h-48 bg-yellow-600/10 rounded-full blur-3xl"></div>
+        <div class="absolute -top-24 -right-24 w-48 h-48 bg-zinc-500/5 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 max-w-md mx-auto">
+            <span class="inline-block px-3 py-1 bg-yellow-600/10 text-yellow-500 text-xs font-bold uppercase tracking-widest rounded-full mb-3 border border-yellow-500/20">
+                Turnos Online Instántaneos
+            </span>
+            <h1 class="text-3xl font-bold font-serif text-yellow-500 tracking-wider">BARBERÍA EL SOCIO</h1>
+            <p class="text-zinc-400 text-sm mt-2">Reservá tu lugar en menos de un minuto • Estilo & Navaja</p>
+        </div>
+    </header>
+
+    <main class="p-4 max-w-md mx-auto space-y-6">
+
+        <!-- PASO 1: Elegir Servicio -->
+        <section class="space-y-3">
+            <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-yellow-600 text-zinc-950 flex items-center justify-center font-bold text-xs">1</span>
+                <h2 class="text-lg font-bold tracking-wide uppercase text-zinc-300">Elegí el Servicio</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-3">
+                <!-- Servicio 1 -->
+                <div onclick="selectService('Corte Clásico', 5000, this)" class="service-card bg-zinc-900 border border-zinc-800 hover:border-yellow-600/50 p-4 rounded-xl cursor-pointer transition-all duration-200 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-zinc-100">Corte Clásico</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Tijera o máquina, lavado incluido y peinado.</p>
+                    </div>
+                    <span class="text-yellow-500 font-bold font-serif">$5.000</span>
+                </div>
+                <!-- Servicio 2 -->
+                <div onclick="selectService('Corte + Barba', 7500, this)" class="service-card bg-zinc-900 border border-zinc-800 hover:border-yellow-600/50 p-4 rounded-xl cursor-pointer transition-all duration-200 flex justify-between items-center">
+                    <div>
+                        <h3 class="font-bold text-zinc-100">Corte + Perfilado de Barba</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Corte de pelo completo y prolijado de barba con navaja.</p>
+                    </div>
+                    <span class="text-yellow-500 font-bold font-serif">$7.500</span>
+                </div>
+                <!-- Servicio 3 -->
+                <div onclick="selectService('Servicio Premium', 10000, this)" class="service-card bg-zinc-900 border border-zinc-800 hover:border-yellow-600/50 p-4 rounded-xl cursor-pointer transition-all duration-200 flex justify-between items-center">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-bold text-zinc-100">Servicio Premium</h3>
+                            <span class="bg-yellow-600/20 text-yellow-500 text-[9px] px-1.5 py-0.5 rounded font-black uppercase">Facha Completa</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-1">Corte, barba, exfoliación facial, toalla caliente y bebida.</p>
+                    </div>
+                    <span class="text-yellow-500 font-bold font-serif">$10.000</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASO 2: Elegir Barbero -->
+        <section class="space-y-3">
+            <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-yellow-600 text-zinc-950 flex items-center justify-center font-bold text-xs">2</span>
+                <h2 class="text-lg font-bold tracking-wide uppercase text-zinc-300">Elegí tu Barbero</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <div onclick="selectBarber('Franco', this)" class="barber-card bg-zinc-900 border border-zinc-800 p-4 rounded-xl text-center cursor-pointer transition-all duration-200">
+                    <div class="w-12 h-12 bg-zinc-800 rounded-full mx-auto mb-2 flex items-center justify-center text-xl">💈</div>
+                    <h3 class="font-bold text-sm">Franco</h3>
+                    <p class="text-[10px] text-zinc-500 mt-0.5">Especialista en degradés</p>
+                </div>
+                <div onclick="selectBarber('Mateo', this)" class="barber-card bg-zinc-900 border border-zinc-800 p-4 rounded-xl text-center cursor-pointer transition-all duration-200">
+                    <div class="w-12 h-12 bg-zinc-800 rounded-full mx-auto mb-2 flex items-center justify-center text-xl">✂️</div>
+                    <h3 class="font-bold text-sm">Mateo</h3>
+                    <p class="text-[10px] text-zinc-500 mt-0.5">Experto en barbas de autor</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PASO 3: Elegir Día -->
+        <section class="space-y-3">
+            <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-yellow-600 text-zinc-950 flex items-center justify-center font-bold text-xs">3</span>
+                <h2 class="text-lg font-bold tracking-wide uppercase text-zinc-300">Seleccioná el Día</h2>
+            </div>
+            
+            <div class="flex gap-2 overflow-x-auto pb-2 whitespace-nowrap">
+                <button onclick="selectDay('Hoy', this)" class="day-btn px-4 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-xl text-sm font-semibold transition-all">
+                    Hoy
+                </button>
+                <button onclick="selectDay('Mañana', this)" class="day-btn px-4 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-xl text-sm font-semibold transition-all">
+                    Mañana
+                </button>
+                <button onclick="selectDay('Pasado Mañana', this)" class="day-btn px-4 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-xl text-sm font-semibold transition-all">
+                    Pasado Mañana
+                </button>
+            </div>
+        </section>
+
+        <!-- PASO 4: Elegir Horario -->
+        <section class="space-y-3">
+            <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-yellow-600 text-zinc-950 flex items-center justify-center font-bold text-xs">4</span>
+                <h2 class="text-lg font-bold tracking-wide uppercase text-zinc-300">Horarios Disponibles</h2>
+            </div>
+            
+            <div class="grid grid-cols-4 gap-2">
+                <button onclick="selectTime('09:00', this)" class="time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all">09:00</button>
+                <button onclick="selectTime('10:00', this)" class="time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all">10:00</button>
+                <button onclick="selectTime('11:00', this)" class="time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all">11:00</button>
+                <button onclick="selectTime('15:00', this)" class="time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all">15:00</button>
+                <button onclick="selectTime('16:00', this)" class="time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all">16:00</button>
+                <button onclick="selectTime('17:00', this)" class="time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all">17:00</button>
+                <button onclick="selectTime('18:00', this)" class="time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all">18:00</button>
+                <button onclick="selectTime('19:00', this)" class="time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all">19:00</button>
+            </div>
+        </section>
+
+        <!-- PASO 5: Nombre del Cliente -->
+        <section class="space-y-3">
+            <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-yellow-600 text-zinc-950 flex items-center justify-center font-bold text-xs">5</span>
+                <h2 class="text-lg font-bold tracking-wide uppercase text-zinc-300">Tus Datos</h2>
+            </div>
+            <input type="text" id="client-name" placeholder="Escribí tu nombre completo" class="w-full bg-zinc-900 border border-zinc-800 focus:border-yellow-600 focus:outline-none p-4 rounded-xl text-zinc-200 text-sm placeholder:text-zinc-600 transition-all">
+        </section>
+
+    </main>
+
+    <!-- Barra Inferior Flotante de Reservas -->
+    <div class="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 p-4 z-40 shadow-2xl">
+        <div class="max-w-md mx-auto">
+            <button onclick="confirmTurn()" class="w-full bg-yellow-600 hover:bg-yellow-500 active:scale-95 text-zinc-950 py-4 rounded-xl font-bold text-sm tracking-wide flex items-center justify-center gap-2 transition-all duration-150">
+                <span>📅</span> Reservar Turno por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Variables para guardar la selección del cliente
+        let selectedService = '';
+        let selectedPrice = 0;
+        let selectedBarber = '';
+        let selectedDay = '';
+        let selectedTime = '';
+
+        function selectService(name, price, element) {
+            selectedService = name;
+            selectedPrice = price;
+            
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.className = "service-card bg-zinc-900 border border-zinc-800 p-4 rounded-xl cursor-pointer transition-all duration-200 flex justify-between items-center";
+            });
+            element.className = "service-card bg-zinc-900 border-2 border-yellow-600 p-4 rounded-xl cursor-pointer transition-all duration-200 flex justify-between items-center shadow-lg shadow-yellow-600/5";
+        }
+
+        function selectBarber(name, element) {
+            selectedBarber = name;
+            
+            document.querySelectorAll('.barber-card').forEach(card => {
+                card.className = "barber-card bg-zinc-900 border border-zinc-800 p-4 rounded-xl text-center cursor-pointer transition-all duration-200";
+            });
+            element.className = "barber-card bg-zinc-900 border-2 border-yellow-600 p-4 rounded-xl text-center cursor-pointer transition-all duration-200 shadow-lg shadow-yellow-600/5";
+        }
+
+        function selectDay(day, element) {
+            selectedDay = day;
+            
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                btn.className = "day-btn px-4 py-3 bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-xl text-sm font-semibold transition-all";
+            });
+            element.className = "day-btn px-4 py-3 bg-yellow-600 text-zinc-950 font-bold rounded-xl text-sm transition-all";
+        }
+
+        function selectTime(time, element) {
+            selectedTime = time;
+            
+            document.querySelectorAll('.time-btn').forEach(btn => {
+                btn.className = "time-btn bg-zinc-900 border border-zinc-800 py-2 rounded-lg text-sm text-zinc-300 transition-all";
+            });
+            element.className = "time-btn bg-yellow-600 text-zinc-950 font-bold py-2 rounded-lg text-sm transition-all";
+        }
+
+        function confirmTurn() {
+            const clientName = document.getElementById('client-name').value.trim();
+
+            if (!selectedService) {
+                alert("Por favor, seleccioná un servicio.");
+                return;
+            }
+            if (!selectedBarber) {
+                alert("Por favor, seleccioná un barbero.");
+                return;
+            }
+            if (!selectedDay) {
+                alert("Por favor, elegí un día para tu turno.");
+                return;
+            }
+            if (!selectedTime) {
+                alert("Por favor, elegí una hora para tu turno.");
+                return;
+            }
+            if (!clientName) {
+                alert("Por favor, ingresá tu nombre para registrar el turno.");
+                return;
+            }
+
+            // Generar el mensaje automático para WhatsApp
+            const message = `💈 *TURNO RESERVADO - BARBERÍA EL SOCIO* 💈\n\n` +
+                            `👤 *Cliente:* ${clientName}\n` +
+                            `✂️ *Servicio:* ${selectedService} ($${selectedPrice.toLocaleString('es-AR')})\n` +
+                            `🧔 *Barbero:* ${selectedBarber}\n` +
+                            `📅 *Día:* ${selectedDay}\n` +
+                            `⏰ *Hora:* ${selectedTime} hs\n\n` +
+                            `_¡Espero la confirmación del turno!_`;
+
+            const whatsappNumber = "5493546000000"; // Número real de la barbería
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
