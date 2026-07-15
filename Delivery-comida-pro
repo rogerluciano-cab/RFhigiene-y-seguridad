@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Express - Lomitos & Pizzas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+        }
+        /* Ocultar flechas de inputs de número */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-150 min-h-screen pb-32 selection:bg-orange-500 selection:text-black">
+
+    <!-- Encabezado de la Rotisería -->
+    <header class="relative bg-zinc-900 border-b border-zinc-800 text-center py-8 px-4 overflow-hidden">
+        <div class="absolute -top-20 -left-20 w-48 h-48 bg-orange-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute -top-20 -right-20 w-48 h-48 bg-yellow-500/10 rounded-full blur-3xl"></div>
+        
+        <div class="relative z-10 max-w-md mx-auto">
+            <span class="inline-block px-3 py-1 bg-orange-500/10 text-orange-400 text-[10px] font-bold uppercase tracking-widest rounded-full mb-2 border border-orange-500/20">
+                Lomitos, Pizzas y Empanadas
+            </span>
+            <h1 class="text-3xl font-black text-white tracking-tight uppercase">EL REY DEL LOMITO</h1>
+            <p class="text-zinc-400 text-xs mt-1">Hacé tu pedido online y te llega al toque sin esperas 🚀</p>
+        </div>
+    </header>
+
+    <main class="p-4 max-w-md mx-auto space-y-6">
+
+        <!-- CATEGORÍA 1: LOMITOS -->
+        <section class="space-y-3">
+            <h2 class="text-lg font-black tracking-wide uppercase text-orange-500 border-b border-zinc-900 pb-1">🍔 Lomitos Giga</h2>
+            <div class="space-y-3">
+                <!-- Item 1 -->
+                <div class="bg-zinc-900 p-4 rounded-xl border border-zinc-850 flex justify-between items-start gap-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-zinc-100">Lomito Completo</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Carne tiernizada, jamón, queso, huevo, lechuga, tomate y mayonesa casera. Viene con papas.</p>
+                        <span class="text-orange-400 font-bold block mt-2 text-sm">$6.500</span>
+                    </div>
+                    <button onclick="addToCart(1, 'Lomito Completo', 6500)" class="bg-orange-500 hover:bg-orange-600 active:scale-95 text-black w-10 h-10 flex items-center justify-center rounded-xl font-bold text-xl transition-all shadow-md shadow-orange-500/5">+</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍA 2: EMPANADAS CON DETALLE DE SABORES (El dolor de cabeza resuelto) -->
+        <section class="space-y-3">
+            <div class="flex items-center justify-between border-b border-zinc-900 pb-1">
+                <h2 class="text-lg font-black tracking-wide uppercase text-orange-500">🥟 Empanadas Caseras</h2>
+                <span class="text-[10px] bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded-full font-bold">$900 c/u</span>
+            </div>
+            
+            <div class="bg-zinc-900 p-4 rounded-xl border border-zinc-850 space-y-4">
+                <p class="text-xs text-zinc-400">Escribí cuántas querés de cada sabor. El sistema calculará el total al instante.</p>
+                
+                <!-- Sabores -->
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-zinc-300 font-semibold">Carne Suave</span>
+                        <div class="flex items-center gap-2 bg-zinc-950 p-1 rounded-lg border border-zinc-800">
+                            <button onclick="changeEmpanadaFlavor('Carne Suave', -1)" class="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-white font-bold text-lg">-</button>
+                            <span id="flavor-CarneSuave" class="w-5 text-center font-bold text-xs">0</span>
+                            <button onclick="changeEmpanadaFlavor('Carne Suave', 1)" class="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-white font-bold text-lg">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-zinc-300 font-semibold">Jamón y Queso</span>
+                        <div class="flex items-center gap-2 bg-zinc-950 p-1 rounded-lg border border-zinc-800">
+                            <button onclick="changeEmpanadaFlavor('Jamón y Queso', -1)" class="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-white font-bold text-lg">-</button>
+                            <span id="flavor-JamonYQueso" class="w-5 text-center font-bold text-xs">0</span>
+                            <button onclick="changeEmpanadaFlavor('Jamón y Queso', 1)" class="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-white font-bold text-lg">+</button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="text-zinc-300 font-semibold">Humita / Choclo</span>
+                        <div class="flex items-center gap-2 bg-zinc-950 p-1 rounded-lg border border-zinc-800">
+                            <button onclick="changeEmpanadaFlavor('Humita', -1)" class="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-white font-bold text-lg">-</button>
+                            <span id="flavor-Humita" class="w-5 text-center font-bold text-xs">0</span>
+                            <button onclick="changeEmpanadaFlavor('Humita', 1)" class="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-white font-bold text-lg">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍA 3: BEBIDAS -->
+        <section class="space-y-3">
+            <h2 class="text-lg font-black tracking-wide uppercase text-orange-500 border-b border-zinc-900 pb-1">🥤 Bebidas</h2>
+            <div class="space-y-3">
+                <div class="bg-zinc-900 p-4 rounded-xl border border-zinc-850 flex justify-between items-start gap-4">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-zinc-100">Coca-Cola 1.5 Litros</h3>
+                        <p class="text-xs text-zinc-400 mt-1">Línea original, bien helada.</p>
+                        <span class="text-orange-400 font-bold block mt-2 text-sm">$2.200</span>
+                    </div>
+                    <button onclick="addToCart(2, 'Coca-Cola 1.5L', 2200)" class="bg-orange-500 hover:bg-orange-600 active:scale-95 text-black w-10 h-10 flex items-center justify-center rounded-xl font-bold text-xl transition-all shadow-md shadow-orange-500/5">+</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Barra Inferior Flotante (Se activa si hay items cargados) -->
+    <div id="cart-bar" class="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 p-4 z-40 transform translate-y-full transition-transform duration-300 shadow-2xl">
+        <div class="max-w-md mx-auto flex justify-between items-center">
+            <div>
+                <span class="text-[10px] text-zinc-400 block uppercase tracking-wider">Subtotal de la compra</span>
+                <span class="text-xl font-black text-orange-500">$<span id="bar-total">0</span></span>
+            </div>
+            <button onclick="openCheckoutModal()" class="bg-orange-500 hover:bg-orange-600 text-black px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all duration-200">
+                Confirmar Datos <span class="bg-black text-orange-500 text-[10px] px-2 py-0.5 rounded-full font-black" id="bar-count">0</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL DE CHECKOUT (Para evitar preguntas y agilizar) -->
+    <div id="checkout-modal" class="hidden fixed inset-0 bg-zinc-950/95 backdrop-blur-sm z-50 p-6 flex flex-col justify-between overflow-y-auto">
+        <div class="max-w-md mx-auto w-full flex-1 flex flex-col justify-between">
+            <div>
+                <!-- Encabezado -->
+                <div class="flex justify-between items-center border-b border-zinc-800 pb-4 mb-4">
+                    <h2 class="text-xl font-black uppercase text-orange-500">🛵 Datos de Entrega</h2>
+                    <button onclick="closeCheckoutModal()" class="text-zinc-400 hover:text-white text-2xl font-bold">&times;</button>
+                </div>
+
+                <!-- Detalle del pedido rápido -->
+                <div class="bg-zinc-900/50 p-4 rounded-xl border border-zinc-850 mb-4">
+                    <h3 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-2">Resumen de compra</h3>
+                    <div id="checkout-summary" class="space-y-1 text-xs text-zinc-200">
+                        <!-- Inyectado dinámicamente -->
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">Tu Nombre</label>
+                        <input type="text" id="client-name" placeholder="Ej. Carlos Pérez" class="w-full bg-zinc-900 border border-zinc-800 focus:border-orange-500 focus:outline-none p-3 rounded-xl text-sm text-zinc-200">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">Método de entrega</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="setDeliveryMethod('delivery')" id="btn-delivery" class="py-3 px-4 bg-orange-500 text-black font-bold text-xs uppercase rounded-xl transition-all">🛵 Envío a casa</button>
+                            <button onclick="setDeliveryMethod('takeaway')" id="btn-takeaway" class="py-3 px-4 bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold text-xs uppercase rounded-xl transition-all">🏪 Retiro en local</button>
+                        </div>
+                    </div>
+
+                    <div id="address-container">
+                        <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">Dirección Exacta</label>
+                        <input type="text" id="client-address" placeholder="Ej. San Martín 820, Barrio Centro" class="w-full bg-zinc-900 border border-zinc-800 focus:border-orange-500 focus:outline-none p-3 rounded-xl text-sm text-zinc-200">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-zinc-400 mb-1">¿Con cuánto vas a abonar? (Opcional)</label>
+                        <input type="number" id="payment-change" placeholder="Ej. Pago con un billete de $10.000" class="w-full bg-zinc-900 border border-zinc-800 focus:border-orange-500 focus:outline-none p-3 rounded-xl text-sm text-zinc-200">
+                        <p class="text-[10px] text-zinc-500 mt-1">Ingresá el monto si necesitás que el cadete lleve cambio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Final de Envío -->
+            <div class="border-t border-zinc-850 pt-4 mt-6">
+                <button onclick="sendOrder()" class="w-full bg-green-600 hover:bg-green-700 active:scale-95 text-white py-4 rounded-xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all">
+                    <span>💬</span> Enviar Pedido por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alertas Flotantes (Toast) -->
+    <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-zinc-900 border border-zinc-800 text-orange-400 py-3 px-6 rounded-full text-xs font-bold shadow-2xl z-50 transition-all duration-300 opacity-0 pointer-events-none">
+        ✅ Agregado al pedido
+    </div>
+
+    <script>
+        let cart = [];
+        let empanadas = {
+            'Carne Suave': 0,
+            'Jamón y Queso': 0,
+            'Humita': 0
+        };
+        const empanadaPrice = 900;
+        let deliveryMethod = 'delivery';
+
+        function showToast(text) {
+            const toast = document.getElementById('toast');
+            toast.innerText = `✅ ${text}`;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 2000);
+        }
+
+        // Lógica general de items del carrito
+        function addToCart(id, name, price) {
+            const exist = cart.find(item => item.id === id);
+            if (exist) {
+                exist.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            showToast(`Sumado: ${name}`);
+            updateCartUI();
+        }
+
+        // Lógica especial de sabores de empanadas
+        function changeEmpanadaFlavor(flavor, change) {
+            empanadas[flavor] += change;
+            if (empanadas[flavor] < 0) empanadas[flavor] = 0;
+            
+            // Actualizar número en pantalla
+            const elementId = 'flavor-' + flavor.replace(' ', '').replace('ó', 'o');
+            const element = document.getElementById(elementId);
+            if(element) element.innerText = empanadas[flavor];
+            
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Calcular total empanadas
+            const empanadasCount = Object.values(empanadas).reduce((a, b) => a + b, 0);
+            const empanadasTotal = empanadasCount * empanadaPrice;
+            
+            // Calcular otros items
+            const otherCount = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+            const otherTotal = cart.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0);
+            
+            const totalCount = empanadasCount + otherCount;
+            const totalPrice = empanadasTotal + otherTotal;
+
+            document.getElementById('bar-count').innerText = totalCount;
+            document.getElementById('bar-total').innerText = totalPrice.toLocaleString('es-AR');
+
+            const cartBar = document.getElementById('cart-bar');
+            if (totalCount > 0) {
+                cartBar.classList.remove('translate-y-full');
+            } else {
+                cartBar.classList.add('translate-y-full');
+            }
+        }
+
+        function openCheckoutModal() {
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            
+            // Armar el resumen
+            const summaryContainer = document.getElementById('checkout-summary');
+            let html = '';
+            
+            cart.forEach(item => {
+                html += `<div class="flex justify-between"><span>• ${item.quantity}x ${item.name}</span><span>$${(item.price * item.quantity).toLocaleString('es-AR')}</span></div>`;
+            });
+            
+            Object.entries(empanadas).forEach(([flavor, qty]) => {
+                if (qty > 0) {
+                    html += `<div class="flex justify-between"><span>• ${qty}x Empanada de ${flavor}</span><span>$${(qty * empanadaPrice).toLocaleString('es-AR')}</span></div>`;
+                }
+            });
+            
+            summaryContainer.innerHTML = html;
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function setDeliveryMethod(method) {
+            deliveryMethod = method;
+            const btnDelivery = document.getElementById('btn-delivery');
+            const btnTakeaway = document.getElementById('btn-takeaway');
+            const addrContainer = document.getElementById('address-container');
+
+            if (method === 'delivery') {
+                btnDelivery.className = "py-3 px-4 bg-orange-500 text-black font-bold text-xs uppercase rounded-xl transition-all";
+                btnTakeaway.className = "py-3 px-4 bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold text-xs uppercase rounded-xl transition-all";
+                addrContainer.classList.remove('hidden');
+            } else {
+                btnDelivery.className = "py-3 px-4 bg-zinc-900 border border-zinc-800 text-zinc-300 font-semibold text-xs uppercase rounded-xl transition-all";
+                btnTakeaway.className = "py-3 px-4 bg-orange-500 text-black font-bold text-xs uppercase rounded-xl transition-all";
+                addrContainer.classList.add('hidden');
+            }
+        }
+
+        function sendOrder() {
+            const name = document.getElementById('client-name').value.trim();
+            const address = document.getElementById('client-address').value.trim();
+            const change = document.getElementById('payment-change').value.trim();
+            
+            if (!name) {
+                alert("Por favor, ingresá tu nombre.");
+                return;
+            }
+            if (deliveryMethod === 'delivery' && !address) {
+                alert("Por favor, escribí la dirección exacta de entrega.");
+                return;
+            }
+
+            // Armar detalle de productos
+            let detailText = '';
+            let empanadasText = [];
+            
+            cart.forEach(item => {
+                detailText += `• *${item.quantity}x* ${item.name} ($${(item.price * item.quantity).toLocaleString('es-AR')})\n`;
+            });
+
+            Object.entries(empanadas).forEach(([flavor, qty]) => {
+                if (qty > 0) {
+                    empanadasText.push(`  - ${qty} de ${flavor}`);
+                }
+            });
+
+            if (empanadasText.length > 0) {
+                const empanadasCount = Object.values(empanadas).reduce((a, b) => a + b, 0);
+                detailText += `• *${empanadasCount}x* Empanadas Caseras ($${(empanadasCount * empanadaPrice).toLocaleString('es-AR')}):\n${empanadasText.join('\n')}\n`;
+            }
+
+            // Calcular total final
+            const empanadasCount = Object.values(empanadas).reduce((a, b) => a + b, 0);
+            const total = (empanadasCount * empanadaPrice) + cart.reduce((acc, curr) => acc + (curr.price * curr.quantity), 0);
+
+            // Armar el mensaje completo de WhatsApp
+            let msg = `📝 *NUEVO PEDIDO DE COMIDA* 📝\n\n`;
+            msg += `👤 *Cliente:* ${name}\n`;
+            msg += `🛵 *Tipo:* ${deliveryMethod === 'delivery' ? 'Envío a Domicilio' : 'Retiro por el Local'}\n`;
+            
+            if (deliveryMethod === 'delivery') {
+                msg += `📍 *Dirección:* ${address}\n`;
+            }
+            
+            msg += `\n*Detalle del Pedido:*\n${detailText}\n`;
+            msg += `💰 *Total a abonar: $${total.toLocaleString('es-AR')}*\n`;
+            
+            if (change) {
+                msg += `💵 *Paga con:* $${Number(change).toLocaleString('es-AR')}\n`;
+                if (Number(change) > total) {
+                    msg += `🔄 *Llevar cambio de:* $${(Number(change) - total).toLocaleString('es-AR')}\n`;
+                }
+            }
+
+            const whatsappNumber = "5493546000000"; // Reemplazar por el del local
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
